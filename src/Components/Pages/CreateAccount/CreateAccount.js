@@ -28,7 +28,7 @@ const CreateAccount = () => {
                     alert(`It's Great, ${name} ! You are a member now.`)
                     form.reset();
                 })
-                .catch(err => console.error(err))
+                .catch(err => alert(err.message))
         }
 
         else {
@@ -39,7 +39,7 @@ const CreateAccount = () => {
 
     return (
         <div>
-            <h1 className='page-heading'>Create Your ADDA Account</h1>
+            <h1 className='page-heading'>Be A Member in ADDA</h1>
             <div className='create-account'>
 
                 <form onSubmit={handleCreateAccount} className='sign-up-form'>

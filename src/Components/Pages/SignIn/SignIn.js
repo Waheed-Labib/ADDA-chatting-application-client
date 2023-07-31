@@ -1,16 +1,38 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaBackward, FaSignInAlt } from 'react-icons/fa';
 import logo from '../../../Assets/images/logo/Adda Logo.png'
 import google from '../../../Assets/images/logo/google.png'
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 const SignIn = () => {
+
+    const { signIn, setUser } = useContext(AuthContext);
+
+    const handleSignIn = event => {
+        event.preventDefault();
+
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                alert("Sign in Successful")
+                form.reset();
+            })
+            .catch(err => alert(err.message))
+
+    }
+
     return (
         <div>
             <h1 className='page-heading'>Sign in To Your ADDA Account</h1>
             <div className='create-account'>
 
-                <form className='sign-up-form'>
+                <form onSubmit={handleSignIn} className='sign-up-form'>
 
                     <label><h3>Email:</h3></label>
                     <br />
