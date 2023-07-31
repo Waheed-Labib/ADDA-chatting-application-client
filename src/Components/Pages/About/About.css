@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
     gap: 5%;
-    margin-top: 5%;
+    margin-top: 2%;
 }
 
 .about-text {
@@ -31,5 +31,9 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+
+    .about-text-and-link {
+        margin-top: 10%;
     }
 }
