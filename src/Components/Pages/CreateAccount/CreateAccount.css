@@ -54,11 +54,12 @@
     color: antiquewhite;
     font-weight: 500;
     transition: 1s;
+    border: none;
+    padding: 8px 0;
 }
 
 .submit-btn:hover {
-    color: yellow;
-    border: 1px solid yellow;
+    background-color: rgb(10, 2, 59);
 }
 
 .sign-up-page-links {

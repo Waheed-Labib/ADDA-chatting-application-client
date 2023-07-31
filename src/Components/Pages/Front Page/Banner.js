@@ -11,11 +11,13 @@ const Banner = () => {
             <img className='logo' style={{ borderBottomRightRadius: '5px' }} src={logo} alt=''></img>
 
             <div className='front-page-links'>
-                <button className='sign-in-btn'>
-                    <FaSignInAlt></FaSignInAlt>
-                    &nbsp;
-                    Sign in
-                </button>
+                <Link to='/signin'>
+                    <button className='sign-in-btn'>
+                        <FaSignInAlt></FaSignInAlt>
+                        &nbsp;
+                        Sign in
+                    </button>
+                </Link>
                 <br></br>
                 <Link to='/register'>
                     <button className='register-btn' href='/register'>
@@ -33,10 +35,10 @@ const Banner = () => {
                 </button>
                 <br></br>
 
-                <a className='about-btn' href='/about'>
+                <Link className='about-btn' to='/about'>
                     <FaQuestionCircle></FaQuestionCircle>
                     &nbsp; About ADDA
-                </a>
+                </Link>
             </div>
         </div>
     );
