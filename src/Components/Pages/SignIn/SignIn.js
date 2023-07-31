@@ -4,6 +4,7 @@ import logo from '../../../Assets/images/logo/Adda Logo.png'
 import google from '../../../Assets/images/logo/google.png'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 const SignIn = () => {
 
@@ -20,10 +21,10 @@ const SignIn = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
-                alert("Sign in Successful")
+                toast.success("Sign in Successful")
                 form.reset();
             })
-            .catch(err => alert(err.message))
+            .catch(err => toast.error(err.message))
 
     }
 

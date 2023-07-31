@@ -5,6 +5,7 @@ import google from '../../../Assets/images/logo/google.png'
 import './CreateAccount.css'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 
 const CreateAccount = () => {
@@ -25,14 +26,14 @@ const CreateAccount = () => {
                     const user = result.user
                     setUser(user)
                     console.log(user)
-                    alert(`It's Great, ${name} ! You are a member now.`)
+                    toast.success(`It's Great, ${name} ! You are a member now.`)
                     form.reset();
                 })
-                .catch(err => alert(err.message))
+                .catch(err => toast.error(err.message))
         }
 
         else {
-            alert('Password did not match. Please try again.')
+            toast.error('Password did not match. Please try again.')
         }
 
     }

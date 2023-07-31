@@ -9,7 +9,7 @@
 
 
 .sign-up-form {
-    background-color: rgba(149, 149, 149, 0.381);
+    background-color: rgba(230, 227, 227, 0.381);
     color: rgb(45, 42, 39);
     padding: 6% 8%;
     margin-top: 5%;
@@ -23,7 +23,7 @@
     font-size: 1.5rem;
     font-weight: 700;
     color: rgb(39, 31, 93);
-    background: linear-gradient(to right, rgba(240, 248, 255, 0.469), rgba(240, 248, 255, 0));
+    background: linear-gradient(to right, rgba(230, 227, 227, 0.7), rgba(230, 227, 227, 0.381));
 }
 
 @keyframes show-delay {
