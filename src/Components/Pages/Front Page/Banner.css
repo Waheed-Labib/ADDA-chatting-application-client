@@ -1,0 +1,122 @@
+.banner {
+    height: 100vh;
+    width: 100vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation: banner-animation 5s ease-in-out infinite;
+}
+
+@keyframes banner-animation {
+    0% {
+        background-image: url('../../../Assets/images/background/bg-1.webp');
+    }
+
+    33% {
+        background-image: url('../../../Assets/images/background/bg-2.webp');
+    }
+
+    67% {
+        background-image: url('../../../Assets/images/background/bg-3.webp');
+    }
+
+    100% {
+        background-image: url('../../../Assets/images/background/bg-1.webp');
+    }
+}
+
+@keyframes show-delay {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.logo {
+    animation: show-delay 3s linear 0s 1;
+}
+
+.front-page-links {
+    padding-left: 2%;
+    padding-bottom: 5%;
+    padding-right: 4%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    animation: show-delay 6s linear 0s 1;
+}
+
+.front-page-links a {
+    /* border: 1px solid gray; */
+    background-color: white;
+    border-radius: 10px;
+    transition: 1s;
+}
+
+.front-page-links button {
+    width: 300px;
+    padding: 5px 8px;
+    margin-bottom: 5px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    font-weight: 600;
+    text-align: start;
+    background-color: white;
+}
+
+.front-page-links button:hover {
+    background-color: aliceblue;
+}
+
+.register-btn {
+    color: rgb(6, 6, 108);
+    font-weight: 800;
+    font-size: 1.1rem;
+}
+
+.sign-in-btn {
+    padding: 8px 0;
+    color: rgb(65, 50, 27);
+    font-weight: 700;
+    font-size: 1.1rem;
+
+}
+
+.google-sign-in-btn {
+    color: green;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-top: 8px;
+}
+
+.about-btn {
+    color: rgb(75, 1, 1);
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.about-btn:hover {
+    color: rgb(205, 4, 4);
+}
+
+@media screen and (max-width:768px) {
+    .banner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .front-page-links {
+        position: static;
+    }
+
+    .logo {
+        border-bottom-left-radius: 5px;
+    }
+}

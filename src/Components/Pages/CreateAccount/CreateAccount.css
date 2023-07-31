@@ -1,0 +1,113 @@
+.create-account {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+    margin-bottom: 5%;
+
+}
+
+
+.sign-up-form {
+    background-color: rgba(149, 149, 149, 0.381);
+    color: rgb(45, 42, 39);
+    padding: 6% 8%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border-radius: 10px;
+    animation: show-delay 1s linear 0s 1;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4), 0 12px 30px 0 rgba(0, 0, 0, 0.4);
+}
+
+.sign-up-form h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: rgb(39, 31, 93);
+    background: linear-gradient(to right, rgba(240, 248, 255, 0.469), rgba(240, 248, 255, 0));
+}
+
+@keyframes show-delay {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.sign-up-form h3 {
+    margin: 0;
+}
+
+.sign-up-form input {
+    width: 250px;
+    height: 2rem;
+    border-radius: 5px;
+    border: 1px solid rgb(45, 42, 39);
+}
+
+.submit-btn {
+    margin-top: 12%;
+    margin-left: 1%;
+    background-color: rgb(39, 31, 93);
+    color: antiquewhite;
+    font-weight: 500;
+    transition: 1s;
+}
+
+.submit-btn:hover {
+    color: yellow;
+    border: 1px solid yellow;
+}
+
+.sign-up-page-links {
+    animation: show-delay 2s linear 0s 1;
+}
+
+.sign-up-page-links button {
+    width: 300px;
+    padding: 6px 10px;
+    margin-bottom: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    font-weight: 600;
+    text-align: start;
+    background-color: white;
+}
+
+.sign-up-page-links button:hover {
+    background-color: aliceblue;
+}
+
+.return-btn {
+    margin-top: 10px;
+    color: rgb(65, 50, 27);
+    font-size: 0.9rem;
+}
+
+.already-member-btn {
+    padding: 8px 0;
+    margin-top: 10px;
+    color: darkblue;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.google-sign-in-btn {
+    /* background-color: yellow; */
+    color: green;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+@media screen and (max-width:768px) {
+    .create-account {
+        flex-direction: column;
+    }
+
+    .page-heading {
+        text-align: center;
+        font-size: 1.8rem;
+    }
+}
