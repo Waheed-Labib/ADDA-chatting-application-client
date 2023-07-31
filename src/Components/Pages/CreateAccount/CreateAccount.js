@@ -1,18 +1,48 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { FaBackward, FaSignInAlt } from 'react-icons/fa';
 import logo from '../../../Assets/images/logo/Adda Logo.png'
 import google from '../../../Assets/images/logo/google.png'
 import './CreateAccount.css'
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 
 const CreateAccount = () => {
+
+    const { createUser, setUser } = useContext(AuthContext);
+
+    const handleCreateAccount = event => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const confirm = form.confirm.value;
+
+        if (password === confirm) {
+            createUser(email, password)
+                .then(result => {
+                    const user = result.user
+                    setUser(user)
+                    console.log(user)
+                    alert(`It's Great, ${name} ! You are a member now.`)
+                    form.reset();
+                })
+                .catch(err => console.error(err))
+        }
+
+        else {
+            alert('Password did not match. Please try again.')
+        }
+
+    }
+
     return (
         <div>
             <h1 className='page-heading'>Create Your ADDA Account</h1>
             <div className='create-account'>
 
-                <form className='sign-up-form'>
+                <form onSubmit={handleCreateAccount} className='sign-up-form'>
 
                     <label><h3>User Name:</h3></label>
                     <br />
