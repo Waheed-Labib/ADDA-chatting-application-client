@@ -11,7 +11,7 @@ import CupLogo from '../Shared/CupLogo/CupLogo';
 
 const CreateAccount = () => {
 
-    const { createUser, setUser } = useContext(AuthContext);
+    const { createUser, setUser, updateUserAccount } = useContext(AuthContext);
 
     const handleCreateAccount = event => {
         event.preventDefault();
@@ -26,7 +26,15 @@ const CreateAccount = () => {
                 .then(result => {
                     const user = result.user
                     setUser(user)
-                    console.log(user)
+                    console.log('User Created', user)
+
+                    const profile = {
+                        displayName: name
+                    }
+                    updateUserAccount(profile)
+                        .then(() => { })
+                        .catch(err => console.error(err.meassage))
+
                     toast.success(`It's Great, ${name} ! You are a member now.`)
                     form.reset();
                 })
