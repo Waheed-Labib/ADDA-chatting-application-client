@@ -1,23 +1,37 @@
 .profile {
+    background-color: rgba(240, 248, 255, 0.8);
+    color: rgb(45, 42, 39);
     margin: 5%;
     padding: 5%;
-    background-color: rgba(240, 248, 255, 0.8);
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
+    border-radius: 10px;
+    animation: show-delay 1s linear 0s 1;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4), 0 12px 30px 0 rgba(0, 0, 0, 0.4);
 }
 
+.profile h2,
 .profile h3,
 .profile h4,
-.profile p {
+.profile p,
+.profile a {
     margin: 0;
+    background-color: rgba(230, 227, 227, 0.5)
+}
+
+.profile h2,
+.profile h3,
+.profile h4 {
+    color: rgb(39, 31, 93);
+}
+
+.profile p {
+    font-weight: 500;
 }
 
 .profile-img {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 .profile-info {
@@ -25,13 +39,23 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 10%;
+    width: 100%;
 }
 
 .user-dp {
     height: 100px;
     width: 100px;
-    border: 10px solid aliceblue;
+    border: 5px solid yellowgreen;
     border-radius: 20px;
+    margin-bottom: 12px;
+}
+
+.special-note {
+    color: maroon;
+}
+
+.edit-icon:hover {
+    color: rgb(1, 1, 121);
 }
 
 @media screen and (max-width:768px) {
