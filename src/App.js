@@ -7,9 +7,9 @@ import { Toaster } from 'react-hot-toast';
 function App() {
   return (
     <div className="App">
-      <Toaster></Toaster>
+      <Toaster toastOptions={{ success: { duration: 6000 }, error: { duration: 7000 } }}></Toaster>
       <RouterProvider router={router}></RouterProvider>
-    </div>
+    </div >
   );
 }
 

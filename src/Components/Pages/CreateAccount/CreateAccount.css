@@ -23,7 +23,7 @@
     font-size: 1.5rem;
     font-weight: 700;
     color: rgb(39, 31, 93);
-    background: linear-gradient(to right, rgba(230, 227, 227, 0.7), rgba(230, 227, 227, 0.381));
+    background: linear-gradient(to right, rgba(230, 227, 227, 0.7), rgba(230, 227, 227, 0), rgba(230, 227, 227, 0));
 }
 
 @keyframes show-delay {
@@ -92,14 +92,14 @@
     margin-top: 10px;
     color: darkblue;
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 .google-sign-in-btn {
     /* background-color: yellow; */
     color: green;
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 @media screen and (max-width:768px) {

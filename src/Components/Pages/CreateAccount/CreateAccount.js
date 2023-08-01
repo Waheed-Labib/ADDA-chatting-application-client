@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { FaBackward, FaSignInAlt } from 'react-icons/fa';
 import logo from '../../../Assets/images/logo/Adda Logo.png'
-import google from '../../../Assets/images/logo/google.png'
 import './CreateAccount.css'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
+import GoogleButton from '../../Buttons/GoogleButton';
 
 
 const CreateAccount = () => {
@@ -47,22 +47,22 @@ const CreateAccount = () => {
 
                     <label><h3>User Name:</h3></label>
                     <br />
-                    <input type="text" name="name" placeholder='User Name' />
+                    <input type="text" name="name" placeholder='User Name' required />
                     <br /><br />
 
                     <label><h3>Email:</h3></label>
                     <br />
-                    <input type="email" name="email" placeholder='Your Email' />
+                    <input type="email" name="email" placeholder='Your Email' required />
                     <br /><br />
 
                     <label><h3>Password:</h3></label>
                     <br />
-                    <input type="password" name="password" placeholder='Password' />
+                    <input type="password" name="password" placeholder='Password' required />
                     <br /><br />
 
                     <label><h3>Confirm Password:</h3></label>
                     <br />
-                    <input type="password" name="confirm" placeholder='Confirm Password' />
+                    <input type="password" name="confirm" placeholder='Confirm Password' required />
                     <br /><br />
 
                     <input className='submit-btn' type="submit" value="Submit"></input>
@@ -74,7 +74,7 @@ const CreateAccount = () => {
                         <button className='return-btn'>
                             <FaBackward></FaBackward>
                             &nbsp;
-                            Return to the Front Cover
+                            Go Back to Front Cover
                         </button>
                     </Link>
 
@@ -87,11 +87,7 @@ const CreateAccount = () => {
                         </button>
                     </Link>
                     <br></br>
-                    <button className='google-sign-in-btn'>
-                        <img style={{ height: '25px', width: '30px' }} src={google} alt=''></img>
-                        &nbsp;
-                        Sign in with Google
-                    </button>
+                    <GoogleButton></GoogleButton>
                     <br></br>
                     <img style={{ width: '300px', marginTop: '10px', marginBottom: '20px' }} src={logo} alt=''></img>
                 </div>
