@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './About.css'
 import logo from '../../../Assets/images/logo/Adda Logo.png'
+import CupLogo from '../Shared/CupLogo/CupLogo';
 
 const About = () => {
     return (
@@ -10,6 +11,7 @@ const About = () => {
 
             <div className='about-text-and-link'>
                 <div className='about-text'>
+                    <CupLogo></CupLogo>
                     <h2>
                         About ADDA
                     </h2>

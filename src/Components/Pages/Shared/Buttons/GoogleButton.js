@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import google from '../../Assets/images/logo/google.png'
-import { AuthContext } from '../../contexts/AuthProvider';
+import google from '../../../../Assets/images/logo/google.png'
+import { AuthContext } from '../../../../contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
 import { FaRegSmileBeam } from 'react-icons/fa'
 

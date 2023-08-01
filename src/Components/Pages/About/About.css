@@ -9,7 +9,8 @@
 
 .about-text {
     width: 80%;
-    background-image: linear-gradient(rgba(240, 248, 255, 0.445), aliceblue, rgba(240, 248, 255, 0.445));
+    background-color: rgba(240, 248, 255, 0.883);
+    /* background-image: linear-gradient(rgba(240, 248, 255, 0.445), aliceblue, rgba(240, 248, 255, 0.445)); */
     padding: 10%;
     text-align: center;
 }

@@ -4,7 +4,7 @@ import logo from '../../../Assets/images/logo/Adda Logo.png'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
-import GoogleButton from '../../Buttons/GoogleButton';
+import GoogleButton from '../Shared/Buttons/GoogleButton';
 
 const SignIn = () => {
 

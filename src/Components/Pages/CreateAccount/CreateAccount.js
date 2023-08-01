@@ -5,7 +5,8 @@ import './CreateAccount.css'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
-import GoogleButton from '../../Buttons/GoogleButton';
+import GoogleButton from '../Shared/Buttons/GoogleButton';
+import CupLogo from '../Shared/CupLogo/CupLogo';
 
 
 const CreateAccount = () => {
@@ -40,7 +41,11 @@ const CreateAccount = () => {
 
     return (
         <div>
-            <h1 className='page-heading'>Be A Member in ADDA</h1>
+
+            <h1 className='page-heading'>
+                Be A Member in ADDA
+            </h1>
+
             <div className='create-account'>
 
                 <form onSubmit={handleCreateAccount} className='sign-up-form'>
@@ -93,7 +98,7 @@ const CreateAccount = () => {
                 </div>
             </div>
 
-        </div>
+        </div >
     );
 };
 
