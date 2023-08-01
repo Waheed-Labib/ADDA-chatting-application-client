@@ -4,6 +4,7 @@ import CreateAccount from "../../Components/Pages/CreateAccount/CreateAccount";
 import Main from "../../Layout/Main";
 import SignIn from "../../Components/Pages/SignIn/SignIn";
 import About from "../../Components/Pages/About/About";
+import Profile from "../../Components/Pages/Profile/Profile";
 
 export const router = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
             {
                 path: '/about',
                 element: <About></About>
+            },
+            {
+                path: '/profile',
+                element: <Profile></Profile>
             }
         ]
     }

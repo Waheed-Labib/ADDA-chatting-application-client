@@ -38,12 +38,12 @@ const SignIn = () => {
     const handleForgotPassword = () => {
         if (email) {
             resetPassword(email)
-                .then(alert('Very Well Done. Go Check Your Email.'))
+                .then(alert('Please Check Your Email.'))
                 .catch(err => console.error(err.message))
         }
 
         else {
-            alert('No Worries! Please Provide Your Email first.')
+            alert('Please Provide Your Email first.')
         }
 
     }
@@ -94,6 +94,7 @@ const SignIn = () => {
                     </Link>
                     <br></br>
                     <GoogleButton></GoogleButton>
+                    <br></br>
                     <br></br>
                     <img style={{ width: '300px', marginTop: '10px', marginBottom: '20px' }} src={logo} alt=''></img>
                 </div>

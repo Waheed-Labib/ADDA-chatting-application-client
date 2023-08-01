@@ -1,0 +1,43 @@
+.profile {
+    margin: 5%;
+    padding: 5%;
+    background-color: rgba(240, 248, 255, 0.8);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.profile h3,
+.profile h4,
+.profile p {
+    margin: 0;
+}
+
+.profile-img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10%;
+}
+
+.user-dp {
+    height: 100px;
+    width: 100px;
+    border: 10px solid aliceblue;
+    border-radius: 20px;
+}
+
+@media screen and (max-width:768px) {
+    .profile-page {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

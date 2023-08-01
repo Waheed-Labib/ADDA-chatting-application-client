@@ -102,6 +102,7 @@ const CreateAccount = () => {
                     <br></br>
                     <GoogleButton></GoogleButton>
                     <br></br>
+                    <br></br>
                     <img style={{ width: '300px', marginTop: '10px', marginBottom: '20px' }} src={logo} alt=''></img>
                 </div>
             </div>
