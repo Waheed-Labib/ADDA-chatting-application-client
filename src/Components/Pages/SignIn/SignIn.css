@@ -1,0 +1,11 @@
+.forgot-password {
+    color: rgb(41, 35, 104);
+    text-decoration: none;
+    font-weight: 500;
+    background: linear-gradient(to right, rgba(240, 248, 255, 0.608), rgba(240, 248, 255, 0.608), rgba(240, 248, 255, 0));
+    transition: 0.5s;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}

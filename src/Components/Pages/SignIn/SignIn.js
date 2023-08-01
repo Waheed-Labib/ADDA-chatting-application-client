@@ -1,14 +1,16 @@
-import React, { useContext } from 'react';
-import { FaBackward, FaSignInAlt } from 'react-icons/fa';
+import React, { useContext, useState } from 'react';
+import { FaBackward, FaFrown, FaSignInAlt } from 'react-icons/fa';
 import logo from '../../../Assets/images/logo/Adda Logo.png'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
 import GoogleButton from '../Shared/Buttons/GoogleButton';
+import './SignIn.css'
 
 const SignIn = () => {
 
-    const { signIn, setUser } = useContext(AuthContext);
+    const { signIn, setUser, resetPassword } = useContext(AuthContext);
+    const [email, setEmail] = useState('')
 
     const handleSignIn = event => {
         event.preventDefault();
@@ -29,6 +31,23 @@ const SignIn = () => {
 
     }
 
+    const handleEmailBlur = event => {
+        setEmail(event.target.value)
+    }
+
+    const handleForgotPassword = () => {
+        if (email) {
+            resetPassword(email)
+                .then(alert('Very Well Done. Go Check Your Email.'))
+                .catch(err => console.error(err.message))
+        }
+
+        else {
+            alert('No Worries! Please Provide Your Email first.')
+        }
+
+    }
+
     return (
         <div>
             <h1 className='page-heading'>Sign in To Your ADDA Account</h1>
@@ -38,7 +57,7 @@ const SignIn = () => {
 
                     <label><h3>Email:</h3></label>
                     <br />
-                    <input type="email" name="email" placeholder='Your Email' required />
+                    <input onBlur={handleEmailBlur} type="email" name="email" placeholder='Your Email' required />
                     <br /><br />
 
                     <label><h3>Password:</h3></label>
@@ -47,6 +66,12 @@ const SignIn = () => {
                     <br /><br />
 
                     <input className='submit-btn' type="submit" value="Submit"></input>
+                    <br></br>
+                    <br></br>
+                    <Link onClick={handleForgotPassword} className='forgot-password'>
+                        <FaFrown></FaFrown> &nbsp;
+                        Forgot Password?
+                    </Link>
                 </form>
 
 
