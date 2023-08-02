@@ -55,42 +55,10 @@
     margin-bottom: 12px;
 }
 
-.image-input {
+.name-form {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
-}
-
-.image-url-input {
-    width: 80%;
-    border-radius: 5px;
-    border: 1px solid lightblue;
-}
-
-.submit-img {
-    background-color: yellowgreen;
-    border: 1px solid aliceblue;
-    border-radius: 5px;
-    padding: 10px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: rgb(27, 27, 27)
-}
-
-.cancel-img {
-    background-color: rgb(242, 11, 57);
-    border: 1px solid aliceblue;
-    border-radius: 5px;
-    padding: 10px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: rgb(50, 50, 50)
-}
-
-.submit-img:hover,
-.cancel-img:hover {
-    color: black;
 }
 
 .special-note {
@@ -102,7 +70,7 @@
 }
 
 .special-note a {
-    background-color: greenyellow;
+    background-color: goldenrod;
     padding: 2px;
     border-radius: 5px;
     color: darkblue;
@@ -110,7 +78,7 @@
 }
 
 .special-note a:hover {
-    background-color: yellowgreen;
+    background-color: orange;
 }
 
 @media screen and (max-width:768px) {
