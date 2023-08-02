@@ -1,17 +1,32 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './Profile.css'
 import { Link } from 'react-router-dom';
 import { FaEdit } from 'react-icons/fa';
 import logo from '../../../Assets/images/logo/Adda Logo.png'
+import { AuthContext } from '../../../contexts/AuthProvider';
+import frog from '../../../Assets/images/avatar/frog.webp'
 import { toast } from 'react-hot-toast';
 
 const Profile = () => {
 
     const [showImageInput, setShowImageInput] = useState(false)
+    const { user, updateUserAccount } = useContext(AuthContext)
+    const [image, setImage] = useState(user?.photoURL)
+    console.log(user);
 
     const handleImageURLInput = event => {
 
-        setShowImageInput(false)
+        const photo = event.target.imageURL.value;
+        const profile = {
+            photoURL: photo
+        }
+        updateUserAccount(profile)
+            .then(() => {
+                setImage(photo)
+                setShowImageInput(false)
+            })
+            .catch(err => toast.error(err.message))
+
     }
 
     return (
@@ -22,7 +37,12 @@ const Profile = () => {
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '50px' }}>
                         <h2 style={{ marginBottom: '30px' }}>Your Profile</h2>
                         <div className='profile-img'>
-                            <img className='user-dp' src='https://i.ibb.co/qsSZ3B3/frog.jpg' alt=''></img>
+                            {
+                                user?.photoURL ?
+                                    <img className='user-dp' src={image} alt=''></img>
+                                    :
+                                    <img className='user-dp' src={frog} alt=''></img>
+                            }
                             <h4>To Change the Image</h4>
                             <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
                                 <Link onClick={() => setShowImageInput(!showImageInput)}>Add Image URL</Link>
@@ -34,11 +54,12 @@ const Profile = () => {
                             showImageInput &&
                             <div style={{ width: '100%' }}>
                                 <form onSubmit={handleImageURLInput} className='image-input'>
-                                    <input className='image-url-input' type='text' placeholder='Image URL' name='image-url'></input>
+                                    <input className='image-url-input' type='text' placeholder='Image URL' name='imageURL'></input>
                                     <input className='submit-img' type='submit' value='Update DP'></input>
                                     <button onClick={() => setShowImageInput(false)} className='cancel-img'>Cancel</button>
                                 </form>
                                 <p><small>*Please ensure that you provide a valid URL</small></p>
+                                <p><small>*One way of doing that is to <span style={{ color: 'blue' }}>right click</span> on your online image and <span style={{ color: 'blue' }}>select 'copy image link'</span></small></p>
                             </div>
 
                         }
@@ -58,7 +79,11 @@ const Profile = () => {
                         </div>
                     </div>
                     <p className='special-note'>*Email is immutable</p>
-                    <p className='special-note'>*You have not verified your email yet. <Link>Verify Email</Link></p>
+                    {
+                        !user?.emailVerified &&
+                        <p className='special-note'>*You have not verified your email yet. <Link>Verify Email</Link></p>
+
+                    }
                     <p className='special-note' style={{ color: 'blue' }}>*UPLOAD IMAGE is Coming Soon</p>
                 </div>
 

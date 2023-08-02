@@ -3,6 +3,7 @@
 }
 
 .profile {
+    width: 300px;
     background-color: rgba(240, 248, 255, 0.8);
     color: rgb(45, 42, 39);
     margin: 5%;
@@ -98,6 +99,18 @@
 
 .edit-icon:hover {
     color: rgb(1, 1, 121);
+}
+
+.special-note a {
+    background-color: greenyellow;
+    padding: 2px;
+    border-radius: 5px;
+    color: darkblue;
+    transition: 0.5s;
+}
+
+.special-note a:hover {
+    background-color: yellowgreen;
 }
 
 @media screen and (max-width:768px) {
