@@ -1,3 +1,7 @@
+.profile-page {
+    padding-bottom: 5%;
+}
+
 .profile {
     background-color: rgba(240, 248, 255, 0.8);
     color: rgb(45, 42, 39);
@@ -48,6 +52,44 @@
     border: 5px solid yellowgreen;
     border-radius: 20px;
     margin-bottom: 12px;
+}
+
+.image-input {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.image-url-input {
+    width: 80%;
+    border-radius: 5px;
+    border: 1px solid lightblue;
+}
+
+.submit-img {
+    background-color: yellowgreen;
+    border: 1px solid aliceblue;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: rgb(27, 27, 27)
+}
+
+.cancel-img {
+    background-color: rgb(242, 11, 57);
+    border: 1px solid aliceblue;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: rgb(50, 50, 50)
+}
+
+.submit-img:hover,
+.cancel-img:hover {
+    color: black;
 }
 
 .special-note {

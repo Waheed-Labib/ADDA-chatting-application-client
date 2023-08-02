@@ -1,3 +1,26 @@
 .footer {
-    height: 10px;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+    padding: 8%;
+}
+
+.footer :nth-child(2n+1) {
+    color: lightblue;
+}
+
+.footer :nth-child(2n) {
+    color: lightcoral;
+}
+
+.footer a {
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+.footer a:hover {
+    text-decoration: underline;
 }

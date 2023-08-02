@@ -31,10 +31,6 @@ const Banner = () => {
                 <GoogleButton></GoogleButton>
                 <br></br>
 
-                <Link className='about-btn' to='/about'>
-                    <FaQuestionCircle></FaQuestionCircle>
-                    &nbsp; About ADDA
-                </Link>
             </div>
         </div>
     );

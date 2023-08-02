@@ -17,11 +17,10 @@ const About = () => {
                     </h2>
 
                     <h4>
-                        ADDA is a MERN based CRUD Application, built mainly for online chatting. It has no commercial purpose. It is a practice project built by a junior developer. The developer will be really grateful if you share your feedback.
+                        ADDA is a MERN based CRUD Application, built mainly for online chatting. It has no commercial purpose. It is a practice project built by a junior developer. The developer will be really grateful if you <Link to='/feedback' style={{ color: 'rgb(39, 31, 93)' }}>share your feedback.</Link>
                     </h4>
 
-                    <Link style={{ marginTop: '5%', color: 'rgb(39, 31, 93)' }} to='/feedback'>Send Feedback</Link>
-                    <Link style={{ color: 'maroon' }} to='/'>Return</Link>
+                    <Link className='return-link' style={{ color: 'maroon' }} to='/'>Return</Link>
                 </div>
 
 
