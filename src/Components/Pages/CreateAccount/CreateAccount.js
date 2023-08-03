@@ -59,7 +59,7 @@ const CreateAccount = () => {
                 Be A Member in ADDA
             </h1>
 
-            <div className='create-account'>
+            <div className='flex-container'>
 
                 <form onSubmit={handleCreateAccount} className='sign-up-form'>
 

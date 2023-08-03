@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import './Profile.css'
 import { Link } from 'react-router-dom';
-import { FaEdit } from 'react-icons/fa';
+import { FaAngleDoubleRight, FaCross, FaEdit } from 'react-icons/fa';
 import logo from '../../../Assets/images/logo/Adda Logo.png'
 import { AuthContext } from '../../../contexts/AuthProvider';
 import frog from '../../../Assets/images/avatar/frog.webp'
@@ -39,10 +39,18 @@ const Profile = () => {
             .catch(() => alert('Something went wrong. Please try again.'))
     }
 
+    const handleLogOut = () => {
+
+    }
+
+    const handleDeleteAccount = () => {
+
+    }
+
     const profile = <>
         <div className='profile'>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '50px' }}>
-                <h2 style={{ marginBottom: '30px' }}>Your Profile</h2>
+                <h2 style={{ marginBottom: '30px' }}>{name || user?.displayName}</h2>
                 <div className='profile-img'>
 
                     {
@@ -94,6 +102,7 @@ const Profile = () => {
                 <p className='special-note'>*You have not verified your email yet. <Link onClick={handleEmailVerification}>Verify Email</Link></p>
 
             }
+
         </div>
     </>
 
@@ -102,7 +111,10 @@ const Profile = () => {
     )
     return (
         <div className='profile-page'>
-            <img style={{ width: '300px' }} src={logo} alt=''></img>
+            <h1 className='page-heading'>
+                Your ADDA Profile
+            </h1>
+
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 {
                     showAvatars ?
@@ -110,7 +122,29 @@ const Profile = () => {
                             <Avatars setShowAvatars={setShowAvatars}></Avatars>
                         </div>
                         :
-                        profile
+                        <div className='flex-container'>
+                            {profile}
+
+                            <div className='profile-page-buttons'>
+
+                                <button className='chatbox-btn'>
+                                    <p>Chat Box</p>
+                                    <FaAngleDoubleRight></FaAngleDoubleRight>
+                                </button>
+                                <button onClick={handleLogOut} className='logout-btn'>
+                                    <p>Log Out</p>
+                                </button>
+                                <br></br>
+                                <button onClick={handleDeleteAccount} className='delete-account-btn'>
+                                    <p>Delete Account</p>
+                                    <p className='cross'>X</p>
+                                </button>
+                                <br></br>
+                                {/* <br></br> */}
+                                <img style={{ width: '300px', marginTop: '10px', marginBottom: '20px' }} src={logo} alt=''></img>
+                            </div>
+                        </div>
+
                 }
 
             </div>

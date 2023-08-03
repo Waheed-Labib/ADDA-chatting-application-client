@@ -98,10 +98,83 @@
     color: rgb(232, 64, 3);
 }
 
+.profile-page-buttons button {
+    width: 300px;
+    /* padding: 6px 10px; */
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-weight: 600;
+    text-align: start;
+    transition: 0.3s;
+}
+
+.chatbox-btn {
+    border: none;
+    background-color: green;
+    color: aliceblue;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 1.1rem;
+    margin-bottom: 0;
+}
+
+.chatbox-btn:hover {
+    background-color: rgb(3, 176, 3);
+}
+
+.logout-btn {
+    background-color: orangered;
+    color: aliceblue;
+    border: none;
+}
+
+.logout-btn:hover {
+    background-color: rgb(252, 51, 1);
+}
+
+.logout-btn p {
+    margin: 10px;
+}
+
+.delete-account-btn {
+    padding: 10px;
+    background-color: antiquewhite;
+    border: 2px solid salmon;
+    color: rgb(253, 91, 73);
+    display: flex;
+    align-items: center;
+}
+
+.delete-account-btn p {
+    margin: 0;
+}
+
+.cross {
+    display: none;
+    transition: 0.5s;
+
+}
+
+.delete-account-btn:hover {
+    border: 2px solid rgb(254, 1, 1);
+    color: rgb(254, 1, 1);
+}
+
+.delete-account-btn:hover .cross {
+    display: block;
+    margin-left: 100px;
+    font-weight: 700;
+}
+
 @media screen and (max-width:768px) {
     .profile-page {
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .profile {
+        margin-bottom: 20%;
     }
 }

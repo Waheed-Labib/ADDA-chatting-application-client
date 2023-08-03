@@ -1,10 +1,10 @@
-.create-account {
+.flex-container {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 5%;
     margin-bottom: 5%;
-
+    width: 100%;
 }
 
 
@@ -20,6 +20,7 @@
 }
 
 .sign-up-form h3 {
+    margin: 0;
     font-size: 1.5rem;
     font-weight: 700;
     color: rgb(39, 31, 93);
@@ -36,9 +37,7 @@
     }
 }
 
-.sign-up-form h3 {
-    margin: 0;
-}
+
 
 .sign-up-form input {
     width: 250px;
@@ -117,7 +116,7 @@
 }
 
 @media screen and (max-width:768px) {
-    .create-account {
+    .flex-container {
         flex-direction: column;
     }
 

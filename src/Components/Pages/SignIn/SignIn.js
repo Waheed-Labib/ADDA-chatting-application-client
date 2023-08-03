@@ -51,7 +51,7 @@ const SignIn = () => {
     return (
         <div>
             <h1 className='page-heading'>Sign in To Your ADDA Account</h1>
-            <div className='create-account'>
+            <div className='flex-container'>
 
                 <form onSubmit={handleSignIn} className='sign-up-form'>
 
