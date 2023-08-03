@@ -35,5 +35,20 @@
 }
 
 .avatar-btn:hover {
-    background-color: rgb(250, 84, 66);
+    background-color: rgb(253, 76, 57);
+}
+
+.cancel-avatar-btn {
+    width: 50%;
+    margin-top: 10px;
+    padding: 7px;
+    color: rgb(2, 38, 69);
+    font-weight: 500;
+    border: none;
+    background-color: rgb(184, 194, 203);
+    border-radius: 5px;
+}
+
+.cancel-avatar-btn:hover {
+    background-color: rgb(164, 187, 207);
 }

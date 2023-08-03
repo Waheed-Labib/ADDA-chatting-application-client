@@ -3,7 +3,7 @@
 }
 
 .profile {
-    width: 325px;
+    width: 330px;
     background-color: rgba(240, 248, 255, 0.8);
     color: rgb(45, 42, 39);
     margin: 5%;
@@ -16,10 +16,16 @@
 .profile h2,
 .profile h3,
 .profile h4,
-.profile p,
+.profile p {
+    margin: 0;
+    background-color: rgba(240, 248, 255);
+    border: 5px solid rgba(240, 248, 255);
+}
+
 .profile a {
     margin: 0;
-    background-color: rgba(230, 227, 227, 0.5)
+    background-color: rgba(240, 248, 255);
+    /* border: 2px solid rgba(240, 248, 255); */
 }
 
 .profile h2,
@@ -45,7 +51,7 @@
 }
 
 .profile-img a:hover {
-    color: orangered;
+    color: rgb(232, 64, 3);
 }
 
 .profile-info {
@@ -59,7 +65,7 @@
 .user-dp {
     height: 100px;
     width: 100px;
-    border: 5px solid yellowgreen;
+    border: 15px solid rgba(240, 248, 255);
     border-radius: 20px;
     margin-bottom: 12px;
 }
@@ -80,7 +86,7 @@
 }
 
 .edit-icon:hover {
-    color: orangered;
+    color: rgb(232, 64, 3);
 }
 
 .special-note a {
@@ -89,7 +95,7 @@
 }
 
 .special-note a:hover {
-    color: orangered;
+    color: rgb(232, 64, 3);
 }
 
 @media screen and (max-width:768px) {

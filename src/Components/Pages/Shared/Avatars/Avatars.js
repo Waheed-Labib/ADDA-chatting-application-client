@@ -34,6 +34,10 @@ const Avatars = ({ setShowAvatars }) => {
             .catch(err => alert('Something went wrong. Please try again.'))
     }
 
+    const handleCancelAvatar = () => {
+        setShowAvatars(false)
+    }
+
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <h2 style={{ marginBottom: '30px' }}>Select Your Avatar</h2>
@@ -65,7 +69,11 @@ const Avatars = ({ setShowAvatars }) => {
 
             </div>
 
-            <button className='avatar-btn' onClick={handleUpdateAvatar}>Update Avatar</button>
+
+            <button className='avatar-btn' onClick={handleUpdateAvatar}>Save Changes</button>
+            <button className='cancel-avatar-btn' onClick={handleCancelAvatar}>Cancel</button>
+
+
         </div>
     );
 };

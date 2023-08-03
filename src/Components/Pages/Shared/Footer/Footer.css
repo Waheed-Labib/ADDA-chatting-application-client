@@ -6,6 +6,7 @@
     align-items: center;
     gap: 5%;
     padding: 8%;
+    width: 100%
 }
 
 .footer :nth-child(2n+1) {

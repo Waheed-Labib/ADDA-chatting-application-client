@@ -7,6 +7,7 @@ import { AuthContext } from '../../../contexts/AuthProvider';
 import frog from '../../../Assets/images/avatar/frog.webp'
 import { toast } from 'react-hot-toast';
 import Avatars from '../Shared/Avatars/Avatars';
+import Loading from '../Shared/Loading/Loading';
 
 const Profile = () => {
 
@@ -55,7 +56,7 @@ const Profile = () => {
                     <h4>To Change the Image</h4>
                     <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
                         <Link>Upload Image</Link>
-                        <p>or,</p>
+                        <p style={{ border: 'none' }}>or,</p>
                         <Link onClick={() => setShowAvatars(true)}>Choose An Avatar</Link>
                     </div>
                 </div>
@@ -87,16 +88,18 @@ const Profile = () => {
             </div>
 
             {/* special note */}
-            <p className='special-note'>*Email is immutable</p>
+            <p className='special-note'>*Email Address can not be changed.</p>
             {
                 !user?.emailVerified &&
                 <p className='special-note'>*You have not verified your email yet. <Link onClick={handleEmailVerification}>Verify Email</Link></p>
 
             }
-            {/* <p className='special-note' style={{ color: 'blue' }}>*UPLOAD IMAGE is Coming Soon</p> */}
         </div>
     </>
 
+    if (!user) return (
+        <Loading></Loading>
+    )
     return (
         <div className='profile-page'>
             <img style={{ width: '300px' }} src={logo} alt=''></img>
