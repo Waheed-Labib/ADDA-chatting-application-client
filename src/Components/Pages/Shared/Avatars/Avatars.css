@@ -1,0 +1,39 @@
+.avatars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 100%;
+}
+
+.avatars img {
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+}
+
+.avatars img:hover {
+    border: 5px solid yellowgreen;
+}
+
+.selected {
+    border: 5px solid yellowgreen;
+}
+
+.not-selected {
+    border: 5px solid lightblue;
+}
+
+.avatar-btn {
+    width: 50%;
+    margin-top: 30px;
+    padding: 10px;
+    color: aliceblue;
+    font-weight: 500;
+    border: none;
+    background-color: rgb(250, 97, 80);
+    border-radius: 5px;
+}
+
+.avatar-btn:hover {
+    background-color: rgb(250, 84, 66);
+}

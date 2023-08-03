@@ -5,12 +5,16 @@ import { FaEdit } from 'react-icons/fa';
 import logo from '../../../Assets/images/logo/Adda Logo.png'
 import { AuthContext } from '../../../contexts/AuthProvider';
 import frog from '../../../Assets/images/avatar/frog.webp'
+import { toast } from 'react-hot-toast';
+import Avatars from '../Shared/Avatars/Avatars';
 
 const Profile = () => {
 
-    const { user, updateUserAccount } = useContext(AuthContext)
+    const { user, updateUserAccount, verifyEmail } = useContext(AuthContext)
     const [editName, setEditName] = useState(false)
     const [name, setName] = useState(user?.displayName)
+    const [showAvatars, setShowAvatars] = useState(false)
+
     console.log(user)
 
     const handleUpdateName = event => {
@@ -23,69 +27,93 @@ const Profile = () => {
             .then(() => {
                 setName(newName)
                 setEditName(false)
+                toast.success('Name Updated')
             })
+            .catch(() => toast.error('Something Went Wrong'))
     }
+
+    const handleEmailVerification = () => {
+        verifyEmail()
+            .then(() => alert('Verification Email is sent to your Email Address. Please Check.'))
+            .catch(() => alert('Something went wrong. Please try again.'))
+    }
+
+    const profile = <>
+        <div className='profile'>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '50px' }}>
+                <h2 style={{ marginBottom: '30px' }}>Your Profile</h2>
+                <div className='profile-img'>
+
+                    {
+                        user?.photoURL ?
+                            <img className='user-dp' src={user?.photoURL} alt=''></img>
+                            :
+                            <img className='user-dp' src={frog} alt=''></img>
+                    }
+
+
+                    <h4>To Change the Image</h4>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+                        <Link>Upload Image</Link>
+                        <p>or,</p>
+                        <Link onClick={() => setShowAvatars(true)}>Choose An Avatar</Link>
+                    </div>
+                </div>
+
+                {/* name */}
+                <div className='profile-info'>
+                    <h3>Name:</h3>
+                    {
+                        editName ?
+                            <form className='name-form' onSubmit={handleUpdateName}>
+                                <input className='name-input' type='text' defaultValue={user?.displayName} name='name'></input>
+                                <input className='name-submit' type='submit' value='Update Name'></input>
+                            </form>
+                            :
+                            <div onClick={() => setEditName(true)} style={{ display: 'flex', alignItems: 'center' }}>
+                                <p style={{ marginRight: '5px ' }}>{name || user?.displayName}</p>
+                                <FaEdit className='edit-icon'></FaEdit>
+                            </div>
+                    }
+
+
+                </div>
+
+                {/* email */}
+                <div className='profile-info'>
+                    <h3>Email:</h3>
+                    <p>{user?.email}</p>
+                </div>
+            </div>
+
+            {/* special note */}
+            <p className='special-note'>*Email is immutable</p>
+            {
+                !user?.emailVerified &&
+                <p className='special-note'>*You have not verified your email yet. <Link onClick={handleEmailVerification}>Verify Email</Link></p>
+
+            }
+            {/* <p className='special-note' style={{ color: 'blue' }}>*UPLOAD IMAGE is Coming Soon</p> */}
+        </div>
+    </>
 
     return (
         <div className='profile-page'>
             <img style={{ width: '300px' }} src={logo} alt=''></img>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <div className='profile'>
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '50px' }}>
-                        <h2 style={{ marginBottom: '30px' }}>Your Profile</h2>
-                        <div className='profile-img'>
-
-                            <img className='user-dp' src={frog} alt=''></img>
-
-                            <h4>To Change the Image</h4>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
-                                <Link>Upload Image</Link>
-                                <p>or,</p>
-                                <Link>Choose An Avatar</Link>
-                            </div>
+                {
+                    showAvatars ?
+                        <div className='profile'>
+                            <Avatars setShowAvatars={setShowAvatars}></Avatars>
                         </div>
-
-                        {/* name */}
-                        <div className='profile-info'>
-                            <h3>Name:</h3>
-                            {
-                                editName ?
-                                    <form className='name-form' onSubmit={handleUpdateName}>
-                                        <input className='name-input' type='text' defaultValue={user?.displayName} name='name'></input>
-                                        <input className='name-submit' type='submit' value='Update Name'></input>
-                                    </form>
-                                    :
-                                    <div onClick={() => setEditName(true)} style={{ display: 'flex', alignItems: 'center' }}>
-                                        <p style={{ marginRight: '5px ' }}>{name || user?.displayName}</p>
-                                        <FaEdit className='edit-icon'></FaEdit>
-                                    </div>
-                            }
-
-
-                        </div>
-
-                        {/* email */}
-                        <div className='profile-info'>
-                            <h3>Email:</h3>
-                            <p>{user?.email}</p>
-                        </div>
-                    </div>
-
-                    {/* special note */}
-                    <p className='special-note'>*Email is immutable</p>
-                    {
-                        !user?.emailVerified &&
-                        <p className='special-note'>*You have not verified your email yet. <Link>Verify Email</Link></p>
-
-                    }
-                    <p className='special-note' style={{ color: 'blue' }}>*UPLOAD IMAGE is Coming Soon</p>
-                </div>
+                        :
+                        profile
+                }
 
             </div>
 
-        </div>
 
-
+        </div >
 
     );
 };

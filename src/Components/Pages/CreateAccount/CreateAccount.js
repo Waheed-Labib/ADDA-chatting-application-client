@@ -1,17 +1,19 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { FaBackward, FaSignInAlt } from 'react-icons/fa';
 import logo from '../../../Assets/images/logo/Adda Logo.png'
 import './CreateAccount.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
 import GoogleButton from '../Shared/Buttons/GoogleButton';
-import CupLogo from '../Shared/CupLogo/CupLogo';
+
 
 
 const CreateAccount = () => {
 
     const { createUser, setUser, updateUserAccount } = useContext(AuthContext);
+    const from = '/profile';
+    const navigate = useNavigate();
 
     const handleCreateAccount = event => {
         event.preventDefault();
@@ -32,11 +34,14 @@ const CreateAccount = () => {
                         displayName: name
                     }
                     updateUserAccount(profile)
-                        .then(() => { })
+                        .then(() => {
+                            toast.success(`It's Great, ${name} ! You are a member now.`)
+                            form.reset();
+                            navigate(from, { replace: true })
+                        })
                         .catch(err => console.error(err.meassage))
 
-                    toast.success(`It's Great, ${name} ! You are a member now.`)
-                    form.reset();
+
                 })
                 .catch(err => toast.error(err.message))
         }
@@ -65,7 +70,7 @@ const CreateAccount = () => {
 
                     <label><h3>Email:</h3></label>
                     <br />
-                    <input type="email" name="email" placeholder='Your Email' required />
+                    <input type="email" name="email" placeholder='Provide a valid Email Address' required />
                     <br /><br />
 
                     <label><h3>Password:</h3></label>
@@ -79,6 +84,7 @@ const CreateAccount = () => {
                     <br /><br />
 
                     <input className='submit-btn' type="submit" value="Submit"></input>
+
                 </form>
 
 
