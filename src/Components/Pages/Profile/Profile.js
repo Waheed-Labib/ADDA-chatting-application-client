@@ -8,13 +8,15 @@ import frog from '../../../Assets/images/avatar/frog.webp'
 import { toast } from 'react-hot-toast';
 import Avatars from '../Shared/Avatars/Avatars';
 import Loading from '../Shared/Loading/Loading';
+import ConfirmDeleteAccount from '../Shared/ConfirmDeleteAccount/ConfirmDeleteAccount';
 
 const Profile = () => {
 
-    const { user, updateUserAccount, verifyEmail } = useContext(AuthContext)
+    const { user, updateUserAccount, verifyEmail, logOut } = useContext(AuthContext)
     const [editName, setEditName] = useState(false)
     const [name, setName] = useState(user?.displayName)
     const [showAvatars, setShowAvatars] = useState(false)
+    const [deleteModalOpen, setDeleteModalOpen] = useState(false)
 
     console.log(user)
 
@@ -39,13 +41,15 @@ const Profile = () => {
             .catch(() => alert('Something went wrong. Please try again.'))
     }
 
-    const handleLogOut = () => {
+    const handleSignOut = () => {
+        logOut()
+            .then(() => {
 
+            })
+            .catch(() => alert('Something went wrong. Please try again.'))
     }
 
-    const handleDeleteAccount = () => {
 
-    }
 
     const profile = <>
         <div className='profile'>
@@ -114,6 +118,9 @@ const Profile = () => {
             <h1 className='page-heading'>
                 Your ADDA Profile
             </h1>
+            {
+                deleteModalOpen && <ConfirmDeleteAccount setDeleteModalOpen={setDeleteModalOpen}></ConfirmDeleteAccount>
+            }
 
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 {
@@ -131,11 +138,12 @@ const Profile = () => {
                                     <p>Chat Box</p>
                                     <FaAngleDoubleRight></FaAngleDoubleRight>
                                 </button>
-                                <button onClick={handleLogOut} className='logout-btn'>
-                                    <p>Log Out</p>
+                                <button style={{ marginBottom: '15px' }} onClick={handleSignOut} className='logout-btn'>
+                                    <p>Sign Out</p>
                                 </button>
                                 <br></br>
-                                <button onClick={handleDeleteAccount} className='delete-account-btn'>
+                                {/* <br></br> */}
+                                <button onClick={() => setDeleteModalOpen(true)} className='delete-account-btn'>
                                     <p>Delete Account</p>
                                     <p className='cross'>X</p>
                                 </button>

@@ -13,7 +13,13 @@ const GoogleButton = () => {
                 const user = result.user;
                 setUser(user)
                 console.log(user)
-                toast.success(<p>Welcome {user.displayName} <FaRegSmileBeam></FaRegSmileBeam></p>)
+                toast.success(
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <p style={{ marginRight: '10px' }}>Welcome {user.displayName}</p>
+                        <FaRegSmileBeam></FaRegSmileBeam>
+                    </div>
+
+                )
             })
             .catch(err => toast.error(err.message))
     }

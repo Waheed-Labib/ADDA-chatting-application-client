@@ -6,6 +6,7 @@ import { AuthContext } from '../../../contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
 import GoogleButton from '../Shared/Buttons/GoogleButton';
 import './SignIn.css'
+import { FaRegSmileBeam } from 'react-icons/fa'
 
 const SignIn = () => {
 
@@ -24,7 +25,12 @@ const SignIn = () => {
                 const user = result.user;
                 setUser(user)
                 console.log(user)
-                toast.success("Sign in Successful")
+                toast.success(
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <p style={{ marginRight: '10px' }}>Welcome {user.displayName}</p>
+                        <FaRegSmileBeam></FaRegSmileBeam>
+                    </div>
+                )
                 form.reset();
             })
             .catch(err => toast.error(err.message))
