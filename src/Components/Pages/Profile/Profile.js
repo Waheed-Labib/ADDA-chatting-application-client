@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import './Profile.css'
 import { Link } from 'react-router-dom';
-import { FaAngleDoubleRight, FaCross, FaEdit } from 'react-icons/fa';
+import { FaAngleDoubleRight, FaCross, FaEdit, FaSignOutAlt } from 'react-icons/fa';
 import logo from '../../../Assets/images/logo/Adda Logo.png'
 import { AuthContext } from '../../../contexts/AuthProvider';
 import frog from '../../../Assets/images/avatar/frog.webp'
@@ -139,13 +139,14 @@ const Profile = () => {
                                     <FaAngleDoubleRight></FaAngleDoubleRight>
                                 </button>
                                 <button style={{ marginBottom: '15px' }} onClick={handleSignOut} className='logout-btn'>
+                                    <FaSignOutAlt></FaSignOutAlt>
                                     <p>Sign Out</p>
                                 </button>
-                                <br></br>
-                                {/* <br></br> */}
+
                                 <button onClick={() => setDeleteModalOpen(true)} className='delete-account-btn'>
+                                    <p className='cross'>&times;</p>
                                     <p>Delete Account</p>
-                                    <p className='cross'>X</p>
+
                                 </button>
                                 <br></br>
                                 {/* <br></br> */}
