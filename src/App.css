@@ -1,6 +1,5 @@
 .App {
   background-image: url('./Assets/images/background/bg.webp');
-  /* min-height: 100vh; */
   width: 100vw;
   background-position: center;
   background-repeat: no-repeat;
@@ -12,4 +11,5 @@
   padding-left: 2%;
   padding-bottom: 1%;
   padding-right: 2%;
+  border-radius: 2px;
 }

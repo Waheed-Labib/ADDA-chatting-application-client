@@ -11,12 +11,8 @@
     border-radius: 10px;
 }
 
-.avatars img:hover {
-    border: 5px solid yellowgreen;
-}
-
 .selected {
-    border: 5px solid yellowgreen;
+    border: 5px solid rgb(250, 97, 80);
 }
 
 .not-selected {
@@ -27,7 +23,7 @@
     width: 50%;
     margin-top: 30px;
     padding: 10px;
-    color: aliceblue;
+    color: white;
     font-weight: 500;
     border: none;
     background-color: rgb(250, 97, 80);
@@ -41,8 +37,8 @@
 .cancel-avatar-btn {
     width: 50%;
     margin-top: 10px;
-    padding: 7px;
-    color: rgb(2, 38, 69);
+    padding: 8px;
+    color: rgb(2, 21, 38);
     font-weight: 500;
     border: none;
     background-color: rgb(184, 194, 203);
@@ -50,5 +46,5 @@
 }
 
 .cancel-avatar-btn:hover {
-    background-color: rgb(164, 187, 207);
+    background-color: rgb(174, 185, 195);
 }

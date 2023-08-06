@@ -1,14 +1,15 @@
 import React, { useContext, useState } from 'react';
 import './Profile.css'
 import { Link } from 'react-router-dom';
-import { FaAngleDoubleRight, FaCross, FaEdit, FaSignOutAlt } from 'react-icons/fa';
-import logo from '../../../Assets/images/logo/Adda Logo.png'
+import { FaEdit } from 'react-icons/fa';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import frog from '../../../Assets/images/avatar/frog.webp'
 import { toast } from 'react-hot-toast';
-import Avatars from '../Shared/Avatars/Avatars';
+import Avatars from './Avatars/Avatars';
 import Loading from '../Shared/Loading/Loading';
-import ConfirmDeleteAccount from '../Shared/ConfirmDeleteAccount/ConfirmDeleteAccount';
+import UploadImage from './UploadImage/UploadImage';
+import ProfilePageButtons from './ProfilePageButtons/ProfilePageButtons';
+import logo from '../../../Assets/images/logo/Adda Logo.png'
 
 const Profile = () => {
 
@@ -16,9 +17,8 @@ const Profile = () => {
     const [editName, setEditName] = useState(false)
     const [name, setName] = useState(user?.displayName)
     const [showAvatars, setShowAvatars] = useState(false)
-    const [deleteModalOpen, setDeleteModalOpen] = useState(false)
+    const [uploadImage, setUploadImage] = useState(false)
 
-    console.log(user)
 
     const handleUpdateName = event => {
         event.preventDefault();
@@ -49,12 +49,10 @@ const Profile = () => {
             .catch(() => alert('Something went wrong. Please try again.'))
     }
 
-
-
     const profile = <>
         <div className='profile'>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '50px' }}>
-                <h2 style={{ marginBottom: '30px' }}>{name || user?.displayName}</h2>
+                <h2 style={{ marginBottom: '20px' }}>{name || user?.displayName}</h2>
                 <div className='profile-img'>
 
                     {
@@ -67,10 +65,11 @@ const Profile = () => {
 
                     <h4>To Change the Image</h4>
                     <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
-                        <Link>Upload Image</Link>
+                        <Link onClick={() => setUploadImage(!uploadImage)}>Upload Image</Link>
                         <p style={{ border: 'none' }}>or,</p>
                         <Link onClick={() => setShowAvatars(true)}>Choose An Avatar</Link>
                     </div>
+
                 </div>
 
                 {/* name */}
@@ -113,55 +112,44 @@ const Profile = () => {
     if (!user) return (
         <Loading></Loading>
     )
-    return (
-        <div className='profile-page'>
-            <h1 className='page-heading'>
-                Your ADDA Profile
-            </h1>
-            {
-                deleteModalOpen && <ConfirmDeleteAccount setDeleteModalOpen={setDeleteModalOpen}></ConfirmDeleteAccount>
-            }
 
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-                {
-                    showAvatars ?
-                        <div className='profile'>
-                            <Avatars setShowAvatars={setShowAvatars}></Avatars>
-                        </div>
-                        :
-                        <div className='flex-container'>
-                            {profile}
-
-                            <div className='profile-page-buttons'>
-
-                                <button className='chatbox-btn'>
-                                    <p>Chat Box</p>
-                                    <FaAngleDoubleRight></FaAngleDoubleRight>
-                                </button>
-                                <button style={{ marginBottom: '15px' }} onClick={handleSignOut} className='logout-btn'>
-                                    <FaSignOutAlt></FaSignOutAlt>
-                                    <p>Sign Out</p>
-                                </button>
-
-                                <button onClick={() => setDeleteModalOpen(true)} className='delete-account-btn'>
-                                    <p className='cross'>&times;</p>
-                                    <p>Delete Account</p>
-
-                                </button>
-                                <br></br>
-                                {/* <br></br> */}
-                                <img style={{ width: '300px', marginTop: '10px', marginBottom: '20px' }} src={logo} alt=''></img>
-                            </div>
-                        </div>
-
-                }
-
+    if (showAvatars) return <div>
+        <h1 className='page-heading'>
+            Your ADDA Account
+        </h1>
+        <div className='flex-container'>
+            <div className='profile'>
+                <Avatars setShowAvatars={setShowAvatars}></Avatars>
             </div>
+        </div>
+    </div>
 
+    if (uploadImage) return <div>
+        <h1 className='page-heading'>
+            Your ADDA Account
+        </h1>
+        <div className='flex-container'>
+            <div className='profile'>
+                <UploadImage setUploadImage={setUploadImage}></UploadImage>
+            </div>
+        </div>
+    </div>
 
-        </div >
+    return <div>
+        <h1 className='page-heading'>
+            Your ADDA Account
+        </h1>
+        <div className='flex-container'>
 
-    );
+            {
+                console.log(user.photoURL)
+            }
+            {profile}
+
+            <ProfilePageButtons handleSignOut={handleSignOut}></ProfilePageButtons>
+
+        </div>
+    </div>
 };
 
 export default Profile;

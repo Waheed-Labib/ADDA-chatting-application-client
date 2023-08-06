@@ -19,7 +19,7 @@ const Avatars = ({ setShowAvatars }) => {
 
     const { updateUserAccount } = useContext(AuthContext);
 
-    const [selected, setSelected] = useState(frog);
+    const [selected, setSelected] = useState(null);
 
 
     const handleUpdateAvatar = () => {
@@ -28,7 +28,7 @@ const Avatars = ({ setShowAvatars }) => {
         }
         updateUserAccount(profile)
             .then(() => {
-                toast.success('Your DP is Updated.')
+                toast.success('User Photo Updated.')
                 setShowAvatars(false)
             })
             .catch(err => alert('Something went wrong. Please try again.'))

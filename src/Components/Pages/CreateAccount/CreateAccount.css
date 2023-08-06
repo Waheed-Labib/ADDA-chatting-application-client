@@ -8,7 +8,7 @@
 }
 
 
-.sign-up-form {
+.form-container {
     background-color: rgba(230, 227, 227, 0.381);
     color: rgb(45, 42, 39);
     padding: 6% 8%;
@@ -19,7 +19,7 @@
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4), 0 12px 30px 0 rgba(0, 0, 0, 0.4);
 }
 
-.sign-up-form h3 {
+.form-container h3 {
     margin: 0;
     font-size: 1.5rem;
     font-weight: 700;
@@ -39,7 +39,7 @@
 
 
 
-.sign-up-form input {
+.form-container input {
     width: 250px;
     height: 2rem;
     border-radius: 5px;
@@ -124,5 +124,9 @@
     .page-heading {
         text-align: center;
         font-size: 1.8rem;
+    }
+
+    .form-container {
+        margin-bottom: 60px;
     }
 }

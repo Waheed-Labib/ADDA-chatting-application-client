@@ -61,7 +61,7 @@ const CreateAccount = () => {
 
             <div className='flex-container'>
 
-                <form onSubmit={handleCreateAccount} className='sign-up-form'>
+                <form onSubmit={handleCreateAccount} className='form-container'>
 
                     <label><h3>User Name:</h3></label>
                     <br />

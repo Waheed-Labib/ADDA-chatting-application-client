@@ -1,0 +1,28 @@
+.upload-photo-here {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    border: 2px dashed grey;
+
+}
+
+.upload-photo-here:hover {
+
+    border: 2px dashed black;
+}
+
+.upload-image-close {
+    color: rgb(146, 1, 1);
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.upload-image-close:hover,
+.upload-image-close:focus {
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+}

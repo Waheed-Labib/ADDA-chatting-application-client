@@ -25,7 +25,6 @@
 .profile a {
     margin: 0;
     background-color: rgba(240, 248, 255);
-    /* border: 2px solid rgba(240, 248, 255); */
 }
 
 .profile h2,
@@ -65,9 +64,9 @@
 .user-dp {
     height: 100px;
     width: 100px;
-    border: 10px solid rgb(250, 211, 80);
-    border-radius: 20px;
-    margin-bottom: 12px;
+    border: 10px solid aliceblue;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 .name-form {
@@ -104,7 +103,6 @@
 
 .profile-page-buttons button {
     width: 300px;
-    /* padding: 6px 10px; */
     margin-bottom: 16px;
 
 
@@ -118,13 +116,12 @@
     color: darkolivegreen;
     background-color: rgb(250, 211, 80);
     display: flex;
-    /* justify-content: space-evenly; */
     align-items: center;
     gap: 40px;
     font-size: 1.3rem;
     font-weight: 900;
     margin-bottom: 0;
-    padding-left: 60px;
+    padding-left: 70px;
     border-radius: 5px;
     border-top-right-radius: 20px;
 }
@@ -148,13 +145,11 @@
     align-items: center;
     gap: 5px;
     padding-left: 10px;
-    /* margin-bottom: 15px; */
 }
 
 .logout-btn:hover {
     color: white;
     background-color: rgb(252, 66, 24);
-    /* padding-left: 40px; */
 }
 
 .logout-btn p {
@@ -165,7 +160,7 @@
 .delete-account-btn {
     padding: 10px;
     background-color: antiquewhite;
-    border: 2px solid rgb(195, 68, 68);
+    border: 1px solid rgb(195, 68, 68);
     color: rgb(195, 68, 68);
     display: flex;
     align-items: center;
@@ -179,7 +174,6 @@
 }
 
 .cross {
-    /* display: none; */
     transition: 0.5s;
     border: 1px solid red;
     color: red;
@@ -189,13 +183,12 @@
 }
 
 .delete-account-btn:hover {
-    border: 2px solid rgb(254, 1, 1);
+    background-color: rgb(247, 221, 187);
+    border: 1px solid rgb(254, 1, 1);
     color: rgb(255, 6, 6);
 }
 
 .delete-account-btn:hover .cross {
-    /* display: block; */
-    /* margin-left: 25px; */
     background-color: red;
     color: white;
 }
@@ -209,5 +202,7 @@
 
     .profile {
         margin-bottom: 20%;
+        padding-top: 10%;
+        padding-bottom: 10%;
     }
 }
