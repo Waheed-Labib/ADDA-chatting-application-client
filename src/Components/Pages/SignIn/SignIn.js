@@ -71,7 +71,7 @@ const SignIn = () => {
                     <input type="password" name="password" placeholder='Password' required />
                     <br /><br />
 
-                    <input className='submit-btn' type="submit" value="Submit"></input>
+                    <input className='submit-btn' type="submit" value="Sign in"></input>
                     <br></br>
                     <br></br>
                     <Link onClick={handleForgotPassword} className='forgot-password'>

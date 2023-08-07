@@ -18,7 +18,7 @@ const Profile = () => {
     const [name, setName] = useState(user?.displayName)
     const [showAvatars, setShowAvatars] = useState(false)
     const [uploadImage, setUploadImage] = useState(false)
-
+    const [userPhoto, setUserPhoto] = useState(user?.photoURL)
 
     const handleUpdateName = event => {
         event.preventDefault();
@@ -56,8 +56,8 @@ const Profile = () => {
                 <div className='profile-img'>
 
                     {
-                        user?.photoURL ?
-                            <img className='user-dp' src={user?.photoURL} alt=''></img>
+                        userPhoto ?
+                            <img className='user-dp' src={userPhoto} alt=''></img>
                             :
                             <img className='user-dp' src={frog} alt=''></img>
                     }
@@ -119,7 +119,7 @@ const Profile = () => {
         </h1>
         <div className='flex-container'>
             <div className='profile'>
-                <Avatars setShowAvatars={setShowAvatars}></Avatars>
+                <Avatars setShowAvatars={setShowAvatars} setUserPhoto={setUserPhoto}></Avatars>
             </div>
         </div>
     </div>
@@ -130,7 +130,7 @@ const Profile = () => {
         </h1>
         <div className='flex-container'>
             <div className='profile'>
-                <UploadImage setUploadImage={setUploadImage}></UploadImage>
+                <UploadImage setUploadImage={setUploadImage} setUserPhoto={setUserPhoto}></UploadImage>
             </div>
         </div>
     </div>

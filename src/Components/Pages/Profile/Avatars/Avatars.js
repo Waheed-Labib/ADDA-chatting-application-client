@@ -15,7 +15,7 @@ import cat from '../../../../Assets/images/avatar/cat.webp'
 import { AuthContext } from '../../../../contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
 
-const Avatars = ({ setShowAvatars }) => {
+const Avatars = ({ setShowAvatars, setUserPhoto }) => {
 
     const { updateUserAccount } = useContext(AuthContext);
 
@@ -30,6 +30,7 @@ const Avatars = ({ setShowAvatars }) => {
             .then(() => {
                 toast.success('User Photo Updated.')
                 setShowAvatars(false)
+                setUserPhoto(selected)
             })
             .catch(err => alert('Something went wrong. Please try again.'))
     }
