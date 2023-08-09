@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import './ChatBox.css'
+import Message from '../Message/Message';
 
 const ChatBox = () => {
 
@@ -8,7 +9,10 @@ const ChatBox = () => {
 
     return (
         <div className='chatbox'>
-            <h2>Messages : {messages.length}</h2>
+            <h2>Messages</h2>
+            {
+                messages.map(msg => <Message key={msg.id} msg={msg}></Message>)
+            }
         </div>
     );
 };

@@ -5,8 +5,8 @@ import Main from "../../Layout/Main";
 import SignIn from "../../Components/Pages/SignIn/SignIn";
 import About from "../../Components/Pages/About/About";
 import Profile from "../../Components/Pages/Profile/Profile";
-import UploadImage from "../../Components/Pages/Profile/UploadImage/UploadImage";
-import ChatBox from "../../Components/Pages/ChatBox/ChatBox";
+import ChatBox from "../../Components/Pages/ChatBox/ChatBox/ChatBox";
+
 
 export const router = createBrowserRouter([
     {
