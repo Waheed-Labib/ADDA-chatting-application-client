@@ -56,8 +56,8 @@ const Profile = () => {
                 <div className='profile-img'>
 
                     {
-                        userPhoto ?
-                            <img className='user-dp' src={userPhoto} alt=''></img>
+                        userPhoto || user?.photoURL ?
+                            <img className='user-dp' src={userPhoto || user?.photoURL} alt=''></img>
                             :
                             <img className='user-dp' src={frog} alt=''></img>
                     }

@@ -6,6 +6,7 @@ import SignIn from "../../Components/Pages/SignIn/SignIn";
 import About from "../../Components/Pages/About/About";
 import Profile from "../../Components/Pages/Profile/Profile";
 import UploadImage from "../../Components/Pages/Profile/UploadImage/UploadImage";
+import ChatBox from "../../Components/Pages/ChatBox/ChatBox";
 
 export const router = createBrowserRouter([
     {
@@ -31,6 +32,11 @@ export const router = createBrowserRouter([
             {
                 path: '/profile',
                 element: <Profile></Profile>
+            },
+            {
+                path: '/chatbox',
+                element: <ChatBox></ChatBox>,
+                loader: () => fetch('http://localhost:5000/messages')
             }
         ]
     }
