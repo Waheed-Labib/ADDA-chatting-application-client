@@ -1,0 +1,12 @@
+.sidebar {
+    width: 30%;
+}
+
+.sidebar-heading {
+    display: flex;
+    justify-content: space-between;
+}
+
+.people {
+    background-color: grey;
+}

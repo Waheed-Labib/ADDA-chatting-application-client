@@ -36,7 +36,6 @@ export const router = createBrowserRouter([
             {
                 path: '/chatbox',
                 element: <ChatBox></ChatBox>,
-                loader: () => fetch('http://localhost:5000/messages')
             }
         ]
     }

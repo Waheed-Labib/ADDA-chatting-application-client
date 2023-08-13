@@ -1,18 +1,25 @@
-import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useState } from 'react';
 import './ChatBox.css'
-import Message from '../Message/Message';
+import People from '../People/People';
+import Groups from '../Groups/Groups';
+import Messages from '../Messages/Messages';
 
 const ChatBox = () => {
 
-    const messages = useLoaderData();
+    const [sideBar, setSideBar] = useState('people');
 
     return (
         <div className='chatbox'>
-            <h2>Messages</h2>
+
             {
-                messages.map(msg => <Message key={msg.id} msg={msg}></Message>)
+                sideBar === 'people' ?
+                    <People setSideBar={setSideBar}></People>
+                    :
+                    <Groups setSideBar={setSideBar}></Groups>
             }
+
+            <Messages></Messages>
+
         </div>
     );
 };
