@@ -6,7 +6,7 @@ const People = ({ setSideBar }) => {
         <div className='people sidebar'>
             <div className='sidebar-heading'>
                 <h2>People</h2>
-                <button onClick={() => setSideBar('groups')}>Show Groups</button>
+                <button className='toggle-sidebar-btn' onClick={() => setSideBar('groups')}>Groups</button>
             </div>
         </div>
     );
