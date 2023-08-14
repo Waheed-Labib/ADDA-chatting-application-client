@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import './ChatBox.css'
-import People from '../People/People';
-import Groups from '../Groups/Groups';
 import Messages from '../Messages/Messages';
+import SideBar from '../SideBar/SideBar';
 
 const ChatBox = () => {
 
@@ -11,13 +10,7 @@ const ChatBox = () => {
     return (
         <div className='chatbox'>
 
-            {
-                sideBar === 'people' ?
-                    <People setSideBar={setSideBar}></People>
-                    :
-                    <Groups setSideBar={setSideBar}></Groups>
-            }
-
+            <SideBar sideBar={sideBar} setSideBar={setSideBar}></SideBar>
             <Messages></Messages>
 
         </div>

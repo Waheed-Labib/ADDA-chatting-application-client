@@ -1,0 +1,97 @@
+.sidebar {
+    width: 27%;
+    padding: 1%;
+    background-color: rgba(128, 128, 128, 0.9);
+}
+
+.sidebar-heading {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sidebar-heading h2 {
+    font-size: 2rem;
+    margin: 0;
+    color: white;
+}
+
+.toggle-sidebar-btn {
+    color: white;
+    text-decoration: underline;
+    background-color: rgba(128, 128, 128, 0);
+    border: none;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.toggle-sidebar-btn:hover {
+    color: lightcyan
+}
+
+.sidebar-content {
+    height: 75vh;
+    margin-top: 5%;
+    overflow-y: scroll;
+}
+
+.sidebar-content::-webkit-scrollbar {
+    width: 5px;
+}
+
+.sidebar-content::-webkit-scrollbar-track {
+    background: white;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb {
+    background: yellowgreen;
+}
+
+
+.sidebar-content div {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 5%;
+}
+
+.person-image {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.group-image {
+    height: 50px;
+    width: 50px;
+    border-radius: 25%;
+}
+
+.submit-search-btn {
+    padding: 5px;
+}
+
+.sidebar-search-input {
+    width: 95%;
+    background-color: white;
+    height: 30px;
+    border-radius: 3px;
+    border: none;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 10px;
+}
+
+.sidebar-search-input input {
+    border: none;
+    width: 90%;
+}
+
+.sidebar-search-input input:focus {
+    height: 30px;
+}
+
+.sidebar-search-input p:hover {
+    color: rgb(46, 2, 88);
+}
