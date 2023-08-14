@@ -35,7 +35,7 @@
 }
 
 .sidebar-content::-webkit-scrollbar {
-    width: 5px;
+    width: 7px;
 }
 
 .sidebar-content::-webkit-scrollbar-track {
@@ -73,7 +73,7 @@
 .sidebar-search-input {
     width: 95%;
     background-color: white;
-    height: 30px;
+    height: 45px;
     border-radius: 3px;
     border: none;
     margin-top: 20px;
@@ -84,14 +84,18 @@
 }
 
 .sidebar-search-input input {
+    height: 30px;
     border: none;
+    border-radius: 2px;
     width: 90%;
 }
 
-.sidebar-search-input input:focus {
-    height: 30px;
+.sidebar-search-input button {
+    color: rgb(49, 74, 1);
+    border: none;
+    background-color: white;
 }
 
-.sidebar-search-input p:hover {
-    color: rgb(46, 2, 88);
+.sidebar-search-input button:hover {
+    color: rgb(73, 112, 1);
 }

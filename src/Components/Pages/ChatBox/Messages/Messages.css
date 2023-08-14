@@ -35,8 +35,17 @@
 }
 
 .messages-content::-webkit-scrollbar {
-    display: none;
+    width: 7px;
 }
+
+.messages-content::-webkit-scrollbar-track {
+    background: rgb(89, 89, 89);
+}
+
+.messages-content::-webkit-scrollbar-thumb {
+    background: yellowgreen;
+}
+
 
 .msg-sending-form {
     background-color: white;
@@ -58,7 +67,14 @@
     border-radius: 5px;
 }
 
-.msg-sending-form p {
+.msg-sending-form button {
+    border: none;
+    background-color: white;
     color: rgb(49, 74, 1);
     font-size: 1.5rem;
+    transition: 0.3s;
+}
+
+.msg-sending-form button:hover {
+    color: rgb(73, 112, 1);
 }

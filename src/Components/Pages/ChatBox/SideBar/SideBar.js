@@ -41,7 +41,7 @@ const SideBar = ({ sideBar, setSideBar }) => {
 
             </div>
 
-            <div className='sidebar-search-input'>
+            <form className='sidebar-search-input'>
                 {
                     sideBar === 'people' ?
                         <input type='text' placeholder='Find a Person'></input>
@@ -49,8 +49,10 @@ const SideBar = ({ sideBar, setSideBar }) => {
                         <input type='text' placeholder='Find a Group'></input>
                 }
 
-                <p><FaSearch></FaSearch></p>
-            </div>
+                <button type='submit'>
+                    <FaSearch></FaSearch>
+                </button>
+            </form>
 
             <div className='sidebar-content'>
 

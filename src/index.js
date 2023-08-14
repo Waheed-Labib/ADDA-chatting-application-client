@@ -5,16 +5,19 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AuthProvider from './contexts/AuthProvider';
 import StorageProvider from './contexts/StorageProvider';
+import DisplayProvider from './contexts/DisplayProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <StorageProvider>
-      <AuthProvider>
-        <App />
-      </AuthProvider>
-    </StorageProvider>
 
+    <DisplayProvider>
+      <StorageProvider>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </StorageProvider>
+    </DisplayProvider>
 
   </React.StrictMode>
 );

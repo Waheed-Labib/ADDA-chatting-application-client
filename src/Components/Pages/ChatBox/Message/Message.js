@@ -10,9 +10,9 @@ const Message = ({ msg }) => {
 
             <img className='sender-image' src={senderImg} alt=''></img>
 
-            <div>
-                <p className='msg-text'>{message}</p>
-            </div>
+
+            <p className='msg-text'>{message}</p>
+
 
         </div>
     );
