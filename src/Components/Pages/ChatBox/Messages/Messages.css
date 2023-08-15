@@ -39,13 +39,14 @@
 }
 
 .messages-content::-webkit-scrollbar-track {
-    background: rgb(89, 89, 89);
+    background: rgb(161, 161, 161);
 }
 
 .messages-content::-webkit-scrollbar-thumb {
     background: yellowgreen;
+    border: 1px solid rgb(68, 68, 68);
+    border-radius: 5px;
 }
-
 
 .msg-sending-form {
     background-color: white;

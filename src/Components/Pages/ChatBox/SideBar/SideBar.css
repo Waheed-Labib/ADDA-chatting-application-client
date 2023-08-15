@@ -35,15 +35,17 @@
 }
 
 .sidebar-content::-webkit-scrollbar {
-    width: 7px;
+    width: 6px;
 }
 
 .sidebar-content::-webkit-scrollbar-track {
-    background: white;
+    background: rgb(228, 228, 228);
 }
 
 .sidebar-content::-webkit-scrollbar-thumb {
-    background: yellowgreen;
+    background: rgb(72, 72, 72);
+    border: 1px solid white;
+    border-radius: 5px;
 }
 
 
