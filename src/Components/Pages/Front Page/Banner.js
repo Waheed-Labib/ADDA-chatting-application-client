@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../../../Assets/images/logo/Adda Logo.png'
-import { FaWpforms, FaSignInAlt, FaQuestionCircle } from 'react-icons/fa';
+import { FaWpforms, FaSignInAlt } from 'react-icons/fa';
 import './Banner.css'
 import { Link } from 'react-router-dom';
 import GoogleButton from '../Shared/Buttons/GoogleButton';

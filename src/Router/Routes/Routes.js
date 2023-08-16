@@ -30,8 +30,9 @@ export const router = createBrowserRouter([
                 element: <About></About>
             },
             {
-                path: '/profile',
-                element: <Profile></Profile>
+                path: '/profile/:id',
+                element: <Profile></Profile>,
+                loader: ({ params }) => fetch(`http://localhost:5000/users/${params.id}`)
             },
             {
                 path: '/chatbox',

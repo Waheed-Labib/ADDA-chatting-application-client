@@ -12,7 +12,6 @@ import GoogleButton from '../Shared/Buttons/GoogleButton';
 const CreateAccount = () => {
 
     const { createUser, setUser, updateUserAccount } = useContext(AuthContext);
-    const from = '/profile';
     const navigate = useNavigate();
 
     const handleCreateAccount = event => {
@@ -35,15 +34,17 @@ const CreateAccount = () => {
                     }
                     updateUserAccount(profile)
                         .then(() => {
-                            toast.success(`It's Great, ${name} ! You are a member now.`)
-                            form.reset();
-                            navigate(from, { replace: true })
+
                         })
                         .catch(err => console.error(err.meassage))
 
                     const userMongoProfile = {
+                        uid: user.uid,
                         name,
                         email,
+                        photoURL: '',
+                        gender: '',
+                        dateOfBirth: '',
                         occupation: '',
                         institute: '',
                         address: ''
@@ -56,6 +57,19 @@ const CreateAccount = () => {
                         },
                         body: JSON.stringify(userMongoProfile)
                     })
+                        .then(res => res.json())
+                        .then(data => {
+
+                            toast.success(`It's Great, ${name} ! You are a member now.`)
+                            form.reset();
+
+                            const from = `/profile/${user.uid}`
+                            navigate(from, { replace: true })
+                            console.log(data)
+                        }
+                        )
+
+                        .catch(err => console.error(err))
 
                 })
                 .catch(err => toast.error(err.message))

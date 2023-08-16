@@ -57,7 +57,7 @@ const SideBar = ({ sideBar, setSideBar }) => {
             <div className='sidebar-content'>
 
                 {sideBar === 'people' ?
-                    people.map(person => <Person key={person.userId} person={person}></Person>)
+                    people.map(person => <Person key={person.uid} person={person}></Person>)
                     :
                     groups.map(group => <Group key={group.groupId} group={group}></Group>)
                 }

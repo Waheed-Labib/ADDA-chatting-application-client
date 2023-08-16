@@ -12,11 +12,11 @@
         background-image: url('../../../Assets/images/background/bg-1.webp');
     }
 
-    33% {
+    25% {
         background-image: url('../../../Assets/images/background/bg-2.webp');
     }
 
-    67% {
+    50% {
         background-image: url('../../../Assets/images/background/bg-3.webp');
     }
 

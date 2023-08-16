@@ -56,6 +56,14 @@
     gap: 5%;
 }
 
+.person:hover {
+    cursor: pointer;
+}
+
+.person:hover h4 {
+    text-decoration: underline;
+}
+
 .person-image {
     height: 50px;
     width: 50px;

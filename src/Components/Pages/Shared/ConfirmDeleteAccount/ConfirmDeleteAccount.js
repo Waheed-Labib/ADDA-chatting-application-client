@@ -5,7 +5,7 @@ import { toast } from 'react-hot-toast';
 
 const ConfirmDeleteAccount = ({ setDeleteModalOpen }) => {
 
-    const { deleteAccount } = useContext(AuthContext);
+    const { user, deleteAccount } = useContext(AuthContext);
 
     const handleDeleteAccount = () => {
 
@@ -15,8 +15,9 @@ const ConfirmDeleteAccount = ({ setDeleteModalOpen }) => {
                 setDeleteModalOpen(false)
                 toast.success('Account Deleted.')
 
+
             })
-            .catch(() => alert('Something went wrong. Please try again.'))
+            .catch((err) => alert(err.message))
 
     }
     return (
