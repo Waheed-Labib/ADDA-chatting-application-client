@@ -1,12 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import './Messages.css'
 import Message from '../Message/Message';
-import { FaPaperPlane } from 'react-icons/fa';
+import { FaAngleDoubleLeft, FaPaperPlane } from 'react-icons/fa';
+import { AuthContext } from '../../../../contexts/AuthProvider';
 
-const Messages = () => {
+const Messages = ({ showInSmallDevice, setShowInSmallDevice, chatMate }) => {
 
+    const { user } = useContext(AuthContext);
     const [messages, setMessages] = useState([])
     const [newMessage, setNewMessage] = useState('')
+
+    // messages section auto scroll to bottom
 
     const messagesEndRef = useRef(null)
 
@@ -18,6 +22,7 @@ const Messages = () => {
         scrollToBottom()
     }, [messages]);
 
+    // load messages from database
     useEffect(() => {
         fetch('http://localhost:5000/messages')
             .then(res => res.json())
@@ -26,19 +31,21 @@ const Messages = () => {
             })
     }, [])
 
-    const username = 'Ayesha Takia';
-    const userPhoto = 'https://img.freepik.com/free-photo/young-beautiful-woman-pink-warm-sweater-natural-look-smiling-portrait-isolated-long-hair_285396-896.jpg?size=626&ext=jpg&uid=R77838462&ga=GA1.2.1203103457.1659020646&semt=sph'
+    // chatmate
+    const chatMateName = chatMate?.name;
+    const chatMatePhoto = chatMate?.photoURL;
 
+    // handle new message
     const handleNewMessage = event => {
         event.preventDefault()
         console.log('New Message is : ', newMessage)
 
         const newMsg = {
-            msgFrom: 'Md Abdul Halim',
-            senderImg: 'https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?size=626&ext=jpg&uid=R77838462&ga=GA1.2.1203103457.1659020646&semt=sph',
+            msgFrom: user?.displayName,
+            senderImg: user?.photoURL,
             message: newMessage
         }
-
+        // post new message to database
         fetch('http://localhost:5000/messages', {
             method: 'POST',
             headers: {
@@ -55,11 +62,26 @@ const Messages = () => {
         event.target.reset();
     }
 
+    // when no chatmate is selected
+    if (!chatMate) return (
+        <div className={`no-message ${showInSmallDevice === 'sidebar' ? 'hide-in-small-device' : 'show-in-small-device'}`}>
+
+        </div>
+    )
+
+    // show messages section
     return (
-        <div className='messages'>
+        <div className={`messages ${showInSmallDevice === 'sidebar' ? 'hide-in-small-device' : 'show-in-small-device'}`}>
             <div className='messages-header'>
-                <img src={userPhoto} alt=''></img>
-                <h2>{username}</h2>
+
+                <FaAngleDoubleLeft
+                    className='return-arrow'
+                    onClick={() => setShowInSmallDevice('sidebar')}
+                ></FaAngleDoubleLeft>
+                <img src={chatMatePhoto} alt=''></img>
+                <h2>{chatMateName}</h2>
+
+
             </div>
 
             <div className='messages-content'>

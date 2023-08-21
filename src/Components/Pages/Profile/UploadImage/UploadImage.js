@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage"
 import { StorageContext } from '../../../../contexts/StorageProvider';
 
-const UploadImage = ({ setUploadImage, setUserPhoto }) => {
+const UploadImage = ({ setUploadImage, setUserPhoto, userMongoProfile }) => {
 
     const { storage } = useContext(StorageContext)
     const { user, updateUserAccount } = useContext(AuthContext)
@@ -17,7 +17,7 @@ const UploadImage = ({ setUploadImage, setUserPhoto }) => {
 
     const inputRef = useRef(null);
 
-    const imageListRef = ref(storage, `${user.uid}-photos/`)
+    const imageListRef = ref(storage, `${user?.uid}-photos/`)
 
     const handleImageClick = () => {
         inputRef.current.click()
@@ -32,7 +32,7 @@ const UploadImage = ({ setUploadImage, setUserPhoto }) => {
     }
 
     const updateUserPhoto = () => {
-        const imageRef = ref(storage, `${user.uid}-photos/${user.uid}-user-photo`)
+        const imageRef = ref(storage, `${user?.uid}-photos/${user?.uid}-user-photo`)
         uploadBytes(imageRef, image)
             .then(() => {
 
@@ -46,6 +46,31 @@ const UploadImage = ({ setUploadImage, setUserPhoto }) => {
                 toast.success('User Photo Updated')
                 setUploadImage(false)
                 setUserPhoto(URL.createObjectURL(image))
+
+                const updatedUserMongoProfile = {
+                    uid: userMongoProfile.uid,
+                    name: userMongoProfile.name,
+                    email: userMongoProfile.email,
+                    photoURL: imageList[0],
+                    gender: userMongoProfile.gender,
+                    dateOfBirth: userMongoProfile.dateOfBirth,
+                    occupation: userMongoProfile.occupation,
+                    institute: userMongoProfile.institute,
+                    address: userMongoProfile.address
+                }
+
+                fetch(`http://localhost:5000/users/${userMongoProfile.uid}`, {
+                    method: 'PUT',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(updatedUserMongoProfile)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                    })
+                    .catch(err => console.error(err))
             })
     }
 

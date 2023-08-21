@@ -3,12 +3,13 @@ import './SideBar.css'
 import { FaSearch } from 'react-icons/fa';
 import Person from './Person/Person';
 import Group from './Group/Group';
+import Loading from '../../Shared/Loading/Loading';
 
 
-const SideBar = ({ sideBar, setSideBar }) => {
+const SideBar = ({ sideBar, setSideBar, showInSmallDevice, setShowInSmallDevice, setChatMate }) => {
 
-    const [people, setPeople] = useState([]);
-    const [groups, setGroups] = useState([]);
+    const [people, setPeople] = useState(null);
+    const [groups, setGroups] = useState(null);
 
     useEffect(() => {
         fetch('http://localhost:5000/users')
@@ -22,8 +23,10 @@ const SideBar = ({ sideBar, setSideBar }) => {
             .then(data => setGroups(data))
     }, [])
 
+    // if (!people || !groups) return <Loading></Loading>
+
     return (
-        <div className='sidebar'>
+        <div className={`sidebar ${showInSmallDevice === 'sidebar' ? 'show-in-small-device' : 'hide-in-small-device'}`}>
             <div className='sidebar-heading'>
                 {
                     sideBar === 'people' ?
@@ -54,14 +57,36 @@ const SideBar = ({ sideBar, setSideBar }) => {
                 </button>
             </form>
 
+
             <div className='sidebar-content'>
 
-                {sideBar === 'people' ?
-                    people.map(person => <Person key={person.uid} person={person}></Person>)
-                    :
-                    groups.map(group => <Group key={group.groupId} group={group}></Group>)
+                {
+                    !people || !groups ?
+                        <Loading position='top'></Loading>
+                        :
+                        <>
+                            {
+                                sideBar === 'people' ?
+                                    people.map(person => <Person
+                                        key={person?.uid}
+                                        person={person}
+                                        setChatMate={setChatMate}
+                                        setShowInSmallDevice={setShowInSmallDevice}
+                                    ></Person>)
+                                    :
+                                    groups.map(group => <Group
+                                        key={group?.groupId}
+                                        group={group}
+                                        setChatMate={setChatMate}
+                                        setShowInSmallDevice={setShowInSmallDevice}
+                                    ></Group>)
+                            }
+                        </>
+
                 }
+
             </div>
+
         </div>
     );
 };

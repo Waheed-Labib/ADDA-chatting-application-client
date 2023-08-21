@@ -14,12 +14,40 @@ const UpdateName = ({ userMongoProfile, name, setName }) => {
         const profile = {
             displayName: newName
         }
+
         updateUserAccount(profile)
             .then(() => {
+
+                const updatedUserMongoProfile = {
+                    uid: userMongoProfile.uid,
+                    name: newName,
+                    email: userMongoProfile.email,
+                    photoURL: userMongoProfile.photoURL,
+                    gender: userMongoProfile.gender,
+                    dateOfBirth: userMongoProfile.dateOfBirth,
+                    occupation: userMongoProfile.occupation,
+                    institute: userMongoProfile.institute,
+                    address: userMongoProfile.address
+                }
+
+                fetch(`http://localhost:5000/users/${userMongoProfile.uid}`, {
+                    method: 'PUT',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(updatedUserMongoProfile)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                    })
+                    .catch(err => console.error(err))
+
                 setName(newName)
                 setEditName(false)
                 toast.success('Name Updated')
-            })
+            }
+            )
             .catch(() => toast.error('Something Went Wrong'))
 
     }
@@ -37,7 +65,7 @@ const UpdateName = ({ userMongoProfile, name, setName }) => {
                     <div onClick={() => setEditName(true)} style={{ display: 'flex', alignItems: 'center' }}>
                         <p style={{ marginRight: '5px ' }}>{name || userMongoProfile.name}</p>
                         {
-                            user.uid === userMongoProfile.uid && <FaEdit className='edit-icon'></FaEdit>
+                            user?.uid === userMongoProfile?.uid && <FaEdit className='edit-icon'></FaEdit>
                         }
                     </div>
             }

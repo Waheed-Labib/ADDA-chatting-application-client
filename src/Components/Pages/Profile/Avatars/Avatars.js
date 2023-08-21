@@ -15,7 +15,7 @@ import cat from '../../../../Assets/images/avatar/cat.webp'
 import { AuthContext } from '../../../../contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
 
-const Avatars = ({ setShowAvatars, setUserPhoto }) => {
+const Avatars = ({ setShowAvatars, setUserPhoto, userMongoProfile }) => {
 
     const { updateUserAccount } = useContext(AuthContext);
 
@@ -31,6 +31,31 @@ const Avatars = ({ setShowAvatars, setUserPhoto }) => {
                 toast.success('User Photo Updated.')
                 setShowAvatars(false)
                 setUserPhoto(selected)
+
+                const updatedUserMongoProfile = {
+                    uid: userMongoProfile.uid,
+                    name: userMongoProfile.name,
+                    email: userMongoProfile.email,
+                    photoURL: selected,
+                    gender: userMongoProfile.gender,
+                    dateOfBirth: userMongoProfile.dateOfBirth,
+                    occupation: userMongoProfile.occupation,
+                    institute: userMongoProfile.institute,
+                    address: userMongoProfile.address
+                }
+
+                fetch(`http://localhost:5000/users/${userMongoProfile.uid}`, {
+                    method: 'PUT',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(updatedUserMongoProfile)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                    })
+                    .catch(err => console.error(err))
             })
             .catch(err => alert('Something went wrong. Please try again.'))
     }

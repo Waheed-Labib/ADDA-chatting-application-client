@@ -1,29 +1,58 @@
-.about-text-and-link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 5%;
-    margin-top: 2%;
+.about {
+    min-height: 100vh;
+    background-color: rgba(255, 255, 255, 0.9);
+    position: relative;
 }
 
 .about-text {
-    width: 80%;
-    background-color: rgba(240, 248, 255, 0.883);
-    /* background-image: linear-gradient(rgba(240, 248, 255, 0.445), aliceblue, rgba(240, 248, 255, 0.445)); */
-    padding: 10%;
+    width: 60%;
+    border-radius: 10px;
+    padding: 5%;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .about-text h4 {
     color: rgb(35, 34, 34);
 }
 
-.return-link {
-    display: block;
-    text-align: center;
-    font-size: 1rem;
-    font-weight: 700;
+.about-page-buttons {
+    margin-bottom: 2%;
+    padding-left: 2%;
+    padding-bottom: 5%;
+    padding-right: 4%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    animation: show-delay 6s linear 0s 1;
+}
+
+.profile-btn {
+    background-color: rgba(0, 128, 0, 0.8);
+    color: rgb(250, 238, 238);
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-weight: 600;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-left: 10px;
+}
+
+.profile-btn:hover {
+    color: white;
+    background-color: rgba(0, 128, 0, 0.9);
+}
+
+.profile-btn img {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
 }
 
 @media screen and (max-width:768px) {
@@ -36,5 +65,15 @@
 
     .about-text-and-link {
         margin-top: 10%;
+        margin-bottom: 10%;
+        align-items: center;
+    }
+
+    .about-text {
+        width: 80%;
+    }
+
+    .about-page-buttons {
+        position: static;
     }
 }

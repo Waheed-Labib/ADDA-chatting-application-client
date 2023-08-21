@@ -49,7 +49,7 @@
     right: 0;
     font-size: 1.8rem;
     font-weight: 700;
-    animation: show-delay 6s linear 0s 1;
+    animation: show-delay 3s linear 0s 1;
 }
 
 .front-page-links a {

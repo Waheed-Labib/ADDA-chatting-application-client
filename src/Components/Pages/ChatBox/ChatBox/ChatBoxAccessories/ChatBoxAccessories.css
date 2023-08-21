@@ -1,0 +1,53 @@
+.chatbox-accessories {
+    height: 8vh;
+    background-color: rgb(26, 26, 26);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chatbox-accessories:hover {
+    background-color: black;
+}
+
+.chatbox-accessories-links {
+    display: flex;
+    gap: 25px;
+    margin-left: 10px;
+}
+
+.chatbox-accessories img {
+    height: 50px;
+    width: 100px;
+    margin-right: 10px;
+}
+
+.chatbox-accessories-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    padding-inline: 5px;
+    border-radius: 3px;
+    color: wheat;
+    transition: 0.3s;
+}
+
+.chatbox-accessories-link p {
+    margin: 0;
+}
+
+.chatbox-accessories-link img {
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    margin: 0;
+}
+
+.chatbox-accessories-link:hover p {
+    text-decoration: underline;
+}

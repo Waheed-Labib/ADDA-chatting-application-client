@@ -1,7 +1,8 @@
 .sidebar {
-    width: 27%;
+    /* width: 27%; */
     padding: 1%;
     background-color: rgba(128, 128, 128, 0.9);
+    height: 90vh;
 }
 
 .sidebar-heading {
@@ -29,7 +30,7 @@
 }
 
 .sidebar-content {
-    height: 75vh;
+    height: 70vh;
     margin-top: 5%;
     overflow-y: scroll;
 }
@@ -104,8 +105,15 @@
     color: rgb(49, 74, 1);
     border: none;
     background-color: white;
+
 }
 
 .sidebar-search-input button:hover {
     color: rgb(73, 112, 1);
+}
+
+@media screen and (min-width: 768px) {
+    .sidebar {
+        width: 27%;
+    }
 }

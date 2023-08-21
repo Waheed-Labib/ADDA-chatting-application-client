@@ -1,10 +1,14 @@
 import React from 'react';
 import './Loading.css'
 
-const Loading = () => {
+const Loading = ({ position }) => {
     return (
         <div className='loading'>
-            <h2>Loading ...</h2>
+            <h2>Loading
+                <span className='dot'>.</span>
+                <span className='dot'>.</span>
+                <span className='dot'>.</span>
+            </h2>
         </div>
     );
 };

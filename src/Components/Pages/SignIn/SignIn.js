@@ -1,17 +1,23 @@
 import React, { useContext, useState } from 'react';
 import { FaBackward, FaFrown, FaSignInAlt } from 'react-icons/fa';
 import logo from '../../../Assets/images/logo/Adda Logo.png'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
 import GoogleButton from '../Shared/Buttons/GoogleButton';
 import './SignIn.css'
 import { FaRegSmileBeam } from 'react-icons/fa'
+import { DisplayContext } from '../../../contexts/DisplayProvider';
 
 const SignIn = () => {
 
+    const { setDisplayFooter } = useContext(DisplayContext)
+    setDisplayFooter(true)
+
     const { signIn, setUser, resetPassword } = useContext(AuthContext);
     const [email, setEmail] = useState('')
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const handleSignIn = event => {
         event.preventDefault();
@@ -32,6 +38,10 @@ const SignIn = () => {
                     </div>
                 )
                 form.reset();
+
+                const from = location.state?.from?.pathname || `/chatbox/${user?.uid}`;
+                navigate(from, { replace: true });
+
             })
             .catch(err => toast.error(err.message))
 

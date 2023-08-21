@@ -1,14 +1,30 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaAngleDoubleRight, FaSignOutAlt } from 'react-icons/fa';
 import logo from '../../../../Assets/images/logo/Adda Logo.png'
 import ConfirmDeleteAccount from '../../Shared/ConfirmDeleteAccount/ConfirmDeleteAccount';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../../contexts/AuthProvider';
 
-const ProfilePageButtons = ({ handleSignOut }) => {
+
+
+const ProfilePageButtons = () => {
+    const { user, logOut } = useContext(AuthContext);
+    const navigate = useNavigate();
+
     const [deleteModalOpen, setDeleteModalOpen] = useState(false)
+
+    const handleSignOut = () => {
+        logOut()
+            .then(() => {
+                const from = '/signin';
+                navigate(from, { replace: true })
+            })
+            .catch(() => alert('Something went wrong. Please try again.'))
+    }
+
     return (
         <div className='profile-page-buttons'>
-            <Link to='/chatbox' style={{ textDecoration: 'none' }}>
+            <Link to={`/chatbox/${user?.uid}`} style={{ textDecoration: 'none' }}>
                 <button className='chatbox-btn'>
                     <p>Chat Box</p>
                     <FaAngleDoubleRight></FaAngleDoubleRight>

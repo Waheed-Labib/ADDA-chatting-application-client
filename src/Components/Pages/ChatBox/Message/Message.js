@@ -6,7 +6,7 @@ const Message = ({ msg }) => {
     const { msgId, msgFrom, senderImg, message } = msg
 
     return (
-        <div className={`msg-content ${msgFrom === 'Md Abdul Halim' ? 'own-msg' : 'friends-msg'}`}>
+        <div className={`msg-content ${msgFrom === 'Labib Wahid' ? 'own-msg' : 'friends-msg'}`}>
 
             <img className='sender-image' src={senderImg} alt=''></img>
 

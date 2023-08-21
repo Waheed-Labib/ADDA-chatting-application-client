@@ -1,8 +1,16 @@
-.messages {
-    width: 73%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.5);
+.no-message {
+    height: 90vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation: banner-animation 5s ease-in-out infinite;
+}
 
+.messages {
+    /* width: 73%; */
+    height: 90vh;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding-right: 1%;
 }
 
 .messages-header {
@@ -16,6 +24,7 @@
     height: 10vh;
 }
 
+
 .messages-header img {
     height: 50px;
     width: 55px;
@@ -23,14 +32,17 @@
 }
 
 .messages-header h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: grey;
     margin: 0;
 }
 
+
+
 .messages-content {
+
     padding: 1%;
-    height: 70vh;
+    height: 65vh;
     overflow-y: scroll;
 }
 
@@ -61,11 +73,12 @@
 }
 
 .msg-sending-form input {
-    width: 85%;
+    width: 90%;
     height: 50px;
     background-color: rgba(255, 255, 255, 0.5);
     border: 1px solid rgb(49, 74, 1);
     border-radius: 5px;
+    margin-left: 10px;
 }
 
 .msg-sending-form button {
@@ -74,8 +87,33 @@
     color: rgb(49, 74, 1);
     font-size: 1.5rem;
     transition: 0.3s;
+    margin-right: 10px;
 }
 
 .msg-sending-form button:hover {
     color: rgb(73, 112, 1);
+}
+
+.return-arrow {
+    font-size: 1.5rem;
+    color: grey;
+    transition: 0.3ms;
+}
+
+.return-arrow:hover {
+    color: rgb(40, 40, 40);
+}
+
+@media screen and (min-width:768px) {
+    .no-message {
+        width: 73%;
+    }
+
+    .messages {
+        width: 73%;
+    }
+
+    .return-arrow {
+        display: none;
+    }
 }

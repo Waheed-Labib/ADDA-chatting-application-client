@@ -1,5 +1,19 @@
 .chatbox {
     height: 100vh;
+    position: relative;
+}
+
+.chatbox-body {
     display: flex;
     justify-content: center;
+}
+
+@media screen and (max-width:768px) {
+    .hide-in-small-device {
+        display: none;
+    }
+
+    .show-in-small-device {
+        width: 100vw;
+    }
 }

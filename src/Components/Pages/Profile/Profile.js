@@ -9,13 +9,17 @@ import UploadImage from './UploadImage/UploadImage';
 import ProfilePageButtons from './ProfilePageButtons/ProfilePageButtons';
 import UpdateName from './UpdateName/UpdateName';
 import Email from './Email/Email';
+import { DisplayContext } from '../../../contexts/DisplayProvider';
+
 
 const Profile = () => {
 
+    const { setDisplayFooter } = useContext(DisplayContext)
+    setDisplayFooter(true)
+
     const userMongoProfile = useLoaderData();
 
-
-    const { user, verifyEmail, logOut } = useContext(AuthContext)
+    const { user, verifyEmail } = useContext(AuthContext)
     const [name, setName] = useState(userMongoProfile?.name)
     const [showAvatars, setShowAvatars] = useState(false)
     const [uploadImage, setUploadImage] = useState(false)
@@ -27,13 +31,6 @@ const Profile = () => {
             .catch(() => alert('Something went wrong. Please try again.'))
     }
 
-    const handleSignOut = () => {
-        logOut()
-            .then(() => {
-
-            })
-            .catch(() => alert('Something went wrong. Please try again.'))
-    }
 
     const profile = <>
         <div className='profile'>
@@ -49,7 +46,7 @@ const Profile = () => {
                     }
 
                     {
-                        user.uid === userMongoProfile?.uid &&
+                        user?.uid === userMongoProfile?.uid &&
                         <>
                             <h4>To Change the Image</h4>
                             <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
@@ -74,7 +71,7 @@ const Profile = () => {
 
             {/* special note */}
             {
-                user.uid === userMongoProfile?.uid &&
+                user?.uid === userMongoProfile?.uid &&
                 <>
                     <p className='special-note'>*Email Address can not be changed.</p>
                     {
@@ -90,7 +87,7 @@ const Profile = () => {
     </>
 
     if (!user && !userMongoProfile) return (
-        <Loading></Loading>
+        <Loading position='center'></Loading>
     )
 
     if (showAvatars) return <div>
@@ -99,7 +96,7 @@ const Profile = () => {
         </h1>
         <div className='flex-container'>
             <div className='profile'>
-                <Avatars setShowAvatars={setShowAvatars} setUserPhoto={setUserPhoto}></Avatars>
+                <Avatars setShowAvatars={setShowAvatars} setUserPhoto={setUserPhoto} userMongoProfile={userMongoProfile}></Avatars>
             </div>
         </div>
     </div>
@@ -110,7 +107,7 @@ const Profile = () => {
         </h1>
         <div className='flex-container'>
             <div className='profile'>
-                <UploadImage setUploadImage={setUploadImage} setUserPhoto={setUserPhoto}></UploadImage>
+                <UploadImage setUploadImage={setUploadImage} setUserPhoto={setUserPhoto} userMongoProfile={userMongoProfile}></UploadImage>
             </div>
         </div>
     </div>
@@ -121,12 +118,10 @@ const Profile = () => {
         </h1>
         <div className='flex-container'>
 
-            {
-                console.log(user.photoURL)
-            }
+
             {profile}
 
-            <ProfilePageButtons handleSignOut={handleSignOut}></ProfilePageButtons>
+            <ProfilePageButtons></ProfilePageButtons>
 
         </div>
     </div>

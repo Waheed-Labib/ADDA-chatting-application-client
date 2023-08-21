@@ -6,10 +6,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
 import GoogleButton from '../Shared/Buttons/GoogleButton';
+import { DisplayContext } from '../../../contexts/DisplayProvider';
 
 
 
 const CreateAccount = () => {
+
+    const { setDisplayFooter } = useContext(DisplayContext)
+    setDisplayFooter(true)
 
     const { createUser, setUser, updateUserAccount } = useContext(AuthContext);
     const navigate = useNavigate();

@@ -1,6 +1,21 @@
 .loading {
     height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+}
+
+.dot {
+    font-size: 3rem;
+    animation: dot-delay 0.5s linear 0.1s infinite;
+}
+
+@keyframes dot-delay {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }

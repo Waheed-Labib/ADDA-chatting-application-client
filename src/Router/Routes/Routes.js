@@ -6,6 +6,7 @@ import SignIn from "../../Components/Pages/SignIn/SignIn";
 import About from "../../Components/Pages/About/About";
 import Profile from "../../Components/Pages/Profile/Profile";
 import ChatBox from "../../Components/Pages/ChatBox/ChatBox/ChatBox";
+import PrivateRoute from "./PrivateRoute";
 
 
 export const router = createBrowserRouter([
@@ -31,12 +32,12 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/profile/:id',
-                element: <Profile></Profile>,
+                element: <PrivateRoute><Profile></Profile></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/users/${params.id}`)
             },
             {
-                path: '/chatbox',
-                element: <ChatBox></ChatBox>,
+                path: '/chatbox/:id',
+                element: <PrivateRoute><ChatBox></ChatBox></PrivateRoute>,
             }
         ]
     }

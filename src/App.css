@@ -1,6 +1,7 @@
 .App {
   background-image: url('./Assets/images/background/bg.webp');
   width: 100vw;
+  max-width: 1350px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
