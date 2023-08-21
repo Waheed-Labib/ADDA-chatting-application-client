@@ -4,13 +4,16 @@ import Message from '../Message/Message';
 import { FaAngleDoubleLeft, FaPaperPlane } from 'react-icons/fa';
 import { AuthContext } from '../../../../contexts/AuthProvider';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
+import ErrorPage from '../../ErrorPage/ErrorPage';
+
 
 const Messages = ({ showInSmallDevice, setShowInSmallDevice, chatMate }) => {
 
     const { user } = useContext(AuthContext);
     const [messages, setMessages] = useState([])
     const [newMessage, setNewMessage] = useState('')
-
+    const [error, setError] = useState(false)
     // messages section auto scroll to bottom
 
     const messagesEndRef = useRef(null)
@@ -25,11 +28,12 @@ const Messages = ({ showInSmallDevice, setShowInSmallDevice, chatMate }) => {
 
     // load messages from database
     useEffect(() => {
-        fetch('http://localhost:5000/messages')
+        fetch('https://adda-chatting-app-server.vercel.app/messages')
             .then(res => res.json())
             .then(data => {
                 setMessages(data)
             })
+            .catch(err => setError(true))
     }, [])
 
     // chatmate
@@ -47,7 +51,7 @@ const Messages = ({ showInSmallDevice, setShowInSmallDevice, chatMate }) => {
             message: newMessage
         }
         // post new message to database
-        fetch('http://localhost:5000/messages', {
+        fetch('https://adda-chatting-app-server.vercel.app/messages', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -58,11 +62,11 @@ const Messages = ({ showInSmallDevice, setShowInSmallDevice, chatMate }) => {
             .then(data => {
                 setMessages([...messages, data])
             })
-            .catch(err => console.error(err))
-
+            .catch(err => setError(true))
         event.target.reset();
     }
 
+    if (error) return <ErrorPage></ErrorPage>
     // when no chatmate is selected
     if (!chatMate) return (
         <div className={`no-message ${showInSmallDevice === 'sidebar' ? 'hide-in-small-device' : 'show-in-small-device'}`}>
@@ -74,16 +78,18 @@ const Messages = ({ showInSmallDevice, setShowInSmallDevice, chatMate }) => {
     return (
         <div className={`messages ${showInSmallDevice === 'sidebar' ? 'hide-in-small-device' : 'show-in-small-device'}`}>
             <div className='messages-header'>
-
-                <FaAngleDoubleLeft
-                    className='return-arrow'
-                    onClick={() => setShowInSmallDevice('sidebar')}
-                ></FaAngleDoubleLeft>
-                <div className='chatmate-identity'>
-                    <img src={chatMatePhoto} alt=''></img>
-                    <h2>{chatMateName}</h2>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'start', gap: '10px' }}>
+                    <FaAngleDoubleLeft
+                        className='return-arrow'
+                        onClick={() => setShowInSmallDevice('sidebar')}
+                    ></FaAngleDoubleLeft>
+                    <div className='chatmate-identity'>
+                        <img src={chatMatePhoto} alt=''></img>
+                        <h2>{chatMateName}</h2>
+                    </div>
                 </div>
-                <Link className='chatmate-profile-link' to={`/profile/${chatMate?.uid}`}>visit profile</Link>
+
+                <Link className='chatmate-profile-link' to={`/profile/${chatMate?.uid}`}><span className='d-none-sm'>visit</span> profile</Link>
 
             </div>
 

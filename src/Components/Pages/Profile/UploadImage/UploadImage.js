@@ -59,7 +59,7 @@ const UploadImage = ({ setUploadImage, setUserPhoto, userMongoProfile }) => {
                     address: userMongoProfile.address
                 }
 
-                fetch(`http://localhost:5000/users/${userMongoProfile.uid}`, {
+                fetch(`https://adda-chatting-app-server.vercel.app/users/${userMongoProfile.uid}`, {
                     method: 'PUT',
                     headers: {
                         'content-type': 'application/json'
@@ -70,7 +70,7 @@ const UploadImage = ({ setUploadImage, setUserPhoto, userMongoProfile }) => {
                     .then(data => {
                         console.log(data)
                     })
-                    .catch(err => console.error(err))
+                    .catch(err => alert('Something Went Wrong'))
             })
     }
 

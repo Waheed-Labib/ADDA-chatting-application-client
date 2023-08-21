@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import frog from '../../../../../Assets/images/avatar/frog.webp'
 import { AuthContext } from '../../../../../contexts/AuthProvider';
 
+
 const Person = ({ person, setChatMate, setShowInSmallDevice }) => {
 
     const { uid, name, photoURL } = person

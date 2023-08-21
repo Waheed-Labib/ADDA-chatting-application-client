@@ -4,6 +4,7 @@
 }
 
 .chatbox-body {
+    height: 90vh;
     display: flex;
     justify-content: center;
 }
@@ -15,5 +16,13 @@
 
     .show-in-small-device {
         width: 100vw;
+    }
+
+    .chatbox {
+        height: 90vh;
+    }
+
+    .chatbox-body {
+        height: 82vh;
     }
 }

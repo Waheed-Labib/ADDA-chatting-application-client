@@ -1,5 +1,5 @@
 .chatbox-accessories {
-    height: 8vh;
+    height: 10vh;
     background-color: rgb(26, 26, 26);
     position: absolute;
     bottom: 0;
@@ -21,7 +21,7 @@
 
 .chatbox-accessories img {
     height: 50px;
-    width: 100px;
+    width: 125px;
     margin-right: 10px;
 }
 
@@ -50,4 +50,63 @@
 
 .chatbox-accessories-link:hover p {
     text-decoration: underline;
+}
+
+.bars {
+    color: wheat;
+    display: none;
+}
+
+.hide-in-lg-device {
+    display: none;
+}
+
+
+
+@media screen and (max-width:768px) {
+
+    .bars {
+        display: block;
+        margin-left: 5%;
+    }
+
+    .hide-links-in-sm {
+        display: none;
+    }
+
+    .show-links-in-sm {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        border-radius: 5px;
+        padding: 20px;
+        background-color: rgb(26, 26, 26);
+        position: absolute;
+        bottom: 0;
+        width: 50%;
+    }
+
+    .hide-bar-in-sm {
+        display: none;
+    }
+
+    .show-bar-in-sm {
+        display: block;
+    }
+
+    .chatbox-accessories {
+        height: 8vh;
+    }
+
+    .d-block-in-sm {
+        display: block;
+    }
+
+    .d-none-in-sm {
+        display: none;
+    }
+
+    .chatbox-accessories img {
+        height: 42px;
+    }
 }

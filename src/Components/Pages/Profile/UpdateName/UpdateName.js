@@ -30,7 +30,7 @@ const UpdateName = ({ userMongoProfile, name, setName }) => {
                     address: userMongoProfile.address
                 }
 
-                fetch(`http://localhost:5000/users/${userMongoProfile.uid}`, {
+                fetch(`https://adda-chatting-app-server.vercel.app/users/${userMongoProfile.uid}`, {
                     method: 'PUT',
                     headers: {
                         'content-type': 'application/json'
@@ -41,14 +41,14 @@ const UpdateName = ({ userMongoProfile, name, setName }) => {
                     .then(data => {
                         console.log(data)
                     })
-                    .catch(err => console.error(err))
+                    .catch(err => alert('Something Went Wrong'))
 
                 setName(newName)
                 setEditName(false)
                 toast.success('Name Updated')
             }
             )
-            .catch(() => toast.error('Something Went Wrong'))
+            .catch(() => alert('Something Went Wrong'))
 
     }
 

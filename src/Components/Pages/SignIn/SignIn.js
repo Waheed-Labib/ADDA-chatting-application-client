@@ -39,11 +39,11 @@ const SignIn = () => {
                 )
                 form.reset();
 
-                const from = location.state?.from?.pathname || `/chatbox/${user?.uid}`;
+                const from = `/chatbox/${user?.uid}`;
                 navigate(from, { replace: true });
 
             })
-            .catch(err => toast.error(err.message))
+            .catch(err => alert('Something Went Wrong'))
 
     }
 
@@ -55,7 +55,7 @@ const SignIn = () => {
         if (email) {
             resetPassword(email)
                 .then(alert('Please Check Your Email.'))
-                .catch(err => console.error(err.message))
+                .catch(err => alert('Something Went Wrong'))
         }
 
         else {

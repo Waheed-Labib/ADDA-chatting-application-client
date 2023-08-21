@@ -36,4 +36,13 @@
     border-radius: 5px;
     font-weight: 500;
     max-width: 50%;
+    min-width: 10%;
+    /* text-align: center; */
+}
+
+@media screen and (max-width:768px) {
+    .msg-text {
+        max-width: 75%;
+        min-width: 25%;
+    }
 }

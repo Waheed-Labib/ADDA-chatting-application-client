@@ -61,7 +61,8 @@
     cursor: pointer;
 }
 
-.person:hover h4 {
+.person:hover h4,
+.group:hover h4 {
     text-decoration: underline;
 }
 
@@ -70,6 +71,8 @@
     width: 50px;
     border-radius: 50%;
 }
+
+
 
 .group-image {
     height: 50px;
@@ -115,5 +118,11 @@
 @media screen and (min-width: 768px) {
     .sidebar {
         width: 27%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .sidebar {
+        height: 82vh;
     }
 }

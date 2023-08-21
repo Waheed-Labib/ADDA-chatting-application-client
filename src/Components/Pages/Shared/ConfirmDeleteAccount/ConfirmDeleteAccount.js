@@ -12,10 +12,17 @@ const ConfirmDeleteAccount = ({ setDeleteModalOpen }) => {
         deleteAccount()
             .then(() => {
 
-                setDeleteModalOpen(false)
-                toast.success('Account Deleted.')
+                fetch(`https://adda-chatting-app-server.vercel.app/users/${user?.uid}`, {
+                    method: 'DELETE'
+                }).then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            setDeleteModalOpen(false)
+                            toast.success('Account Deleted.')
+                        }
 
-
+                    })
+                    .catch(err => toast.error(err.message))
             })
             .catch((err) => alert(err.message))
 

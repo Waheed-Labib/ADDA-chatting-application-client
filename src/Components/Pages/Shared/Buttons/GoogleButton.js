@@ -4,6 +4,7 @@ import { AuthContext } from '../../../../contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
 import { FaRegSmileBeam } from 'react-icons/fa'
 import { useLocation, useNavigate } from 'react-router-dom';
+import ErrorPage from '../../ErrorPage/ErrorPage';
 
 const GoogleButton = () => {
 
@@ -11,11 +12,14 @@ const GoogleButton = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
+    const [error, setError] = useState(false)
+
     const [users, setUsers] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/users')
+        fetch('https://adda-chatting-app-server.vercel.app/users')
             .then(res => res.json())
             .then(data => setUsers(data))
+            .catch(err => setError(true))
     }, [])
 
     const handleGoogleLogin = () => {
@@ -49,7 +53,7 @@ const GoogleButton = () => {
                         address: ''
                     }
 
-                    fetch('http://localhost:5000/users', {
+                    fetch('https://adda-chatting-app-server.vercel.app/users', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'
@@ -64,13 +68,16 @@ const GoogleButton = () => {
 
                         }
                         )
+                        .catch(err => alert('Something Went Wrong'))
 
-                        .catch(err => console.error(err))
+                        .catch(err => alert('Something Went Wrong'))
                 }
 
             })
-            .catch(err => toast.error(err.message))
+            .catch(err => alert('Something Went Wrong'))
     }
+
+    if (error) return <ErrorPage></ErrorPage>
 
     return (
         <button onClick={handleGoogleLogin} className='google-sign-in-btn'>

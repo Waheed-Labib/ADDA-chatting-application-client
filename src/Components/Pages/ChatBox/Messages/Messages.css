@@ -20,6 +20,7 @@
     /* gap: 20px; */
     background-color: white;
     padding: 1%;
+    padding-inline: 2%;
     padding-bottom: 0;
     height: 10vh;
 }
@@ -42,7 +43,11 @@
     margin: 0;
 }
 
-
+.chatmate-profile-link {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: rgb(0, 0, 91);
+}
 
 .messages-content {
 
@@ -122,4 +127,35 @@
     .return-arrow {
         display: none;
     }
+}
+
+@media screen and (max-width:768px) {
+    .chatmate-identity {
+        gap: 7px;
+    }
+
+    .chatmate-profile-link {
+        font-size: 1rem;
+    }
+
+    .d-none-sm {
+        display: none;
+    }
+
+    .messages {
+        height: 77vh;
+    }
+
+    .messages-content {
+        height: 62vh;
+    }
+
+    .messages-header {
+        height: 8vh;
+    }
+
+    .msg-sending-form {
+        height: 7vh;
+    }
+
 }

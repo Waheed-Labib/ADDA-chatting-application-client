@@ -1,14 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import logo from '../../../../../Assets/images/logo/Adda Logo.png'
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import './ChatBoxAccessories.css'
-import { FaSignOutAlt } from 'react-icons/fa';
+import { FaBars, FaChevronDown, FaChevronUp, FaSignOutAlt } from 'react-icons/fa';
 import { AuthContext } from '../../../../../contexts/AuthProvider';
 
 
 
 const ChatBoxAccessories = () => {
 
+    const [showLinks, setShowLinks] = useState(false);
     const { user, logOut } = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -23,7 +24,10 @@ const ChatBoxAccessories = () => {
 
     return (
         <div className='chatbox-accessories'>
-            <div className='chatbox-accessories-links'>
+            <FaChevronUp onClick={() => setShowLinks(true)} className={`bars ${showLinks ? 'd-none-in-sm' : 'd-block-in-sm'}`}></FaChevronUp>
+
+            <div className={`chatbox-accessories-links ${showLinks ? 'show-links-in-sm' : 'hide-links-in-sm'}`}>
+                <FaChevronDown onClick={() => setShowLinks(false)} className={`bars ${showLinks ? 'show-bar-in-sm' : 'hide-bar-in-sm'}`}></FaChevronDown>
                 <Link to={`/profile/${user?.uid}`} className='chatbox-accessories-link'>
                     <img src={user?.photoURL} alt=''></img>
                     <p>Your Profile</p>
@@ -43,9 +47,11 @@ const ChatBoxAccessories = () => {
                 <Link to='/feedback' className='chatbox-accessories-link'>
                     <p>Send Feedback</p>
                 </Link>
+
+                <img className={`${showLinks ? 'd-block-in-sm' : 'd-none-in-sm'} hide-in-lg-device w-90`} src={logo} alt=''></img>
             </div>
 
-            <img src={logo} alt=''></img>
+            <img className={`${showLinks ? 'd-none-in-sm' : 'd-block-in-sm'}`} src={logo} alt=''></img>
         </div>
     );
 };

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './About.css'
 import logo from '../../../Assets/images/logo/Adda Logo.png'
@@ -7,6 +7,8 @@ import { DisplayContext } from '../../../contexts/DisplayProvider';
 import { FaAngleDoubleRight, FaSignOutAlt } from 'react-icons/fa';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import FrontPageLinks from '../Front Page/FrontPageLinks/FrontPageLinks';
+import ErrorPage from '../ErrorPage/ErrorPage';
+import { toast } from 'react-hot-toast';
 
 const About = ({ from }) => {
 
@@ -14,6 +16,7 @@ const About = ({ from }) => {
     setDisplayFooter(false)
 
     const { user, logOut } = useContext(AuthContext);
+    const [error, setError] = useState(false)
 
     const navigate = useNavigate()
     const handleSignOut = () => {
@@ -21,9 +24,10 @@ const About = ({ from }) => {
             .then(() => {
 
             })
-            .catch(() => alert('Something went wrong. Please try again.'))
+            .catch(() => alert('Something Went Wrong'))
     }
 
+    if (error) return <ErrorPage></ErrorPage>
 
     return (
         <div className='about'>
@@ -43,7 +47,7 @@ const About = ({ from }) => {
             {
                 user ?
                     <div className='profile-page-buttons about-page-buttons'>
-                        <Link to={`/chatbox/${user?.uid}`} style={{ textDecoration: 'none' }}>
+                        <Link to='/chatbox' style={{ textDecoration: 'none' }}>
                             <button className='chatbox-btn'>
                                 <p>Chat Box</p>
                                 <FaAngleDoubleRight></FaAngleDoubleRight>
@@ -65,7 +69,7 @@ const About = ({ from }) => {
                     <FrontPageLinks></FrontPageLinks>
             }
 
-        </div>
+        </div >
 
     );
 };

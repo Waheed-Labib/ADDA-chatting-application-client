@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import defaultGroupPhoto from '../../../../../Assets/images/group/group.webp'
 import { AuthContext } from '../../../../../contexts/AuthProvider';
 
+
 const Group = ({ group, setChatMate, setShowInSmallDevice }) => {
 
     const { groupId, name, photoURL } = group;

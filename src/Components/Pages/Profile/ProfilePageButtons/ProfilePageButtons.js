@@ -7,7 +7,7 @@ import { AuthContext } from '../../../../contexts/AuthProvider';
 
 
 
-const ProfilePageButtons = () => {
+const ProfilePageButtons = ({ userMongoProfile }) => {
     const { user, logOut } = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ const ProfilePageButtons = () => {
 
     return (
         <div className='profile-page-buttons'>
-            <Link to={`/chatbox/${user?.uid}`} style={{ textDecoration: 'none' }}>
+            <Link to='/chatbox' style={{ textDecoration: 'none' }}>
                 <button className='chatbox-btn'>
                     <p>Chat Box</p>
                     <FaAngleDoubleRight></FaAngleDoubleRight>
@@ -36,11 +36,24 @@ const ProfilePageButtons = () => {
                 <p>Sign Out</p>
             </button>
 
-            <button onClick={() => setDeleteModalOpen(true)} className='delete-account-btn'>
-                <p className='cross'>&times;</p>
-                <p>Delete Account</p>
 
-            </button>
+
+            {
+                user?.uid === userMongoProfile?.uid ?
+                    <button onClick={() => setDeleteModalOpen(true)} className='delete-account-btn'>
+                        <p className='cross'>&times;</p>
+                        <p>Delete Account</p>
+                    </button>
+                    :
+                    <Link style={{ textDecoration: 'none' }} to={`/profile/${user?.uid}`}>
+                        <button style={{ marginBottom: '15px' }} className='your-profile-btn'>
+                            <img src={user?.photoURL} alt=''></img>
+                            <p>Your Profile</p>
+                        </button>
+                    </Link>
+            }
+
+
             <br></br>
             {/* <br></br> */}
             <img style={{ width: '300px', marginTop: '10px', marginBottom: '20px' }} src={logo} alt=''></img>
@@ -49,7 +62,8 @@ const ProfilePageButtons = () => {
                 deleteModalOpen && <ConfirmDeleteAccount setDeleteModalOpen={setDeleteModalOpen}></ConfirmDeleteAccount>
             }
 
-        </div>
+
+        </div >
     );
 };
 

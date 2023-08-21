@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './ChatBox.css'
 import Messages from '../Messages/Messages';
 import SideBar from '../SideBar/SideBar';
@@ -7,6 +7,8 @@ import ChatBoxAccessories from './ChatBoxAccessories/ChatBoxAccessories';
 import { AuthContext } from '../../../../contexts/AuthProvider';
 import { Navigate, useLocation } from 'react-router-dom';
 import Loading from '../../Shared/Loading/Loading';
+import { toast } from 'react-hot-toast';
+import ErrorPage from '../../ErrorPage/ErrorPage';
 
 
 
@@ -16,10 +18,21 @@ const ChatBox = () => {
     setDisplayFooter(false)
 
     const { user, loading } = useContext(AuthContext);
+    const [error, setError] = useState(false)
+
+    const [users, setUsers] = useState([]);
+    useEffect(() => {
+        fetch('https://adda-chatting-app-server.vercel.app/users')
+            .then(res => res.json())
+            .then(data => setUsers(data))
+            .catch(err => setError(true))
+    }, [])
 
     const [sideBar, setSideBar] = useState('people');
     const [showInSmallDevice, setShowInSmallDevice] = useState('sidebar');
-    const [chatMate, setChatMate] = useState('');
+    const [chatMate, setChatMate] = useState(null);
+
+    if (error) return <ErrorPage></ErrorPage>
 
     if (loading) return <Loading></Loading>
 

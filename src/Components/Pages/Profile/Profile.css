@@ -193,6 +193,31 @@
     color: white;
 }
 
+.your-profile-btn {
+    background-color: rgb(2, 145, 2);
+    color: rgb(250, 238, 238);
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-weight: 600;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-left: 10px;
+}
+
+.your-profile-btn img {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+}
+
+.your-profile-btn:hover {
+    color: white;
+    background-color: rgb(1, 112, 1);
+}
+
 @media screen and (max-width:768px) {
     .profile-page {
         display: flex;

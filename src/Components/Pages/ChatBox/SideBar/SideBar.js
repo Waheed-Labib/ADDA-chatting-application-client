@@ -4,26 +4,31 @@ import { FaSearch } from 'react-icons/fa';
 import Person from './Person/Person';
 import Group from './Group/Group';
 import Loading from '../../Shared/Loading/Loading';
+import { toast } from 'react-hot-toast';
+import ErrorPage from '../../ErrorPage/ErrorPage';
 
 
 const SideBar = ({ sideBar, setSideBar, showInSmallDevice, setShowInSmallDevice, setChatMate }) => {
 
     const [people, setPeople] = useState(null);
     const [groups, setGroups] = useState(null);
+    const [error, setError] = useState(false)
 
     useEffect(() => {
-        fetch('http://localhost:5000/users')
+        fetch('https://adda-chatting-app-server.vercel.app/users')
             .then(res => res.json())
             .then(data => setPeople(data))
+            .catch(err => setError(true))
     }, [])
 
     useEffect(() => {
-        fetch('http://localhost:5000/groups')
+        fetch('https://adda-chatting-app-server.vercel.app/groups')
             .then(res => res.json())
             .then(data => setGroups(data))
+            .catch(err => setError(true))
     }, [])
 
-    // if (!people || !groups) return <Loading></Loading>
+    if (error) return <ErrorPage></ErrorPage>
 
     return (
         <div className={`sidebar ${showInSmallDevice === 'sidebar' ? 'show-in-small-device' : 'hide-in-small-device'}`}>

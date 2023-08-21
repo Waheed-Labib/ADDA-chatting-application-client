@@ -143,7 +143,7 @@ const Profile = () => {
 
             {profile}
 
-            <ProfilePageButtons></ProfilePageButtons>
+            <ProfilePageButtons userMongoProfile={userMongoProfile}></ProfilePageButtons>
 
         </div>
     </div>

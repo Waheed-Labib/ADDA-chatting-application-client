@@ -40,7 +40,7 @@ const CreateAccount = () => {
                         .then(() => {
 
                         })
-                        .catch(err => console.error(err.meassage))
+                        .catch(err => alert('Something Went Wrong'))
 
                     const userMongoProfile = {
                         uid: user.uid,
@@ -54,7 +54,7 @@ const CreateAccount = () => {
                         address: ''
                     }
 
-                    fetch('http://localhost:5000/users', {
+                    fetch('https://adda-chatting-app-server.vercel.app/users', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'
@@ -73,14 +73,14 @@ const CreateAccount = () => {
                         }
                         )
 
-                        .catch(err => console.error(err))
+                        .catch(err => alert('Something Went Wrong'))
 
                 })
-                .catch(err => toast.error(err.message))
+                .catch(err => alert('Something Went Wrong'))
         }
 
         else {
-            toast.error('Password did not match. Please try again.')
+            alert('Password did not match. Please try again.')
         }
 
     }

@@ -7,12 +7,14 @@ import About from "../../Components/Pages/About/About";
 import Profile from "../../Components/Pages/Profile/Profile";
 import ChatBox from "../../Components/Pages/ChatBox/ChatBox/ChatBox";
 import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../../Components/Pages/ErrorPage/ErrorPage";
 
 
 export const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
@@ -33,11 +35,12 @@ export const router = createBrowserRouter([
             {
                 path: '/profile/:id',
                 element: <PrivateRoute><Profile></Profile></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/users/${params.id}`)
+                loader: ({ params }) => fetch(`https://adda-chatting-app-server.vercel.app/users/${params.id}`),
+                errorElement: <ErrorPage></ErrorPage>
             },
             {
-                path: '/chatbox/:id',
-                element: <PrivateRoute><ChatBox></ChatBox></PrivateRoute>,
+                path: '/chatbox',
+                element: <PrivateRoute><ChatBox></ChatBox></PrivateRoute>
             }
         ]
     }
