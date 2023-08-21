@@ -19,7 +19,7 @@ const Profile = () => {
 
     const userMongoProfile = useLoaderData();
 
-    const { user, verifyEmail } = useContext(AuthContext)
+    const { user, verifyEmail, loading } = useContext(AuthContext)
     const [name, setName] = useState(userMongoProfile?.name)
     const [showAvatars, setShowAvatars] = useState(false)
     const [uploadImage, setUploadImage] = useState(false)
@@ -86,14 +86,22 @@ const Profile = () => {
         </div>
     </>
 
-    if (!user && !userMongoProfile) return (
-        <Loading position='center'></Loading>
+    if (!user || !userMongoProfile || loading) return (
+        <Loading></Loading>
     )
 
     if (showAvatars) return <div>
-        <h1 className='page-heading'>
-            Your ADDA Account
-        </h1>
+
+        {
+            user?.uid === userMongoProfile?.uid ?
+                <h1 className='page-heading'>
+                    Your ADDA Profile
+                </h1>
+                :
+                <h1 className='page-heading'>
+                    {userMongoProfile?.name}'s ADDA Profile
+                </h1>
+        }
         <div className='flex-container'>
             <div className='profile'>
                 <Avatars setShowAvatars={setShowAvatars} setUserPhoto={setUserPhoto} userMongoProfile={userMongoProfile}></Avatars>
@@ -102,9 +110,16 @@ const Profile = () => {
     </div>
 
     if (uploadImage) return <div>
-        <h1 className='page-heading'>
-            Your ADDA Account
-        </h1>
+        {
+            user?.uid === userMongoProfile?.uid ?
+                <h1 className='page-heading'>
+                    Your ADDA Profile
+                </h1>
+                :
+                <h1 className='page-heading'>
+                    {userMongoProfile?.name}'s ADDA Profile
+                </h1>
+        }
         <div className='flex-container'>
             <div className='profile'>
                 <UploadImage setUploadImage={setUploadImage} setUserPhoto={setUserPhoto} userMongoProfile={userMongoProfile}></UploadImage>
@@ -113,9 +128,16 @@ const Profile = () => {
     </div>
 
     return <div>
-        <h1 className='page-heading'>
-            Your ADDA Account
-        </h1>
+        {
+            user?.uid === userMongoProfile?.uid ?
+                <h1 className='page-heading'>
+                    Your ADDA Profile
+                </h1>
+                :
+                <h1 className='page-heading'>
+                    {userMongoProfile?.name}'s ADDA Profile
+                </h1>
+        }
         <div className='flex-container'>
 
 

@@ -6,6 +6,7 @@ import { DisplayContext } from '../../../../contexts/DisplayProvider';
 import ChatBoxAccessories from './ChatBoxAccessories/ChatBoxAccessories';
 import { AuthContext } from '../../../../contexts/AuthProvider';
 import { Navigate, useLocation } from 'react-router-dom';
+import Loading from '../../Shared/Loading/Loading';
 
 
 
@@ -14,13 +15,13 @@ const ChatBox = () => {
     const { setDisplayFooter } = useContext(DisplayContext)
     setDisplayFooter(false)
 
-    const { user } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
 
     const [sideBar, setSideBar] = useState('people');
     const [showInSmallDevice, setShowInSmallDevice] = useState('sidebar');
     const [chatMate, setChatMate] = useState('');
 
-
+    if (loading) return <Loading></Loading>
 
     return (
         <div className='chatbox'>

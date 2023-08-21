@@ -15,15 +15,20 @@
 
 .messages-header {
     display: flex;
-    justify-content: start;
+    justify-content: space-between;
     align-items: center;
-    gap: 20px;
+    /* gap: 20px; */
     background-color: white;
     padding: 1%;
     padding-bottom: 0;
     height: 10vh;
 }
 
+.chatmate-identity {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
 
 .messages-header img {
     height: 50px;
@@ -103,6 +108,7 @@
 .return-arrow:hover {
     color: rgb(40, 40, 40);
 }
+
 
 @media screen and (min-width:768px) {
     .no-message {

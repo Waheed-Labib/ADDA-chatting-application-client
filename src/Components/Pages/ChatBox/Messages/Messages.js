@@ -3,6 +3,7 @@ import './Messages.css'
 import Message from '../Message/Message';
 import { FaAngleDoubleLeft, FaPaperPlane } from 'react-icons/fa';
 import { AuthContext } from '../../../../contexts/AuthProvider';
+import { Link } from 'react-router-dom';
 
 const Messages = ({ showInSmallDevice, setShowInSmallDevice, chatMate }) => {
 
@@ -78,9 +79,11 @@ const Messages = ({ showInSmallDevice, setShowInSmallDevice, chatMate }) => {
                     className='return-arrow'
                     onClick={() => setShowInSmallDevice('sidebar')}
                 ></FaAngleDoubleLeft>
-                <img src={chatMatePhoto} alt=''></img>
-                <h2>{chatMateName}</h2>
-
+                <div className='chatmate-identity'>
+                    <img src={chatMatePhoto} alt=''></img>
+                    <h2>{chatMateName}</h2>
+                </div>
+                <Link className='chatmate-profile-link' to={`/profile/${chatMate?.uid}`}>visit profile</Link>
 
             </div>
 
