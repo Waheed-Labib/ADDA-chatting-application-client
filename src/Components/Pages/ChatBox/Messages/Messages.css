@@ -114,7 +114,6 @@
     color: rgb(40, 40, 40);
 }
 
-
 @media screen and (min-width:768px) {
     .no-message {
         width: 73%;
@@ -143,11 +142,11 @@
     }
 
     .messages {
-        height: 77vh;
+        height: 79vh;
     }
 
     .messages-content {
-        height: 62vh;
+        height: 64vh;
     }
 
     .messages-header {
@@ -157,5 +156,6 @@
     .msg-sending-form {
         height: 7vh;
     }
+
 
 }

@@ -5,10 +5,9 @@ import SideBar from '../SideBar/SideBar';
 import { DisplayContext } from '../../../../contexts/DisplayProvider';
 import ChatBoxAccessories from './ChatBoxAccessories/ChatBoxAccessories';
 import { AuthContext } from '../../../../contexts/AuthProvider';
-import { Navigate, useLocation } from 'react-router-dom';
 import Loading from '../../Shared/Loading/Loading';
-import { toast } from 'react-hot-toast';
 import ErrorPage from '../../ErrorPage/ErrorPage';
+import { getChatMateFromLocalStorage, getShowInSmallDeviceFromLocalStorage, getSideBarFromLocalStorage } from '../../../../utilities/localStorageUsage';
 
 
 
@@ -28,9 +27,12 @@ const ChatBox = () => {
             .catch(err => setError(true))
     }, [])
 
-    const [sideBar, setSideBar] = useState('people');
-    const [showInSmallDevice, setShowInSmallDevice] = useState('sidebar');
-    const [chatMate, setChatMate] = useState(null);
+    // chatbox states
+    const [sideBar, setSideBar] = useState(getSideBarFromLocalStorage() || 'people');
+    const [showInSmallDevice, setShowInSmallDevice] = useState(getShowInSmallDeviceFromLocalStorage() || 'sideBar');
+    const [chatMate, setChatMate] = useState(getChatMateFromLocalStorage() || null);
+
+    console.log('inside chat box', showInSmallDevice)
 
     if (error) return <ErrorPage></ErrorPage>
 

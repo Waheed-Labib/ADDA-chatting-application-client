@@ -4,8 +4,8 @@ import Message from '../Message/Message';
 import { FaAngleDoubleLeft, FaPaperPlane } from 'react-icons/fa';
 import { AuthContext } from '../../../../contexts/AuthProvider';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-hot-toast';
 import ErrorPage from '../../ErrorPage/ErrorPage';
+import { setShowInSmallDeviceInLocalStorage } from '../../../../utilities/localStorageUsage';
 
 
 const Messages = ({ showInSmallDevice, setShowInSmallDevice, chatMate }) => {
@@ -66,23 +66,30 @@ const Messages = ({ showInSmallDevice, setShowInSmallDevice, chatMate }) => {
         event.target.reset();
     }
 
+    console.log('outside left arrow', showInSmallDevice)
+    const handleLeftArrowClick = () => {
+        setShowInSmallDevice('sideBar')
+        setShowInSmallDeviceInLocalStorage('sideBar')
+    }
+
     if (error) return <ErrorPage></ErrorPage>
     // when no chatmate is selected
     if (!chatMate) return (
-        <div className={`no-message ${showInSmallDevice === 'sidebar' ? 'hide-in-small-device' : 'show-in-small-device'}`}>
+        <div className={`no-message ${showInSmallDevice === 'sideBar' ? 'hide-in-small-device' : 'show-in-small-device'}`}>
 
         </div>
     )
 
     // show messages section
     return (
-        <div className={`messages ${showInSmallDevice === 'sidebar' ? 'hide-in-small-device' : 'show-in-small-device'}`}>
+        <div className={`messages ${showInSmallDevice === 'sideBar' ? 'hide-in-small-device' : 'show-in-small-device'}`}>
             <div className='messages-header'>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'start', gap: '10px' }}>
                     <FaAngleDoubleLeft
                         className='return-arrow'
-                        onClick={() => setShowInSmallDevice('sidebar')}
+                        onClick={handleLeftArrowClick}
                     ></FaAngleDoubleLeft>
+
                     <div className='chatmate-identity'>
                         <img src={chatMatePhoto} alt=''></img>
                         <h2>{chatMateName}</h2>

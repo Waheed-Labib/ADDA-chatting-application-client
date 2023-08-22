@@ -22,10 +22,9 @@ const ConfirmDeleteAccount = ({ setDeleteModalOpen }) => {
                         }
 
                     })
-                    .catch(err => toast.error(err.message))
+                    .catch(err => alert('Something Went Wrong'))
             })
-            .catch((err) => alert(err.message))
-
+            .catch((err) => alert('Something Went Wrong'))
     }
     return (
         <div className='modal'>

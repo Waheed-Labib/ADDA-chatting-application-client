@@ -39,7 +39,7 @@ const SignIn = () => {
                 )
                 form.reset();
 
-                const from = `/chatbox/${user?.uid}`;
+                const from = '/chatbox';
                 navigate(from, { replace: true });
 
             })

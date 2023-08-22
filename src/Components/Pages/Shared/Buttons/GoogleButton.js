@@ -19,7 +19,7 @@ const GoogleButton = () => {
         fetch('https://adda-chatting-app-server.vercel.app/users')
             .then(res => res.json())
             .then(data => setUsers(data))
-            .catch(err => setError(true))
+            .catch(err => { })
     }, [])
 
     const handleGoogleLogin = () => {
@@ -37,7 +37,7 @@ const GoogleButton = () => {
                 const isExistingUser = users.find(usr => usr.uid === user.uid);
 
                 if (isExistingUser) {
-                    const from = location.state?.from?.pathname || `/chatbox/${user?.uid}`;
+                    const from = location.state?.from?.pathname || '/chatbox';
                     navigate(from, { replace: true });
                 }
                 else {
@@ -77,7 +77,7 @@ const GoogleButton = () => {
             .catch(err => alert('Something Went Wrong'))
     }
 
-    if (error) return <ErrorPage></ErrorPage>
+    // if (error) return <ErrorPage></ErrorPage>
 
     return (
         <button onClick={handleGoogleLogin} className='google-sign-in-btn'>

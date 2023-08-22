@@ -4,8 +4,8 @@ import { FaSearch } from 'react-icons/fa';
 import Person from './Person/Person';
 import Group from './Group/Group';
 import Loading from '../../Shared/Loading/Loading';
-import { toast } from 'react-hot-toast';
 import ErrorPage from '../../ErrorPage/ErrorPage';
+import { setSideBarInLocalStorage } from '../../../../utilities/localStorageUsage';
 
 
 const SideBar = ({ sideBar, setSideBar, showInSmallDevice, setShowInSmallDevice, setChatMate }) => {
@@ -28,22 +28,29 @@ const SideBar = ({ sideBar, setSideBar, showInSmallDevice, setShowInSmallDevice,
             .catch(err => setError(true))
     }, [])
 
+    const handleSideBarClick = (sideBar) => {
+        setSideBar(sideBar)
+        setSideBarInLocalStorage(sideBar)
+    }
+
+    console.log('inside sidebar', showInSmallDevice)
+
     if (error) return <ErrorPage></ErrorPage>
 
     return (
-        <div className={`sidebar ${showInSmallDevice === 'sidebar' ? 'show-in-small-device' : 'hide-in-small-device'}`}>
+        <div className={`sidebar ${showInSmallDevice === 'sideBar' ? 'show-in-small-device' : 'hide-in-small-device'}`}>
             <div className='sidebar-heading'>
                 {
                     sideBar === 'people' ?
                         <>
                             <h2>People</h2>
-                            <button className='toggle-sidebar-btn' onClick={() => setSideBar('groups')}>Groups</button>
+                            <button className='toggle-sidebar-btn' onClick={() => handleSideBarClick('groups')}>Groups</button>
                         </>
 
                         :
                         <>
                             <h2>Groups</h2>
-                            <button className='toggle-sidebar-btn' onClick={() => setSideBar('people')}>People</button>
+                            <button className='toggle-sidebar-btn' onClick={() => handleSideBarClick('people')}>People</button>
                         </>
                 }
 

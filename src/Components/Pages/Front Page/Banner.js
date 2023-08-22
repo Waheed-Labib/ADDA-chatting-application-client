@@ -16,7 +16,7 @@ const Banner = () => {
 
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
-    const from = `/chatbox/${user?.uid}`
+    const from = '/chatbox'
 
     if (user) return (
         navigate(from, { replace: true })

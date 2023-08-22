@@ -48,7 +48,7 @@ const ChatBoxAccessories = () => {
                     <p>Send Feedback</p>
                 </Link>
 
-                <img className={`${showLinks ? 'd-block-in-sm' : 'd-none-in-sm'} hide-in-lg-device w-90`} src={logo} alt=''></img>
+                <img className={`${showLinks ? 'd-block-in-sm' : 'd-none-in-sm'} hide-in-lg-device`} src={logo} alt=''></img>
             </div>
 
             <img className={`${showLinks ? 'd-none-in-sm' : 'd-block-in-sm'}`} src={logo} alt=''></img>

@@ -3,6 +3,7 @@ import '../SideBar.css'
 import { Link } from 'react-router-dom';
 import frog from '../../../../../Assets/images/avatar/frog.webp'
 import { AuthContext } from '../../../../../contexts/AuthProvider';
+import { setChatMateInLocalStorage, setShowInSmallDeviceInLocalStorage } from '../../../../../utilities/localStorageUsage';
 
 
 const Person = ({ person, setChatMate, setShowInSmallDevice }) => {
@@ -13,6 +14,9 @@ const Person = ({ person, setChatMate, setShowInSmallDevice }) => {
     const handlePersonClick = () => {
         setChatMate(person)
         setShowInSmallDevice('messages')
+
+        setChatMateInLocalStorage(person)
+        setShowInSmallDeviceInLocalStorage('messages')
     }
 
     return (
