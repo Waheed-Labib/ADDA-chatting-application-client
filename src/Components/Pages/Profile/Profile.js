@@ -10,6 +10,7 @@ import ProfilePageButtons from './ProfilePageButtons/ProfilePageButtons';
 import UpdateName from './UpdateName/UpdateName';
 import Email from './Email/Email';
 import { DisplayContext } from '../../../contexts/DisplayProvider';
+import ShowDetails from './ShowDetails/ShowDetails';
 
 
 const Profile = () => {
@@ -24,6 +25,8 @@ const Profile = () => {
     const [showAvatars, setShowAvatars] = useState(false)
     const [uploadImage, setUploadImage] = useState(false)
     const [userPhoto, setUserPhoto] = useState(userMongoProfile?.photoURL)
+
+    const [showDetails, setShowDetails] = useState(false)
 
     const handleEmailVerification = () => {
         verifyEmail()
@@ -66,14 +69,17 @@ const Profile = () => {
                 ></UpdateName>
 
                 <Email userMongoProfile={userMongoProfile}></Email>
+
             </div>
+
+
+            <button onClick={() => setShowDetails(true)} className='show-profile-details-btn'>Show Details</button>
 
 
             {/* special note */}
             {
                 user?.uid === userMongoProfile?.uid &&
                 <>
-                    <p className='special-note'>*Email Address can not be changed.</p>
                     {
                         !user?.emailVerified &&
                         <p className='special-note'>*You have not verified your email yet. <Link onClick={handleEmailVerification}>Verify Email</Link></p>
@@ -81,8 +87,6 @@ const Profile = () => {
                     }
                 </>
             }
-
-
         </div>
     </>
 
@@ -140,10 +144,23 @@ const Profile = () => {
         }
         <div className='flex-container'>
 
-
             {profile}
 
             <ProfilePageButtons userMongoProfile={userMongoProfile}></ProfilePageButtons>
+
+            {
+                showDetails &&
+                <ShowDetails
+                    setShowDetails={setShowDetails}
+                    name={name}
+                    setName={setName}
+                    userMongoProfile={userMongoProfile}
+                    userPhoto={userPhoto}
+                    uploadImage={uploadImage}
+                    setUploadImage={setUploadImage}
+                    setShowAvatars={setShowAvatars}
+                ></ShowDetails>
+            }
 
         </div>
     </div>

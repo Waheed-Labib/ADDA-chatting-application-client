@@ -1,0 +1,127 @@
+.profile-page-buttons {
+    animation: show-delay 3s linear 0s 1
+}
+
+.profile-page-buttons button {
+    width: 300px;
+    margin-bottom: 16px;
+
+
+    text-align: start;
+    transition: 0.3s;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6), 0 6px 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.chatbox-btn {
+    border: none;
+    color: darkolivegreen;
+    background-color: rgb(250, 211, 80);
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    font-size: 1.3rem;
+    font-weight: 900;
+    margin-bottom: 0;
+    padding-left: 70px;
+    border-radius: 5px;
+    border-top-right-radius: 20px;
+}
+
+.chatbox-btn:hover {
+    padding-left: 90px;
+    gap: 60px;
+    color: rgb(60, 75, 34);
+    background-color: rgb(251, 205, 55);
+}
+
+.logout-btn {
+    background-color: rgb(251, 103, 70);
+    color: rgb(250, 238, 238);
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-weight: 600;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding-left: 10px;
+}
+
+.logout-btn:hover {
+    color: white;
+    background-color: rgb(252, 66, 24);
+}
+
+.logout-btn p {
+    margin: 12px;
+    margin-left: 6px;
+}
+
+.delete-account-btn {
+    padding: 10px;
+    background-color: antiquewhite;
+    border: 1px solid rgb(195, 68, 68);
+    color: rgb(195, 68, 68);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+.delete-account-btn p {
+    margin: 0;
+}
+
+.cross {
+    transition: 0.5s;
+    border: 1px solid red;
+    color: red;
+    border-radius: 50%;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.delete-account-btn:hover {
+    background-color: rgb(247, 221, 187);
+    border: 1px solid rgb(254, 1, 1);
+    color: rgb(255, 6, 6);
+}
+
+.delete-account-btn:hover .cross {
+    background-color: red;
+    color: white;
+}
+
+
+
+.block-btn {
+    background-color: lightblue;
+    color: darkblue;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border: 1px solid darkblue;
+    border-radius: 5px;
+    padding-left: 16px;
+    font-weight: 600;
+}
+
+.block-btn:hover {
+    padding-left: 24px;
+}
+
+.report-btn {
+    border: 1px solid crimson;
+    background-color: wheat;
+    color: crimson;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-radius: 5px;
+    padding-left: 16px;
+    font-weight: 600;
+}
+
+.report-btn:hover {
+    padding-left: 24px;
+}

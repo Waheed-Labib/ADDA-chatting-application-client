@@ -5,7 +5,7 @@ import GoogleButton from '../../Shared/Buttons/GoogleButton';
 
 const FrontPageLinks = () => {
     return (
-        <div className='front-page-links'>
+        <div className='front-page-links front-page-links-position-absolute '>
             <Link to='/signin'>
                 <button className='sign-in-btn'>
                     <FaSignInAlt></FaSignInAlt>

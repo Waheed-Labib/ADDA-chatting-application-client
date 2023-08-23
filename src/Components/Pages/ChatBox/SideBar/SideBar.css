@@ -30,7 +30,7 @@
 }
 
 .sidebar-content {
-    height: 70vh;
+    height: 65vh;
     margin-top: 5%;
     overflow-y: scroll;
 }
@@ -126,5 +126,7 @@
         height: 84vh;
     }
 
-
+    .sidebar-content {
+        height: 60vh;
+    }
 }

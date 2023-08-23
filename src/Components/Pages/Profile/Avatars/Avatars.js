@@ -55,7 +55,7 @@ const Avatars = ({ setShowAvatars, setUserPhoto, userMongoProfile }) => {
                     .then(data => {
                         console.log(data)
                     })
-                    .catch(err => alert('Something Went Wrong'))
+                    .catch(() => { })
             })
             .catch(err => alert('Something went wrong. Please try again.'))
     }

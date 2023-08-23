@@ -27,7 +27,7 @@ const ConfirmDeleteAccount = ({ setDeleteModalOpen }) => {
             .catch((err) => alert('Something Went Wrong'))
     }
     return (
-        <div className='modal'>
+        <div className='modal confirm-delete'>
             <div class="modal-content">
                 <span onClick={() => setDeleteModalOpen(false)} class="close">&times;</span>
                 <h2>DELETE ACCOUNT?</h2>

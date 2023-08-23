@@ -29,17 +29,17 @@
     width: 50%;
 }
 
-.modal-content h2 {
+.confirm-delete h2 {
     color: salmon;
     margin-bottom: 0;
 }
 
-.modal-content p {
+.confirm-delete p {
     margin-top: 5px;
     font-weight: 500;
 }
 
-.modal-content button {
+.confirm-delete button {
     margin-right: 10px;
     margin-bottom: 10px;
     padding: 5px;

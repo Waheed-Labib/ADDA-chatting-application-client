@@ -9,7 +9,7 @@
 
 
 .form-container {
-    background-color: rgba(230, 227, 227, 0.5);
+    background-color: rgba(230, 227, 227, 0.7);
     color: rgb(45, 42, 39);
     padding: 6% 8%;
     margin-top: 5%;
@@ -114,6 +114,37 @@
 
 .d-none {
     display: none;
+}
+
+.d-block {
+    display: block;
+
+}
+
+.agree {
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 20px;
+    width: 250px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    background-color: rgba(240, 248, 255, 0.5);
+    border-radius: 5px;
+}
+
+.agree p {
+    margin: 0;
+    color: black;
+}
+
+.agree a {
+    color: rgb(2, 2, 107);
+}
+
+.agree input {
+    width: 20px;
+    height: 20px;
 }
 
 @media screen and (max-width:768px) {

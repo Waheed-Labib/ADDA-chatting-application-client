@@ -1,7 +1,17 @@
 .about {
     min-height: 100vh;
     background-color: rgba(255, 255, 255, 0.9);
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.about-text-and-link {
+    margin-top: 10%;
+    margin-bottom: 10%;
+    align-items: center;
 }
 
 .about-text {
@@ -20,13 +30,6 @@
 }
 
 .about-page-buttons {
-    margin-bottom: 2%;
-    padding-left: 2%;
-    padding-bottom: 5%;
-    padding-right: 4%;
-    position: absolute;
-    bottom: 0;
-    right: 0;
     animation: show-delay 6s linear 0s 1;
 }
 
@@ -56,7 +59,7 @@
 }
 
 @media screen and (max-width:768px) {
-    .about {
+    /* .about {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -67,13 +70,9 @@
         margin-top: 10%;
         margin-bottom: 10%;
         align-items: center;
-    }
+    } */
 
     .about-text {
         width: 80%;
-    }
-
-    .about-page-buttons {
-        position: static;
     }
 }

@@ -39,13 +39,13 @@ const UpdateName = ({ userMongoProfile, name, setName }) => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data)
+                        setName(newName)
+                        setEditName(false)
+                        toast.success('Name Updated')
                     })
-                    .catch(err => alert('Something Went Wrong'))
+                    .catch(() => { })
 
-                setName(newName)
-                setEditName(false)
-                toast.success('Name Updated')
+
             }
             )
             .catch(() => alert('Something Went Wrong'))

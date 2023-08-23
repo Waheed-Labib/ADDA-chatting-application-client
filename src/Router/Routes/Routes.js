@@ -8,6 +8,7 @@ import Profile from "../../Components/Pages/Profile/Profile";
 import ChatBox from "../../Components/Pages/ChatBox/ChatBox/ChatBox";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../../Components/Pages/ErrorPage/ErrorPage";
+import CommunityStandards from "../../Components/Pages/CommunityStandards/CommunityStandards";
 
 
 export const router = createBrowserRouter([
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
             {
                 path: '/about',
                 element: <About></About>
+            },
+            {
+                path: '/community-standards',
+                element: <CommunityStandards></CommunityStandards>
             },
             {
                 path: '/profile/:id',

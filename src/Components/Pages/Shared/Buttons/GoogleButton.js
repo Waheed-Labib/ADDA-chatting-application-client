@@ -46,11 +46,15 @@ const GoogleButton = () => {
                         name: user.displayName,
                         email: user.email,
                         photoURL: user.photoURL,
-                        gender: '',
+                        gender: [],
                         dateOfBirth: '',
                         occupation: '',
                         institute: '',
-                        address: ''
+                        address: {
+                            city: '',
+                            province: '',
+                            country: ''
+                        }
                     }
 
                     fetch('https://adda-chatting-app-server.vercel.app/users', {

@@ -5,7 +5,7 @@ const Email = ({ userMongoProfile }) => {
     return (
         <div className='profile-info'>
             <h3>Email:</h3>
-            <p>{userMongoProfile.email}</p>
+            <p>{userMongoProfile?.email}</p>
         </div>
     );
 };

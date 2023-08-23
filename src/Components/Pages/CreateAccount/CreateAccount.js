@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaBackward, FaSignInAlt } from 'react-icons/fa';
 import logo from '../../../Assets/images/logo/Adda Logo.png'
 import './CreateAccount.css'
@@ -18,6 +18,8 @@ const CreateAccount = () => {
     const { createUser, setUser, updateUserAccount } = useContext(AuthContext);
     const navigate = useNavigate();
 
+    const [showRequired, setShowRequired] = useState(false)
+
     const handleCreateAccount = event => {
         event.preventDefault();
         const form = event.target;
@@ -25,6 +27,16 @@ const CreateAccount = () => {
         const email = form.email.value;
         const password = form.password.value;
         const confirm = form.confirm.value;
+
+        const agree = form.agree.checked;
+        if (!agree) {
+            setShowRequired(true)
+            return
+        }
+
+        if (agree) {
+            setShowRequired(false)
+        }
 
         if (password === confirm) {
             createUser(email, password)
@@ -47,11 +59,15 @@ const CreateAccount = () => {
                         name,
                         email,
                         photoURL: '',
-                        gender: '',
+                        gender: [],
                         dateOfBirth: '',
                         occupation: '',
                         institute: '',
-                        address: ''
+                        address: {
+                            city: '',
+                            province: '',
+                            country: ''
+                        }
                     }
 
                     fetch('https://adda-chatting-app-server.vercel.app/users', {
@@ -115,6 +131,20 @@ const CreateAccount = () => {
                     <br />
                     <input type="password" name="confirm" placeholder='Confirm Password' required />
                     <br /><br />
+
+
+
+                    <div className='agree'>
+                        <input type='checkbox' name='agree'></input>
+                        <p>I agree to the <Link to='/community-standards'>community standards</Link></p>
+                        <p className={`${showRequired ? 'd-block' : 'd-none'}`}
+                            style={{ color: 'white', margin: '0', backgroundColor: 'rgb(242, 9, 9)', padding: '5px', borderRadius: '5px' }}>
+                            Required
+                        </p>
+                    </div>
+
+
+
 
                     <input className='submit-btn' type="submit" value="Create Account"></input>
 

@@ -19,7 +19,7 @@ const ChatBoxAccessories = () => {
                 const from = '/signin';
                 navigate(from, { replace: true })
             })
-            .catch(() => alert('Something went wrong. Please try again.'))
+            .catch(() => { })
     }
 
     return (

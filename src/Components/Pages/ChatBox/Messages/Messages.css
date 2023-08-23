@@ -45,8 +45,12 @@
 
 .chatmate-profile-link {
     font-size: 1.25rem;
-    font-weight: 500;
-    color: rgb(0, 0, 91);
+    font-weight: 600;
+    color: darkblue;
+}
+
+.chatmate-profile-link:hover {
+    color: rgb(6, 6, 215);
 }
 
 .messages-content {

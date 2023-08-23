@@ -70,7 +70,7 @@ const UploadImage = ({ setUploadImage, setUserPhoto, userMongoProfile }) => {
                     .then(data => {
                         console.log(data)
                     })
-                    .catch(err => alert('Something Went Wrong'))
+                    .catch(() => { })
             })
     }
 
@@ -114,8 +114,6 @@ const UploadImage = ({ setUploadImage, setUserPhoto, userMongoProfile }) => {
 
                 </>
             }
-
-
 
         </div >
 

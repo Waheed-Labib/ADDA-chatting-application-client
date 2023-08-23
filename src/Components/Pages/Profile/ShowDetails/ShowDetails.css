@@ -1,0 +1,121 @@
+.profile-modal::-webkit-scrollbar {
+    opacity: 0;
+}
+
+.profile-modal {
+    /* display: none; */
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+.profile-modal-content {
+    height: 500px;
+    overflow-y: scroll;
+    width: 50%;
+    margin: 25%;
+    margin-top: 0;
+    background-color: rgba(240, 248, 255, 0.95);
+    color: rgb(45, 42, 39);
+    padding: 5%;
+    border-radius: 10px;
+    animation: show-delay 1s linear 0s 1;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4), 0 12px 30px 0 rgba(0, 0, 0, 0.4);
+}
+
+.profile-modal-content h2,
+.profile-modal-content h3,
+.profile-modal-content h4,
+.profile-modal-content p,
+.profile-modal-content a {
+    margin: 0;
+}
+
+.profile-modal-content h2,
+.profile-modal-content h3,
+.profile-modal-content h4 {
+    color: rgb(39, 31, 93);
+}
+
+.profile-modal-content p {
+    font-weight: 500;
+}
+
+.profile-info-submit-btn {
+    background-color: rgb(105, 103, 103);
+    color: aliceblue;
+    width: 49%;
+    border: none;
+    border-radius: 5px;
+    margin-top: 0;
+    padding: 5px 0;
+    font-weight: 500;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.profile-info-submit-btn:hover {
+    background-color: rgb(80, 77, 77);
+}
+
+.profile-info-hide-btn {
+    background-color: rgb(246, 107, 92);
+    color: aliceblue;
+    width: 50%;
+    border: none;
+    border-radius: 5px;
+    margin-top: 0;
+    padding: 6px 0;
+    font-weight: 500;
+}
+
+.profile-info-hide-btn:hover {
+    background-color: rgb(253, 71, 51);
+}
+
+.profile-info-close {
+    color: black;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.profile-info-close:hover,
+.profile-info-close:focus {
+    color: darkblue;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media screen and (max-width:600px) {
+    .profile-modal-content {
+        width: 60%;
+        margin: auto;
+        margin-top: 0;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .profile-modal-content {
+        width: 80%;
+        margin: auto;
+        margin-top: 0;
+        margin-bottom: 100px;
+    }
+}

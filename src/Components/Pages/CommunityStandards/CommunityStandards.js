@@ -1,26 +1,15 @@
-import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import './About.css'
-import logo from '../../../Assets/images/logo/Adda Logo.png'
+import React, { useContext } from 'react';
 import CupLogo from '../Shared/CupLogo/CupLogo';
-import { DisplayContext } from '../../../contexts/DisplayProvider';
-import { FaAngleDoubleRight, FaSignInAlt, FaWpforms } from 'react-icons/fa';
-import { AuthContext } from '../../../contexts/AuthProvider';
 import FrontPageLinks from '../Front Page/FrontPageLinks/FrontPageLinks';
-import ErrorPage from '../ErrorPage/ErrorPage';
-import { toast } from 'react-hot-toast';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider';
+import logo from '../../../Assets/images/logo/Adda Logo.png'
+import { FaAngleDoubleRight, FaSignInAlt, FaWpforms } from 'react-icons/fa';
 import GoogleButton from '../Shared/Buttons/GoogleButton';
 
-const About = ({ from }) => {
-
-    const { setDisplayFooter } = useContext(DisplayContext)
-    setDisplayFooter(false)
+const CommunityStandards = () => {
 
     const { user } = useContext(AuthContext);
-    const [error, setError] = useState(false)
-
-
-    if (error) return <ErrorPage></ErrorPage>
 
     return (
         <div className='about'>
@@ -29,11 +18,32 @@ const About = ({ from }) => {
             <div className='about-text'>
                 <CupLogo></CupLogo>
                 <h2>
-                    About ADDA
+                    Community Standards
                 </h2>
 
-                <h4>
-                    ADDA is a MERN based CRUD Application, built mainly for online chatting. It has no commercial purpose. It is a practice project built by a junior developer. The developer will be really grateful if you <Link to='/feedback' style={{ color: 'rgb(39, 31, 93)' }}>share your feedback.</Link>
+                <h4 style={{ textAlign: 'start' }}>
+                    <ul>
+                        <li>
+                            Please do not make any kind of <span style={{ color: 'crimson' }}>hateful</span>, <span style={{ color: 'crimson' }}>racist</span> or <span style={{ color: 'crimson' }}>sexist</span> remark.
+                        </li>
+
+                        <li>
+                            Do not <span style={{ color: 'crimson' }}>harrass</span>, <span style={{ color: 'crimson' }}>hurt</span> or <span style={{ color: 'crimson' }}>insult</span> anybody.
+                        </li>
+
+                        <li>
+                            If someone <span style={{ color: 'crimson' }}>reports against you</span>, we would have to take steps against you.
+                        </li>
+
+                        <li>
+                            We will warn you first time.
+                        </li>
+
+                        <li>
+                            If reporting continues, it may cause <span style={{ color: 'crimson' }}>temporary or permanent suspension</span> of your account.
+                        </li>
+                    </ul>
+
                 </h4>
             </div>
 
@@ -84,8 +94,7 @@ const About = ({ from }) => {
             }
 
         </div >
-
     );
 };
 
-export default About;
+export default CommunityStandards;
