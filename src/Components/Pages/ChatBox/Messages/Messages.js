@@ -96,7 +96,7 @@ const Messages = ({ showInSmallDevice, setShowInSmallDevice, chatMate }) => {
                     </div>
                 </div>
 
-                <Link className='chatmate-profile-link' to={`/profile/${chatMate?.uid}`}><span className='d-none-sm'>Visit</span> Profile</Link>
+                <Link className='chatmate-profile-link' to={`/profile/${chatMate?.uid}`}>Profile</Link>
 
             </div>
 

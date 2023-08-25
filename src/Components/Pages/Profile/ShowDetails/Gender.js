@@ -111,15 +111,15 @@ const Gender = ({ userMongoProfile }) => {
                                     <small>You can choose more than one</small>
                                     <form onSubmit={handleGenderSubmit} action="">
                                         <input type="checkbox" name="female" value="Female" />
-                                        <label for="female">Female</label><br />
+                                        <label htmlFor="female">Female</label><br />
                                         <input type="checkbox" name="male" value="male" />
-                                        <label for="male">Male</label><br />
+                                        <label htmlFor="male">Male</label><br />
                                         <input type="checkbox" name="nonBinary" value="non-binary" />
-                                        <label for="non-binary">Non-binary</label><br></br>
+                                        <label htmlFor="non-binary">Non-binary</label><br></br>
                                         <input type="checkbox" name="transgender" value="transgender" />
-                                        <label for="transgender">Transgender</label><br></br>
+                                        <label htmlFor="transgender">Transgender</label><br></br>
                                         <input type="checkbox" name="intersex" value="intersex" />
-                                        <label for="intersex">Intersex</label><br></br>
+                                        <label htmlFor="intersex">Intersex</label><br></br>
                                         <input style={{ width: '190px', height: '30px', marginTop: '5px', marginBottom: '5px' }} type='text' name='typeGender' placeholder='You Can Also Type yourself'></input>
                                         <br></br>
                                         <input className='profile-info-submit-btn' type="submit" value="Submit" />
@@ -127,7 +127,7 @@ const Gender = ({ userMongoProfile }) => {
                                     <button onClick={handleHideGender} className='profile-info-hide-btn' style={{ width: '200px' }}>I prefer not to say my gender</button>
                                 </div>
                                 :
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                                <div className='profile-info-data'>
                                     {
                                         gender.map(singleGender =>
                                             <p>{singleGender}&nbsp;</p>)

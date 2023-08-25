@@ -12,6 +12,7 @@
     margin-top: 10%;
     margin-bottom: 10%;
     align-items: center;
+    /* color: rgb(13, 3, 77); */
 }
 
 .about-text {
@@ -30,6 +31,7 @@
 }
 
 .about-page-buttons {
+    margin-bottom: 30px;
     animation: show-delay 6s linear 0s 1;
 }
 

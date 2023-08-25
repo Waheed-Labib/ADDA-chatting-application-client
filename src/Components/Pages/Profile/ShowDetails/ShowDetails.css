@@ -26,8 +26,8 @@
 }
 
 .profile-modal-content {
-    height: 500px;
-    overflow-y: scroll;
+    /* height: 1000px;
+    overflow-y: scroll; */
     width: 50%;
     margin: 25%;
     margin-top: 0;
@@ -101,6 +101,37 @@
     color: darkblue;
     text-decoration: none;
     cursor: pointer;
+}
+
+.profile-info-data {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    /* color: rgb(13, 3, 77); */
+}
+
+.name-form {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+}
+
+.dob-form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+    width: 150px;
+}
+
+.dob-form select,
+.dob-form input {
+    width: 100%;
+}
+
+.dob-form input {
+    margin-top: 15px;
 }
 
 @media screen and (max-width:600px) {

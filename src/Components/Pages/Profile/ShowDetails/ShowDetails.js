@@ -6,6 +6,7 @@ import { AuthContext } from '../../../../contexts/AuthProvider';
 import frog from '../../../../Assets/images/avatar/frog.webp';
 import './ShowDetails.css'
 import Gender from './Gender';
+import DateOfBirth from './DateOfBirth';
 
 
 const ShowDetails = ({ setShowDetails, name, setName, userMongoProfile, userPhoto, uploadImage, setUploadImage, setShowAvatars }) => {
@@ -48,6 +49,8 @@ const ShowDetails = ({ setShowDetails, name, setName, userMongoProfile, userPhot
                     <Email userMongoProfile={userMongoProfile}></Email>
 
                     <Gender userMongoProfile={userMongoProfile}></Gender>
+
+                    <DateOfBirth userMongoProfile={userMongoProfile}></DateOfBirth>
                 </div>
 
                 <button onClick={() => setShowDetails(false)} className='show-profile-details-btn'>Hide Details</button>

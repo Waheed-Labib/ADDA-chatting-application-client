@@ -33,7 +33,13 @@ const About = ({ from }) => {
                 </h2>
 
                 <h4>
-                    ADDA is a MERN based CRUD Application, built mainly for online chatting. It has no commercial purpose. It is a practice project built by a junior developer. The developer will be really grateful if you <Link to='/feedback' style={{ color: 'rgb(39, 31, 93)' }}>share your feedback.</Link>
+                    <ul style={{ textAlign: 'start' }}>
+                        <li>ADDA is a MERN based CRUD Application</li>
+                        <li>Built for <span style={{ fontSize: '1.20rem', color: 'rgb(55, 0, 0)' }}>online chatting</span></li>
+                        <li>Has <span style={{ fontSize: '1.20rem', color: 'rgb(55, 0, 0)' }}>no commercial purpose</span></li>
+                        <li>A junior level application, built by a junior developer</li>
+                        <li>The developer will be grateful if you <Link to='/feedback' style={{ color: 'rgb(13, 3, 77)', fontSize: '1.10rem' }}>share your feedback.</Link></li>
+                    </ul>
                 </h4>
             </div>
 

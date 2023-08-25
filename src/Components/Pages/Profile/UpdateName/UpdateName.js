@@ -57,10 +57,12 @@ const UpdateName = ({ userMongoProfile, name, setName }) => {
             <h3>Name:</h3>
             {
                 editName ?
-                    <form className='name-form' onSubmit={handleUpdateName}>
-                        <input className='name-input' type='text' defaultValue={userMongoProfile.name} name='name'></input>
-                        <input className='name-submit' type='submit' value='Update Name'></input>
-                    </form>
+                    <>
+                        <form className='name-form' onSubmit={handleUpdateName}>
+                            <input className='name-input' type='text' defaultValue={userMongoProfile.name} name='name'></input>
+                            <input style={{ width: '100%' }} className='profile-info-submit-btn' type='submit' value='Update Name'></input>
+                        </form>
+                    </>
                     :
                     <div onClick={() => setEditName(true)} style={{ display: 'flex', alignItems: 'center' }}>
                         <p style={{ marginRight: '5px ' }}>{name || userMongoProfile.name}</p>
