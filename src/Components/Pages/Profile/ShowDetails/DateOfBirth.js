@@ -8,16 +8,18 @@ const DateOfBirth = ({ userMongoProfile }) => {
 
     const { user } = useContext(AuthContext)
     const [editDOB, setEditDOB] = useState(false)
-    const [day, setDay] = useState(1);
-    const [month, setMonth] = useState('January');
-    const [year, setYear] = useState(2023);
+    const [day, setDay] = useState(userMongoProfile?.dateOfBirth?.day || 1);
+    const [month, setMonth] = useState(userMongoProfile?.dateOfBirth?.month || 'January');
+    const [year, setYear] = useState(userMongoProfile?.dateOfBirth?.year || 1990);
+    const [isDOBDisplayed, setIsDOBDisplayed] = useState(userMongoProfile?.dateOfBirth?.day)
+
     const [dob, setDob] = useState(
         `${userMongoProfile?.dateOfBirth?.month} ${userMongoProfile?.dateOfBirth?.day}, ${userMongoProfile?.dateOfBirth?.year}`
         || null)
 
-    const [age, setAge] = useState(countAge(userMongoProfile?.dateOfBirth.day, userMongoProfile?.dateOfBirth.month, userMongoProfile?.dateOfBirth?.year)[0] || null)
+    const [age, setAge] = useState(countAge(userMongoProfile?.dateOfBirth?.day, userMongoProfile?.dateOfBirth?.month, userMongoProfile?.dateOfBirth?.year)[0] || null)
 
-    const [birthday, setBirthday] = useState(countAge(userMongoProfile?.dateOfBirth.day, userMongoProfile?.dateOfBirth.month, userMongoProfile?.dateOfBirth?.year)[1] || false)
+    const [birthday, setBirthday] = useState(countAge(userMongoProfile?.dateOfBirth?.day, userMongoProfile?.dateOfBirth?.month, userMongoProfile?.dateOfBirth?.year)[1] || false)
 
     const handleDayChange = (event) => {
         setDay(event.target.value);
@@ -33,6 +35,8 @@ const DateOfBirth = ({ userMongoProfile }) => {
 
     const handleDOBSubmit = event => {
         event.preventDefault();
+
+        setIsDOBDisplayed(true)
 
         const newDateOfBirth = {
             day: day,
@@ -69,6 +73,42 @@ const DateOfBirth = ({ userMongoProfile }) => {
                 setEditDOB(false)
             })
             .catch(() => { })
+
+
+    }
+
+    const handleHideDOB = () => {
+
+        // hide date of birth in database
+        const updatedUserMongoProfile = {
+            uid: userMongoProfile?.uid,
+            name: userMongoProfile?.name,
+            email: userMongoProfile?.email,
+            photoURL: userMongoProfile?.photoURL,
+            gender: userMongoProfile?.gender,
+            dateOfBirth: null,
+            occupation: userMongoProfile?.occupation,
+            institute: userMongoProfile?.institute,
+            address: userMongoProfile?.address
+        }
+
+        fetch(`https://adda-chatting-app-server.vercel.app/users/${userMongoProfile.uid}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updatedUserMongoProfile)
+        })
+            .then(res => res.json())
+            .then(data => {
+                toast.success('Your Date of Birth is hidden now')
+                setDob(``)
+                setIsDOBDisplayed(false)
+                setEditDOB(false)
+            })
+            .catch(() => { })
+
+
     }
 
     return (
@@ -131,15 +171,24 @@ const DateOfBirth = ({ userMongoProfile }) => {
                                             ))}
                                         </select>
 
+
+
                                         <input className='profile-info-submit-btn' type="submit" value="Submit" />
+
+
                                     </form>
 
-                                    <button style={{ width: '150px' }} className='profile-info-hide-btn'>Hide my Date of Birth</button>
+
+
+
+                                    <button onClick={handleHideDOB} style={{ width: '150px' }} className='profile-info-hide-btn'>Hide my Date of Birth</button>
+
+
                                 </div>
                                 :
                                 <div style={{ alignItems: 'start' }} className='profile-info-data'>
                                     {
-                                        dob &&
+                                        isDOBDisplayed &&
                                         <div>
                                             <p>{dob}&nbsp;</p>
                                             <p>[{age} years old]</p>
@@ -158,10 +207,10 @@ const DateOfBirth = ({ userMongoProfile }) => {
                     :
                     <div className='profile-info-data'>
                         {
-                            dob &&
+                            isDOBDisplayed &&
                             <div>
                                 <p>{dob}&nbsp;</p>
-                                <p>{age} years age</p>
+                                <p>[{age} years old]</p>
                                 <p
                                     style={{ color: 'darkblue', fontSize: '1.2rem' }}
                                     className={`${birthday ? '' : 'd-none'}`}

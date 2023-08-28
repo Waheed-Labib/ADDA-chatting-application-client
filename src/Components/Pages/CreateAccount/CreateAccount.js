@@ -67,7 +67,8 @@ const CreateAccount = () => {
                             city: '',
                             province: '',
                             country: ''
-                        }
+                        },
+                        phoneNumber: ''
                     }
 
                     fetch('https://adda-chatting-app-server.vercel.app/users', {

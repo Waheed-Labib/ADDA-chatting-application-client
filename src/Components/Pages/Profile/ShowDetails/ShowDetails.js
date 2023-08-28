@@ -7,6 +7,10 @@ import frog from '../../../../Assets/images/avatar/frog.webp';
 import './ShowDetails.css'
 import Gender from './Gender';
 import DateOfBirth from './DateOfBirth';
+import Address from './Address/Address';
+import Occupation from './Occupation';
+import Institute from './Institute';
+
 
 
 const ShowDetails = ({ setShowDetails, name, setName, userMongoProfile, userPhoto, uploadImage, setUploadImage, setShowAvatars }) => {
@@ -51,6 +55,14 @@ const ShowDetails = ({ setShowDetails, name, setName, userMongoProfile, userPhot
                     <Gender userMongoProfile={userMongoProfile}></Gender>
 
                     <DateOfBirth userMongoProfile={userMongoProfile}></DateOfBirth>
+
+                    <Address userMongoProfile={userMongoProfile}></Address>
+
+                    <Occupation userMongoProfile={userMongoProfile}></Occupation>
+
+                    <Institute userMongoProfile={userMongoProfile}></Institute>
+
+
                 </div>
 
                 <button onClick={() => setShowDetails(false)} className='show-profile-details-btn'>Hide Details</button>

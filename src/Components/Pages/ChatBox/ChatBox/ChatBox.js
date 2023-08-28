@@ -18,6 +18,7 @@ const ChatBox = () => {
 
     const { user, loading } = useContext(AuthContext);
     const [error, setError] = useState(false)
+    const [showLinks, setShowLinks] = useState(false);
 
     const [users, setUsers] = useState([]);
     useEffect(() => {
@@ -32,7 +33,7 @@ const ChatBox = () => {
     const [showInSmallDevice, setShowInSmallDevice] = useState(getShowInSmallDeviceFromLocalStorage() || 'sideBar');
     const [chatMate, setChatMate] = useState(getChatMateFromLocalStorage() || null);
 
-    console.log('inside chat box', showInSmallDevice)
+    // console.log('inside chat box', showInSmallDevice)
 
     if (error) return <ErrorPage></ErrorPage>
 
@@ -47,15 +48,20 @@ const ChatBox = () => {
                     showInSmallDevice={showInSmallDevice}
                     setShowInSmallDevice={setShowInSmallDevice}
                     setChatMate={setChatMate}
+                    setShowLinks={setShowLinks}
                 >
                 </SideBar>
                 <Messages
                     showInSmallDevice={showInSmallDevice}
                     setShowInSmallDevice={setShowInSmallDevice}
                     chatMate={chatMate}
+                    setShowLinks={setShowLinks}
                 ></Messages>
             </div>
-            <ChatBoxAccessories></ChatBoxAccessories>
+            <ChatBoxAccessories
+                showLinks={showLinks}
+                setShowLinks={setShowLinks}
+            ></ChatBoxAccessories>
         </div>
     );
 };

@@ -26,8 +26,8 @@
 }
 
 .profile-modal-content {
-    /* height: 1000px;
-    overflow-y: scroll; */
+    height: 100%;
+    overflow-y: scroll;
     width: 50%;
     margin: 25%;
     margin-top: 0;
@@ -37,6 +37,18 @@
     border-radius: 10px;
     animation: show-delay 1s linear 0s 1;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4), 0 12px 30px 0 rgba(0, 0, 0, 0.4);
+}
+
+.profile-modal-content::-webkit-scrollbar {
+    width: 5px;
+}
+
+.profile-modal-content::-webkit-scrollbar-track {
+    background-color: rgb(184, 182, 182);
+}
+
+.profile-modal-content::-webkit-scrollbar-thumb {
+    background-color: darkblue;
 }
 
 .profile-modal-content h2,
@@ -134,12 +146,174 @@
     margin-top: 15px;
 }
 
+.address-form {
+    margin-top: 25px;
+    margin-right: 20px;
+}
+
+.address-form h4 {
+    color: gray;
+    margin: 0;
+    width: 50%;
+}
+
+.country-list {
+    height: 200px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    margin-bottom: 10px;
+    width: 95%;
+}
+
+.country-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.country-list::-webkit-scrollbar-thumb {
+    background-color: darkblue;
+    border-radius: 3px;
+    width: 4px;
+}
+
+.country-list::-webkit-scrollbar-track {
+    background-color: white;
+}
+
+.country {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 5px;
+    padding-inline: 5px;
+}
+
+.country:hover p {
+    color: darkblue
+}
+
+.under-cursor {
+    color: darkblue;
+}
+
+.country-dropdown-bar {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 1.5%;
+    padding-top: 1%;
+    color: rgb(62, 62, 62);
+}
+
+.country-search-input {
+    border: none;
+    width: 100%;
+
+}
+
+.country-search-input:focus {
+    outline: none;
+}
+
+.country-dropdown-icon {
+    padding-top: 5px;
+}
+
+.address-input {
+    margin-bottom: 10px;
+    width: 95%;
+    border: 1px solid grey;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.address-info-submit-btn {
+    background-color: rgb(105, 103, 103);
+    color: aliceblue;
+    width: 97%;
+    border: none;
+    border-radius: 5px;
+    margin-top: 0;
+    padding: 5px 0;
+    font-weight: 500;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.address-info-submit-btn:hover {
+    background-color: rgb(80, 77, 77);
+}
+
+.address-info-hide-btn {
+    background-color: rgb(246, 107, 92);
+    color: aliceblue;
+    width: 97%;
+    border: none;
+    border-radius: 5px;
+    margin-top: 0;
+    padding: 6px 0;
+    font-weight: 500;
+}
+
+.address-info-hide-btn:hover {
+    background-color: rgb(253, 71, 51);
+}
+
+
+.country:hover {
+    cursor: pointer;
+}
+
+.country img {
+    height: 20px;
+    width: 20px;
+}
+
+.phone-number-input {
+    width: 100%;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width:900px) {
+    .edit-address-div {
+        width: 60%;
+    }
+
+    .country-dropdown-bar {
+        padding-top: 2%;
+        padding-right: 2%;
+    }
+
+    .d-md-block {
+        display: block;
+    }
+
+}
+
 @media screen and (max-width:600px) {
     .profile-modal-content {
         width: 60%;
         margin: auto;
         margin-top: 0;
     }
+
+    .country-dropdown-bar {
+        padding-right: 3%;
+    }
+
+    .address-input {
+        width: 94%;
+    }
+
+    .country-list {
+        width: 94%;
+    }
+
+    .address-info-submit-btn,
+    .address-info-hide-btn {
+        width: 98%;
+    }
+
 }
 
 @media screen and (max-width:400px) {
@@ -149,4 +323,15 @@
         margin-top: 0;
         margin-bottom: 100px;
     }
+
+    .country-dropdown-bar {
+        padding-top: 3%;
+        padding-right: 5%;
+    }
+
+    .address-info-submit-btn,
+    .address-info-hide-btn {
+        width: 100%;
+    }
+
 }

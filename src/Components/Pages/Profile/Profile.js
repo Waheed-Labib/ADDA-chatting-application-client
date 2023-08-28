@@ -5,12 +5,14 @@ import { AuthContext } from '../../../contexts/AuthProvider';
 import frog from '../../../Assets/images/avatar/frog.webp'
 import Avatars from './Avatars/Avatars';
 import Loading from '../Shared/Loading/Loading';
+import thoughtBubble from '../../../Assets/images/loading/thought-bubble.jpg'
 import UploadImage from './UploadImage/UploadImage';
 import ProfilePageButtons from './ProfilePageButtons/ProfilePageButtons';
 import UpdateName from './UpdateName/UpdateName';
 import Email from './Email/Email';
 import { DisplayContext } from '../../../contexts/DisplayProvider';
 import ShowDetails from './ShowDetails/ShowDetails';
+
 
 
 const Profile = () => {
@@ -91,7 +93,24 @@ const Profile = () => {
     </>
 
     if (!user || !userMongoProfile || loading) return (
-        <Loading></Loading>
+        <div style={{ backgroundColor: 'white' }} className='loading'>
+            <h2 style={{ margin: '0' }}>SEARCHING THIS PERSON</h2>
+
+            <p style={{ margin: '0' }} className='dot'>...</p>
+
+            <div className='bubble-section'>
+                <img style={{ height: '100px', width: '100px', marginTop: '30px' }} src={thoughtBubble} alt=''></img>
+                <h3 style={{ color: 'rgb(1, 1, 83)', marginTop: '0' }}>
+                    Is this the real Id?
+                </h3>
+                <h3 style={{ color: 'rgb(1, 1, 83)', marginTop: '0', marginBottom: '45px' }}>
+                    Or is this just fanatasy?
+                </h3>
+
+                <Link onClick={() => window.history.back(1)} style={{ color: 'black' }}>Go Back</Link>
+            </div>
+
+        </div>
     )
 
     if (showAvatars) return <div>

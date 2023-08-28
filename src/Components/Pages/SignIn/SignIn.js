@@ -43,7 +43,7 @@ const SignIn = () => {
                 navigate(from, { replace: true });
 
             })
-            .catch(err => alert('Something Went Wrong'))
+            .catch(err => alert('Something Went Wrong. Please Check Your Internet Connection.'))
 
     }
 

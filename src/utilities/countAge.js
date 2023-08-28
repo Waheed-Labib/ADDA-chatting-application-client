@@ -26,7 +26,7 @@ const countAge = (day, month, year) => {
     let age = currentYear - yearOfBirth;
     let birthday = false;
 
-    if (currentMonth > monthOfBirth) age = age - 1;
+    if (currentMonth < monthOfBirth) age = age - 1;
 
     if (currentMonth === monthOfBirth) {
         if (currentDay < dayOfBirth) age = age - 1;

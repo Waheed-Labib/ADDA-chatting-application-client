@@ -8,7 +8,7 @@ import ErrorPage from '../../ErrorPage/ErrorPage';
 import { setSideBarInLocalStorage } from '../../../../utilities/localStorageUsage';
 
 
-const SideBar = ({ sideBar, setSideBar, showInSmallDevice, setShowInSmallDevice, setChatMate }) => {
+const SideBar = ({ sideBar, setSideBar, showInSmallDevice, setShowInSmallDevice, setChatMate, setShowLinks }) => {
 
     const [people, setPeople] = useState(null);
     const [groups, setGroups] = useState(null);
@@ -33,12 +33,12 @@ const SideBar = ({ sideBar, setSideBar, showInSmallDevice, setShowInSmallDevice,
         setSideBarInLocalStorage(sideBar)
     }
 
-    console.log('inside sidebar', showInSmallDevice)
+    // console.log('inside sidebar', showInSmallDevice)
 
     if (error) return <ErrorPage></ErrorPage>
 
     return (
-        <div className={`sidebar ${showInSmallDevice === 'sideBar' ? 'show-in-small-device' : 'hide-in-small-device'}`}>
+        <div onClick={() => setShowLinks(false)} className={`sidebar ${showInSmallDevice === 'sideBar' ? 'show-in-small-device' : 'hide-in-small-device'}`}>
             <div className='sidebar-heading'>
                 {
                     sideBar === 'people' ?

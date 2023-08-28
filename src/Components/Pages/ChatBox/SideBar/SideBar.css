@@ -104,6 +104,10 @@
     width: 90%;
 }
 
+.sidebar-search-input input:focus {
+    outline: none;
+}
+
 .sidebar-search-input button {
     color: rgb(49, 74, 1);
     border: none;
@@ -114,6 +118,7 @@
 .sidebar-search-input button:hover {
     color: rgb(73, 112, 1);
 }
+
 
 @media screen and (min-width: 768px) {
     .sidebar {

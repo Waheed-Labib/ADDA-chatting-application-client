@@ -1,15 +1,15 @@
 import React, { useContext, useState } from 'react';
 import logo from '../../../../../Assets/images/logo/Adda Logo.png'
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './ChatBoxAccessories.css'
-import { FaBars, FaChevronDown, FaChevronUp, FaSignOutAlt } from 'react-icons/fa';
+import { FaChevronDown, FaChevronUp, FaSignOutAlt } from 'react-icons/fa';
 import { AuthContext } from '../../../../../contexts/AuthProvider';
 
 
 
-const ChatBoxAccessories = () => {
+const ChatBoxAccessories = ({ showLinks, setShowLinks }) => {
 
-    const [showLinks, setShowLinks] = useState(false);
+    // const [showLinks, setShowLinks] = useState(false);
     const { user, logOut } = useContext(AuthContext);
     const navigate = useNavigate();
 

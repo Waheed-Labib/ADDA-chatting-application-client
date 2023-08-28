@@ -8,7 +8,7 @@ import ErrorPage from '../../ErrorPage/ErrorPage';
 import { setShowInSmallDeviceInLocalStorage } from '../../../../utilities/localStorageUsage';
 
 
-const Messages = ({ showInSmallDevice, setShowInSmallDevice, chatMate }) => {
+const Messages = ({ showInSmallDevice, setShowInSmallDevice, chatMate, setShowLinks }) => {
 
     const { user } = useContext(AuthContext);
     const [messages, setMessages] = useState([])
@@ -66,7 +66,7 @@ const Messages = ({ showInSmallDevice, setShowInSmallDevice, chatMate }) => {
         event.target.reset();
     }
 
-    console.log('outside left arrow', showInSmallDevice)
+    // console.log('outside left arrow', showInSmallDevice)
     const handleLeftArrowClick = () => {
         setShowInSmallDevice('sideBar')
         setShowInSmallDeviceInLocalStorage('sideBar')
@@ -82,7 +82,7 @@ const Messages = ({ showInSmallDevice, setShowInSmallDevice, chatMate }) => {
 
     // show messages section
     return (
-        <div className={`messages ${showInSmallDevice === 'sideBar' ? 'hide-in-small-device' : 'show-in-small-device'}`}>
+        <div onClick={() => setShowLinks(false)} className={`messages ${showInSmallDevice === 'sideBar' ? 'hide-in-small-device' : 'show-in-small-device'}`}>
             <div className='messages-header'>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'start', gap: '10px' }}>
                     <FaAngleDoubleLeft
