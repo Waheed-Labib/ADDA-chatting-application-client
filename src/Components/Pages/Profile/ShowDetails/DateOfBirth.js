@@ -181,7 +181,7 @@ const DateOfBirth = ({ userMongoProfile }) => {
 
 
 
-                                    <button onClick={handleHideDOB} style={{ width: '150px' }} className='profile-info-hide-btn'>Hide my Date of Birth</button>
+                                    <button onClick={handleHideDOB} style={{ width: '150px', paddingInline: '5px' }} className='profile-info-hide-btn'>I won't share my Date of Birth</button>
 
 
                                 </div>

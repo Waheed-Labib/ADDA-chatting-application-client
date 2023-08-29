@@ -55,7 +55,9 @@ const GoogleButton = () => {
                             province: '',
                             country: ''
                         },
-                        phone: ''
+                        chatBox: [
+
+                        ]
                     }
 
                     fetch('https://adda-chatting-app-server.vercel.app/users', {

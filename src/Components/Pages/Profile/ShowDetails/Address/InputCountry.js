@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import axios from 'axios';
 
 const InputCountry = ({ selectedCountry, setSelectedCountry, showCountryList, setShowCountryList, searchResults, setSearchResults }) => {
 
@@ -25,7 +26,7 @@ const InputCountry = ({ selectedCountry, setSelectedCountry, showCountryList, se
 
     const handleSearchChange = event => {
         const searched = event.target.value;
-        const searchFounds = countries.filter(country => country.name?.common.toLowerCase().indexOf(searched.toLowerCase()) === 0)
+        const searchFounds = countries.filter(country => country.name.toLowerCase().indexOf(searched.toLowerCase()) === 0)
         setSearchResults(searchFounds)
         setUnderCursor(searchFounds[0])
         setUnderCursorIndex(0)
@@ -77,10 +78,24 @@ const InputCountry = ({ selectedCountry, setSelectedCountry, showCountryList, se
     }
 
     useEffect(() => {
-        fetch('https://restcountries.com/v3.1/all')
-            .then(res => res.json())
+
+        axios.get('https://restcountries.com/v3.1/all')
             .then(data => {
-                setCountries(data.sort((a, b) => a.name?.common.localeCompare(b.name?.common)))
+                // data.data.sort((a, b) => a.name?.common.localeCompare(b.name?.common));
+
+                const countriesLoaded = data.data;
+                const countriesData = countriesLoaded.map(country => {
+                    const eachCountry = {
+                        name: country.name.common,
+                        flag: country.flags.png,
+                        cca2: country.cca2
+                    }
+
+                    return eachCountry
+                })
+
+                setCountries(countriesData)
+
             })
     }, [])
 
@@ -108,8 +123,8 @@ const InputCountry = ({ selectedCountry, setSelectedCountry, showCountryList, se
                                 style={{ marginBottom: '5px' }}
                                 onClick={handleSearchCountry}
                             >
-                                <img src={selectedCountry?.flags?.png} alt=''></img>
-                                <p>{selectedCountry?.name?.common}</p>
+                                <img src={selectedCountry?.flag} alt=''></img>
+                                <p>{selectedCountry?.name}</p>
                             </div>
 
                         }
@@ -141,9 +156,9 @@ const InputCountry = ({ selectedCountry, setSelectedCountry, showCountryList, se
                                             onClick={() => handleCountrySelect(country)}
                                             key={country?.cca2}>
 
-                                            <img src={country?.flags?.png} alt=''></img>
+                                            <img src={country?.flag} alt=''></img>
 
-                                            <p>{country?.name?.common}</p>
+                                            <p>{country?.name}</p>
 
                                         </div>
                                         <hr></hr>
@@ -169,9 +184,9 @@ const InputCountry = ({ selectedCountry, setSelectedCountry, showCountryList, se
                                         onClick={() => handleCountrySelect(country)}
                                         key={country?.cca2}>
 
-                                        <img src={country?.flags?.png} alt=''></img>
+                                        <img src={country?.flag} alt=''></img>
 
-                                        <p>{country?.name?.common}</p>
+                                        <p>{country?.name}</p>
                                     </div>
                                     <hr></hr>
                                 </>

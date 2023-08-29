@@ -11,9 +11,11 @@ import { setShowInSmallDeviceInLocalStorage } from '../../../../utilities/localS
 const Messages = ({ showInSmallDevice, setShowInSmallDevice, chatMate, setShowLinks }) => {
 
     const { user } = useContext(AuthContext);
+    const [users, setUsers] = useState([]);
     const [messages, setMessages] = useState([])
     const [newMessage, setNewMessage] = useState('')
     const [error, setError] = useState(false)
+
     // messages section auto scroll to bottom
 
     const messagesEndRef = useRef(null)
@@ -26,44 +28,34 @@ const Messages = ({ showInSmallDevice, setShowInSmallDevice, chatMate, setShowLi
         scrollToBottom()
     }, [messages]);
 
-    // load messages from database
     useEffect(() => {
-        fetch('https://adda-chatting-app-server.vercel.app/messages')
+        fetch('https://adda-chatting-app-server.vercel.app/users')
             .then(res => res.json())
-            .then(data => {
-                setMessages(data)
-            })
+            .then(data => setUsers(data))
             .catch(err => setError(true))
     }, [])
+
 
     // chatmate
     const chatMateName = chatMate?.name;
     const chatMatePhoto = chatMate?.photoURL;
 
+    const userMongoProfile = users.find(usr => user?.uid === usr.uid)
+    const isNewChatMate = userMongoProfile?.chatBox?.find(mate => mate.chatMateUid === chatMate?.uid);
+
     // handle new message
     const handleNewMessage = event => {
         event.preventDefault()
-        console.log('New Message is : ', newMessage)
 
-        const newMsg = {
-            msgFrom: user?.displayName,
-            senderImg: user?.photoURL,
-            message: newMessage
+        if (isNewChatMate) {
+
+            const newChatMate = {
+                chatMateUid: chatMate?.uid
+            }
+
+            fetch()
         }
-        // post new message to database
-        fetch('https://adda-chatting-app-server.vercel.app/messages', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(newMsg)
-        })
-            .then(res => res.json())
-            .then(data => {
-                setMessages([...messages, data])
-            })
-            .catch(err => setError(true))
-        event.target.reset();
+
     }
 
     // console.log('outside left arrow', showInSmallDevice)

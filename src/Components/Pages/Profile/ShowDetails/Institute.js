@@ -98,7 +98,7 @@ const Institute = ({ userMongoProfile }) => {
 
                                         <input style={{ width: '150px' }} className='profile-info-submit-btn' type='submit'></input>
                                     </form>
-                                    <button onClick={handleHideInstitute} style={{ width: '150px' }} className='profile-info-hide-btn'>Hide my Institute</button>
+                                    <button onClick={handleHideInstitute} style={{ width: '150px', paddingInline: '5px' }} className='profile-info-hide-btn'>I won't share my Institute</button>
                                 </div>
                                 :
                                 <div className='profile-info-data'>

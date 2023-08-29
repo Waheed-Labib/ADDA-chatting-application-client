@@ -112,7 +112,7 @@ const Address = ({ userMongoProfile }) => {
                         {
                             editAddress ?
                                 <div className='edit-address-div'>
-                                    <span onClick={handleCloseEditAddress} class="profile-info-close">&times;</span>
+                                    <span onClick={handleCloseEditAddress} className="profile-info-close">&times;</span>
 
                                     <form onSubmit={handleAddressSubmit} className='address-form'>
                                         {/* select country */}
@@ -139,7 +139,7 @@ const Address = ({ userMongoProfile }) => {
 
                                     </form>
 
-                                    <button style={{ width: '150px' }} onClick={handleHideAdddress} className='profile-info-hide-btn'>Hide my Address</button>
+                                    <button style={{ width: '150px', paddingInline: '5px' }} onClick={handleHideAdddress} className='profile-info-hide-btn'>I won't share my address</button>
 
                                 </div>
                                 :
@@ -149,7 +149,7 @@ const Address = ({ userMongoProfile }) => {
                                         <div>
                                             <p>{address?.city}&nbsp;</p>
                                             <p>{address?.province}&nbsp;</p>
-                                            <p>{address?.country?.name?.common}&nbsp;</p>
+                                            <p>{address?.country?.name}&nbsp;</p>
                                         </div>
 
                                     }
@@ -165,7 +165,7 @@ const Address = ({ userMongoProfile }) => {
                             <div>
                                 <p>{address?.city}&nbsp;</p>
                                 <p>{address?.province}&nbsp;</p>
-                                <p>{address?.country?.name?.common}&nbsp;</p>
+                                <p>{address?.country?.name}&nbsp;</p>
                             </div>
                         }
                     </>

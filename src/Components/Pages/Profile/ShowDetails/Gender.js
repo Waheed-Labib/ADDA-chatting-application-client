@@ -122,15 +122,15 @@ const Gender = ({ userMongoProfile }) => {
                                         <label htmlFor="intersex">Intersex</label><br></br>
                                         <input style={{ width: '190px', height: '30px', marginTop: '5px', marginBottom: '5px' }} type='text' name='typeGender' placeholder='You Can Also Type yourself'></input>
                                         <br></br>
-                                        <input className='profile-info-submit-btn' type="submit" value="Submit" />
+                                        <input style={{ width: '150px', marginTop: '10px' }} className='profile-info-submit-btn' type="submit" value="Submit" />
                                     </form>
-                                    <button onClick={handleHideGender} className='profile-info-hide-btn' style={{ width: '200px' }}>I prefer not to say my gender</button>
+                                    <button onClick={handleHideGender} className='profile-info-hide-btn' style={{ width: '150px', paddingInline: '5px' }}>I won't share my gender</button>
                                 </div>
                                 :
                                 <div className='profile-info-data'>
                                     {
                                         gender.map(singleGender =>
-                                            <p>{singleGender}&nbsp;</p>)
+                                            <p key={singleGender}>{singleGender}&nbsp;</p>)
                                     }
                                     <FaEdit onClick={() => setEditGender(true)} className='edit-icon'></FaEdit>
                                 </div>
@@ -140,7 +140,7 @@ const Gender = ({ userMongoProfile }) => {
                     <>
                         {
                             gender.map(singleGender =>
-                                <p>{singleGender}&nbsp;</p>)
+                                <p key={singleGender}>{singleGender}&nbsp;</p>)
                         }
                     </>
 

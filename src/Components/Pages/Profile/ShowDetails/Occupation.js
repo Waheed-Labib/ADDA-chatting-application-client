@@ -93,12 +93,12 @@ const Occupation = ({ userMongoProfile }) => {
                                     <span onClick={() => setEditOccupation(false)} class="profile-info-close">&times;</span>
 
                                     <form style={{ marginTop: '20px', marginRight: '10px' }} onSubmit={handleOccupationSubmit}>
-                                        2
+
                                         <input onChange={(event) => setOccupation(event.target.value)} style={{ width: '100%', height: '30px', marginBottom: '10px', borderRadius: '3px', border: '1px solid grey' }} type='text' placeholder='Your Address'></input>
 
                                         <input style={{ width: '150px' }} className='profile-info-submit-btn' type='submit'></input>
                                     </form>
-                                    <button onClick={handleHideOccupation} style={{ width: '150px' }} className='profile-info-hide-btn'>Hide my Occupation</button>
+                                    <button onClick={handleHideOccupation} style={{ width: '150px', paddingInline: '5px' }} className='profile-info-hide-btn'>I won't share my Occupation</button>
                                 </div>
                                 :
                                 <div className='profile-info-data'>

@@ -9,7 +9,7 @@ const ErrorPage = () => {
     return (
         <div className='error-page'>
 
-            <FaSadTear style={{ fontSize: '5rem' }}></FaSadTear>
+            <FaSadTear style={{ fontSize: '5rem', color: 'rgb(75,75,75)' }}></FaSadTear>
 
             <h2>
                 Something Went Wrong &nbsp;
