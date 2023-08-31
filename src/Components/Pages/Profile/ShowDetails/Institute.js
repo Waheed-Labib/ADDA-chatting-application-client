@@ -15,32 +15,19 @@ const Institute = ({ userMongoProfile }) => {
 
         event.preventDefault();
 
-        const newInstitute = institute;
-
-        // update gender in database
-        const updatedUserMongoProfile = {
-            uid: userMongoProfile?.uid,
-            name: userMongoProfile?.name,
-            email: userMongoProfile?.email,
-            photoURL: userMongoProfile?.photoURL,
-            gender: userMongoProfile?.gender,
-            dateOfBirth: userMongoProfile?.dateOfBirth,
-            occupation: userMongoProfile?.occupation,
-            institute: newInstitute,
-            address: userMongoProfile?.address
-        }
+        userMongoProfile.institute = institute;
 
         fetch(`https://adda-chatting-app-server.vercel.app/users/${userMongoProfile.uid}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(updatedUserMongoProfile)
+            body: JSON.stringify(userMongoProfile)
         })
             .then(res => res.json())
             .then(data => {
                 toast.success('Institute Updated')
-                setInstitute(newInstitute)
+                // setInstitute(institute)
                 setEditInstitute(false)
             })
             .catch(() => { })
@@ -48,32 +35,19 @@ const Institute = ({ userMongoProfile }) => {
 
     const handleHideInstitute = () => {
 
-        const newInstitute = '';
-
-        // hide institute in database
-        const updatedUserMongoProfile = {
-            uid: userMongoProfile?.uid,
-            name: userMongoProfile?.name,
-            email: userMongoProfile?.email,
-            photoURL: userMongoProfile?.photoURL,
-            gender: userMongoProfile?.gender,
-            dateOfBirth: userMongoProfile?.dateOfBirth,
-            occupation: userMongoProfile?.occupation,
-            institute: newInstitute,
-            address: userMongoProfile?.address
-        }
+        userMongoProfile.institute = ''
 
         fetch(`https://adda-chatting-app-server.vercel.app/users/${userMongoProfile.uid}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(updatedUserMongoProfile)
+            body: JSON.stringify(userMongoProfile)
         })
             .then(res => res.json())
             .then(data => {
                 toast.success('Your Institute will be hidden')
-                setInstitute(newInstitute)
+                setInstitute('')
                 setEditInstitute(false)
             })
             .catch(() => { })

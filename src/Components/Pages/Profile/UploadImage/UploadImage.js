@@ -47,24 +47,13 @@ const UploadImage = ({ setUploadImage, setUserPhoto, userMongoProfile }) => {
                 setUploadImage(false)
                 setUserPhoto(URL.createObjectURL(image))
 
-                const updatedUserMongoProfile = {
-                    uid: userMongoProfile.uid,
-                    name: userMongoProfile.name,
-                    email: userMongoProfile.email,
-                    photoURL: imageList[0],
-                    gender: userMongoProfile.gender,
-                    dateOfBirth: userMongoProfile.dateOfBirth,
-                    occupation: userMongoProfile.occupation,
-                    institute: userMongoProfile.institute,
-                    address: userMongoProfile.address
-                }
-
+                userMongoProfile.photoURL = imageList[0]
                 fetch(`https://adda-chatting-app-server.vercel.app/users/${userMongoProfile.uid}`, {
                     method: 'PUT',
                     headers: {
                         'content-type': 'application/json'
                     },
-                    body: JSON.stringify(updatedUserMongoProfile)
+                    body: JSON.stringify(userMongoProfile)
                 })
                     .then(res => res.json())
                     .then(data => {

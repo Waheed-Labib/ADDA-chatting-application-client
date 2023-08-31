@@ -15,32 +15,19 @@ const Occupation = ({ userMongoProfile }) => {
 
         event.preventDefault();
 
-        const newOccupation = occupation;
-
-        // update gender in database
-        const updatedUserMongoProfile = {
-            uid: userMongoProfile?.uid,
-            name: userMongoProfile?.name,
-            email: userMongoProfile?.email,
-            photoURL: userMongoProfile?.photoURL,
-            gender: userMongoProfile?.gender,
-            dateOfBirth: userMongoProfile?.dateOfBirth,
-            occupation: newOccupation,
-            institute: userMongoProfile?.institute,
-            address: userMongoProfile?.address
-        }
+        userMongoProfile.occupation = occupation;
 
         fetch(`https://adda-chatting-app-server.vercel.app/users/${userMongoProfile.uid}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(updatedUserMongoProfile)
+            body: JSON.stringify(userMongoProfile)
         })
             .then(res => res.json())
             .then(data => {
                 toast.success('Occupation Updated')
-                setOccupation(newOccupation)
+                // setOccupation(newOccupation)
                 setEditOccupation(false)
             })
             .catch(() => { })
@@ -48,32 +35,19 @@ const Occupation = ({ userMongoProfile }) => {
 
     const handleHideOccupation = () => {
 
-        const newOccupation = '';
-
-        // hide occupation in database
-        const updatedUserMongoProfile = {
-            uid: userMongoProfile?.uid,
-            name: userMongoProfile?.name,
-            email: userMongoProfile?.email,
-            photoURL: userMongoProfile?.photoURL,
-            gender: userMongoProfile?.gender,
-            dateOfBirth: userMongoProfile?.dateOfBirth,
-            occupation: newOccupation,
-            institute: userMongoProfile?.institute,
-            address: userMongoProfile?.address
-        }
+        userMongoProfile.occupation = '';
 
         fetch(`https://adda-chatting-app-server.vercel.app/users/${userMongoProfile.uid}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(updatedUserMongoProfile)
+            body: JSON.stringify(userMongoProfile)
         })
             .then(res => res.json())
             .then(data => {
                 toast.success('Your Occupation will be hidden')
-                setOccupation(newOccupation)
+                setOccupation('')
                 setEditOccupation(false)
             })
             .catch(() => { })

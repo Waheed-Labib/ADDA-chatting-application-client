@@ -32,24 +32,14 @@ const Avatars = ({ setShowAvatars, setUserPhoto, userMongoProfile }) => {
                 setShowAvatars(false)
                 setUserPhoto(selected)
 
-                const updatedUserMongoProfile = {
-                    uid: userMongoProfile.uid,
-                    name: userMongoProfile.name,
-                    email: userMongoProfile.email,
-                    photoURL: selected,
-                    gender: userMongoProfile.gender,
-                    dateOfBirth: userMongoProfile.dateOfBirth,
-                    occupation: userMongoProfile.occupation,
-                    institute: userMongoProfile.institute,
-                    address: userMongoProfile.address
-                }
+                userMongoProfile.photoURL = selected
 
                 fetch(`https://adda-chatting-app-server.vercel.app/users/${userMongoProfile.uid}`, {
                     method: 'PUT',
                     headers: {
                         'content-type': 'application/json'
                     },
-                    body: JSON.stringify(updatedUserMongoProfile)
+                    body: JSON.stringify(userMongoProfile)
                 })
                     .then(res => res.json())
                     .then(data => {

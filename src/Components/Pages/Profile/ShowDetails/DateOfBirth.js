@@ -44,25 +44,14 @@ const DateOfBirth = ({ userMongoProfile }) => {
             year: year
         }
 
-        // update date of birth in database
-        const updatedUserMongoProfile = {
-            uid: userMongoProfile?.uid,
-            name: userMongoProfile?.name,
-            email: userMongoProfile?.email,
-            photoURL: userMongoProfile?.photoURL,
-            gender: userMongoProfile?.gender,
-            dateOfBirth: newDateOfBirth,
-            occupation: userMongoProfile?.occupation,
-            institute: userMongoProfile?.institute,
-            address: userMongoProfile?.address
-        }
+        userMongoProfile.dateOfBirth = newDateOfBirth;
 
         fetch(`https://adda-chatting-app-server.vercel.app/users/${userMongoProfile.uid}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(updatedUserMongoProfile)
+            body: JSON.stringify(userMongoProfile)
         })
             .then(res => res.json())
             .then(data => {
@@ -79,25 +68,14 @@ const DateOfBirth = ({ userMongoProfile }) => {
 
     const handleHideDOB = () => {
 
-        // hide date of birth in database
-        const updatedUserMongoProfile = {
-            uid: userMongoProfile?.uid,
-            name: userMongoProfile?.name,
-            email: userMongoProfile?.email,
-            photoURL: userMongoProfile?.photoURL,
-            gender: userMongoProfile?.gender,
-            dateOfBirth: null,
-            occupation: userMongoProfile?.occupation,
-            institute: userMongoProfile?.institute,
-            address: userMongoProfile?.address
-        }
+        userMongoProfile.dateOfBirth = null
 
         fetch(`https://adda-chatting-app-server.vercel.app/users/${userMongoProfile.uid}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(updatedUserMongoProfile)
+            body: JSON.stringify(userMongoProfile)
         })
             .then(res => res.json())
             .then(data => {

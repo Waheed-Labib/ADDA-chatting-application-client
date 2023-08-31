@@ -59,10 +59,11 @@
 }
 
 .messages-content {
-
     padding: 1%;
     height: 65vh;
     overflow-y: scroll;
+    display: flex;
+    align-items: end;
 }
 
 .messages-content::-webkit-scrollbar {

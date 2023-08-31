@@ -41,25 +41,14 @@ const Address = ({ userMongoProfile }) => {
             city: city
         }
 
-        // update address in database
-        const updatedUserMongoProfile = {
-            uid: userMongoProfile?.uid,
-            name: userMongoProfile?.name,
-            email: userMongoProfile?.email,
-            photoURL: userMongoProfile?.photoURL,
-            gender: userMongoProfile?.gender,
-            dateOfBirth: userMongoProfile?.dateOfBirth,
-            occupation: userMongoProfile?.occupation,
-            institute: userMongoProfile?.institute,
-            address: newAddress
-        }
+        userMongoProfile.address = newAddress
 
         fetch(`https://adda-chatting-app-server.vercel.app/users/${userMongoProfile.uid}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(updatedUserMongoProfile)
+            body: JSON.stringify(userMongoProfile)
         })
             .then(res => res.json())
             .then(data => {
@@ -73,25 +62,14 @@ const Address = ({ userMongoProfile }) => {
 
     const handleHideAdddress = () => {
 
-        // hide address in database
-        const updatedUserMongoProfile = {
-            uid: userMongoProfile?.uid,
-            name: userMongoProfile?.name,
-            email: userMongoProfile?.email,
-            photoURL: userMongoProfile?.photoURL,
-            gender: userMongoProfile?.gender,
-            dateOfBirth: userMongoProfile?.dateOfBirth,
-            occupation: userMongoProfile?.occupation,
-            institute: userMongoProfile?.institute,
-            address: ''
-        }
+        userMongoProfile.address = null
 
         fetch(`https://adda-chatting-app-server.vercel.app/users/${userMongoProfile.uid}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(updatedUserMongoProfile)
+            body: JSON.stringify(userMongoProfile)
         })
             .then(res => res.json())
             .then(data => {
@@ -147,9 +125,13 @@ const Address = ({ userMongoProfile }) => {
                                     {
                                         (address?.city || address?.province || address?.country) &&
                                         <div>
-                                            <p>{address?.city}&nbsp;</p>
-                                            <p>{address?.province}&nbsp;</p>
-                                            <p>{address?.country?.name}&nbsp;</p>
+                                            <p style={{ marginBottom: '5px' }}>{address?.city}&nbsp;</p>
+                                            <p style={{ marginBottom: '5px' }}>{address?.province}&nbsp;</p>
+                                            <div style={{ padding: '0' }} className='country'>
+                                                <img style={{ height: '15px' }} src={address?.country?.flag} alt=''></img>
+                                                <p>{address?.country?.name}&nbsp;</p>
+                                            </div>
+
                                         </div>
 
                                     }
@@ -165,7 +147,10 @@ const Address = ({ userMongoProfile }) => {
                             <div>
                                 <p>{address?.city}&nbsp;</p>
                                 <p>{address?.province}&nbsp;</p>
-                                <p>{address?.country?.name}&nbsp;</p>
+                                <div style={{ padding: '0' }} className='country'>
+                                    <img src={address?.country?.flag} alt=''></img>
+                                    <p>{address?.country?.name}&nbsp;</p>
+                                </div>
                             </div>
                         }
                     </>

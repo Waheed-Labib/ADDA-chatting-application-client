@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Message.css'
+import { AuthContext } from '../../../../contexts/AuthProvider';
 
-const Message = ({ msg }) => {
+const Message = ({ message }) => {
 
-    const { msgId, msgFrom, senderImg, message } = msg
+    const { user } = useContext(AuthContext)
+
+    const { msg, msgSender, msgSenderPhoto } = message
 
     return (
-        <div className={`msg-content ${msgFrom === 'Labib Wahid' ? 'own-msg' : 'friends-msg'}`}>
+        <div className={`msg-content ${msgSender === user?.displayName ? 'own-msg' : 'friends-msg'}`}>
 
-            <img className='sender-image' src={senderImg} alt=''></img>
+            <img className='sender-image' src={msgSenderPhoto} alt=''></img>
 
-
-            <p className='msg-text'>{message}</p>
+            <p className='msg-text'>{msg}</p>
 
 
         </div>

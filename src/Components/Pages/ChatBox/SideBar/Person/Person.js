@@ -24,10 +24,10 @@ const Person = ({ person, setChatMate, setShowInSmallDevice }) => {
     const birthdayDate = person?.dateOfBirth?.day;
     const birthdayMonth = person?.dateOfBirth?.month;
     const birthdayYear = person?.dateOfBirth?.year;
-    console.log(birthdayDate, birthdayMonth, birthdayYear)
+    // console.log(birthdayDate, birthdayMonth, birthdayYear)
 
     const isBirthday = countAge(birthdayDate, birthdayMonth, birthdayYear)[1];
-    console.log(isBirthday)
+    // console.log(isBirthday)
 
     return (
         <Link onClick={handlePersonClick} style={{ textDecoration: 'none', color: 'black' }}>

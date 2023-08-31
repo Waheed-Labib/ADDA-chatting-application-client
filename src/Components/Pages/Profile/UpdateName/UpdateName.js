@@ -18,24 +18,14 @@ const UpdateName = ({ userMongoProfile, name, setName }) => {
         updateUserAccount(profile)
             .then(() => {
 
-                const updatedUserMongoProfile = {
-                    uid: userMongoProfile.uid,
-                    name: newName,
-                    email: userMongoProfile.email,
-                    photoURL: userMongoProfile.photoURL,
-                    gender: userMongoProfile.gender,
-                    dateOfBirth: userMongoProfile.dateOfBirth,
-                    occupation: userMongoProfile.occupation,
-                    institute: userMongoProfile.institute,
-                    address: userMongoProfile.address
-                }
+                userMongoProfile.name = newName
 
                 fetch(`https://adda-chatting-app-server.vercel.app/users/${userMongoProfile.uid}`, {
                     method: 'PUT',
                     headers: {
                         'content-type': 'application/json'
                     },
-                    body: JSON.stringify(updatedUserMongoProfile)
+                    body: JSON.stringify(userMongoProfile)
                 })
                     .then(res => res.json())
                     .then(data => {
